@@ -13,6 +13,72 @@
         android:theme="@style/Theme.SoundBoardJava"
         tools:targetApi="31">
         <activity
+            android:name=".Posteanimateur"
+            android:exported="false" />
+        <activity
+            android:name=".Poste10B"
+            android:exported="false" />
+        <activity
+            android:name=".Poste10A"
+            android:exported="false" />
+        <activity
+            android:name=".Poste9B"
+            android:exported="false" />
+        <activity
+            android:name=".Poste9A"
+            android:exported="false" />
+        <activity
+            android:name=".Poste8B"
+            android:exported="false" />
+        <activity
+            android:name=".Poste8A"
+            android:exported="false" />
+        <activity
+            android:name=".Poste7B"
+            android:exported="false" />
+        <activity
+            android:name=".Poste7A"
+            android:exported="false" />
+        <activity
+            android:name=".Poste6B"
+            android:exported="false" />
+        <activity
+            android:name=".Poste6A"
+            android:exported="false" />
+        <activity
+            android:name=".Poste5B"
+            android:exported="false" />
+        <activity
+            android:name=".Poste5A"
+            android:exported="false" />
+        <activity
+            android:name=".Poste4B"
+            android:exported="false" />
+        <activity
+            android:name=".Poste4A"
+            android:exported="false" />
+        <activity
+            android:name=".Poste3B"
+            android:exported="false" />
+        <activity
+            android:name=".Poste3A"
+            android:exported="false" />
+        <activity
+            android:name=".Poste2A"
+            android:exported="false" />
+        <activity
+            android:name=".Poste2B"
+            android:exported="false" />
+        <activity
+            android:name=".Poste1B"
+            android:exported="false" />
+        <activity
+            android:name=".Poste1A"
+            android:exported="false" />
+        <activity
+            android:name=".LogIn"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
