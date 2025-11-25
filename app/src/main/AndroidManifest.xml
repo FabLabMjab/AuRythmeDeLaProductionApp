@@ -76,10 +76,10 @@
             android:name=".Poste1A"
             android:exported="false" />
         <activity
-            android:name=".LogIn"
+            android:name=".BoiteDeSon"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LogIn"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

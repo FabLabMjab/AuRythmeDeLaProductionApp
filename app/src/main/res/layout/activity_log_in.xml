@@ -59,7 +59,7 @@
             android:useDefaultMargins="true"
             android:padding="16dp">
 
-            <!-- Exemple d'un bouton -->
+            <!-- Liste des boutons -->
             <Button
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -361,7 +361,6 @@
                 android:textColor="@android:color/white"
                 android:background="@drawable/rounded_button"/>
 
-            <!-- … ajoute les autres ici … -->
 
         </GridLayout>
 

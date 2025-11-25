@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.soundboardjava"
+    namespace = "com.example.aurythmedelaproduction"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.soundboardjava"
+        applicationId = "com.example.aurythmedelaproduction"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

@@ -89,29 +89,39 @@
             android:gravity="center"
             android:layout_marginTop="16dp">
 
-        <ImageButton
-            android:id="@+id/button5"
-            style="@style/SoundButtonStyle"
-            android:src="@drawable/code_jaune"
-            android:background="@null"
-            android:contentDescription="Son 5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="16dp"
-            android:paddingRight="8dp" />
+            <ImageButton
+                android:id="@+id/button5"
+                style="@style/SoundButtonStyle"
+                android:src="@drawable/code_jaune"
+                android:background="@null"
+                android:contentDescription="Son 5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="16dp"
+                android:paddingRight="8dp" />
 
-        <ImageButton
-            android:id="@+id/button6"
-            style="@style/SoundButtonStyle"
-            android:src="@drawable/code_rouge"
-            android:background="@null"
-            android:contentDescription="Son 6"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="16dp"
-            android:paddingRight="8dp"/>
+            <ImageButton
+                android:id="@+id/returnbutton"
+                style="@style/SoundButtonStyle"
+                android:src="@drawable/returnbutton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:contentDescription="Retour à l'activité précédente" />
+
+            <ImageButton
+                android:id="@+id/button6"
+                style="@style/SoundButtonStyle"
+                android:src="@drawable/code_rouge"
+                android:background="@null"
+                android:contentDescription="Son 6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="16dp"
+                android:paddingRight="8dp"/>
 
         </LinearLayout>
 
