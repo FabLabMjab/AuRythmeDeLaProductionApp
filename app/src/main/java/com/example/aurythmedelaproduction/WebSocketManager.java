@@ -12,7 +12,20 @@ public class WebSocketManager {
     private static final String TAG = "WebSocket";
     private WebSocket webSocket;
 
-    public void start(String url) {
+    // --- Callbacks ---
+    public interface OnConnected {
+        void run();
+    }
+    public interface OnError {
+        void run(String error);
+    }
+    public interface OnMessageReceived {
+        void run(String message);
+    }
+
+    // --- Méthode principale pour se connecter ---
+    public void connect(String url, OnConnected onConnected, OnError onError, OnMessageReceived onMessageReceived) {
+
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
@@ -22,29 +35,26 @@ public class WebSocketManager {
         webSocket = client.newWebSocket(request, new WebSocketListener() {
 
             @Override
-            public void onOpen(WebSocket webSocket, okhttp3.Response response) {
+            public void onOpen(WebSocket ws, okhttp3.Response response) {
                 Log.d(TAG, "Connexion ouverte");
+                if (onConnected != null) onConnected.run();
             }
 
             @Override
-            public void onMessage(WebSocket webSocket, String text) {
+            public void onMessage(WebSocket ws, String text) {
                 Log.d(TAG, "Message reçu: " + text);
+                if (onMessageReceived != null) onMessageReceived.run(text);
             }
 
             @Override
-            public void onMessage(WebSocket webSocket, ByteString bytes) {
+            public void onMessage(WebSocket ws, ByteString bytes) {
                 Log.d(TAG, "Message binaire reçu: " + bytes.hex());
             }
 
             @Override
-            public void onClosing(WebSocket webSocket, int code, String reason) {
-                Log.d(TAG, "Fermeture demandée: " + reason);
-                webSocket.close(1000, null);
-            }
-
-            @Override
-            public void onFailure(WebSocket webSocket, Throwable t, okhttp3.Response response) {
+            public void onFailure(WebSocket ws, Throwable t, okhttp3.Response response) {
                 Log.e(TAG, "Erreur WebSocket: " + t.getMessage());
+                if (onError != null) onError.run(t.getMessage());
             }
         });
     }

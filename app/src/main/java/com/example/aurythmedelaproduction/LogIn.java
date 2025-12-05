@@ -6,14 +6,33 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.Toast;
 
 public class LogIn extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_log_in);
+
+        // Connexion au serveur
+        WebSocketManager wsm = new WebSocketManager();
+
+        wsm.connect(
+                "ws://192.168.137.1:8887",
+                () -> runOnUiThread(() ->
+                        Toast.makeText(this, "Connecté au serveur!", Toast.LENGTH_SHORT).show()
+                ),
+                error -> runOnUiThread(() ->
+                        Toast.makeText(this, "Erreur de connexion: " + error, Toast.LENGTH_LONG).show()
+                ),
+                message -> runOnUiThread(() ->
+                        Toast.makeText(this, "Message reçu: " + message, Toast.LENGTH_SHORT).show()
+                )
+        );
+
 
         // Récupère les boutons définis dans activity_log_in.xml
         Button buttonposte1a = findViewById(R.id.poste1a);
