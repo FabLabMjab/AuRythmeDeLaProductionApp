@@ -19,9 +19,11 @@ public class LogIn extends AppCompatActivity {
 
         // Connexion au serveur
         WebSocketManager wsm = new WebSocketManager();
-
+        /* Insérer ici l'adresse locale du serveur
+        * --> ws://10.0.2.2:8887 est l'adresse qui permet à l'émulateur d'AndroidStudio d'avoir accès au serveur s'il tourne sur la machine hôte
+        * --> ws://192.168.137.1:8887 si l'adresse est sur Windows*/
         wsm.connect(
-                "ws://192.168.137.1:8887",
+                "ws://10.0.2.2:8887",
                 () -> runOnUiThread(() ->
                         Toast.makeText(this, "Connecté au serveur!", Toast.LENGTH_SHORT).show()
                 ),
@@ -32,6 +34,8 @@ public class LogIn extends AppCompatActivity {
                         Toast.makeText(this, "Message reçu: " + message, Toast.LENGTH_SHORT).show()
                 )
         );
+
+        wsm.send("HELLO SERVER");
 
 
         // Récupère les boutons définis dans activity_log_in.xml
