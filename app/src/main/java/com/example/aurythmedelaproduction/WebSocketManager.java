@@ -8,9 +8,12 @@ import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
 import okio.ByteString;
 
+
 public class WebSocketManager {
     private static final String TAG = "WebSocket";
     private WebSocket webSocket;
+    private static WebSocketManager instance;
+    private MessageListener messageListener;
 
     // --- Callbacks ---
     public interface OnConnected {
@@ -19,12 +22,13 @@ public class WebSocketManager {
     public interface OnError {
         void run(String error);
     }
-    public interface OnMessageReceived {
-        void run(String message);
+
+    public interface MessageListener {
+        void onMessage(String message);
     }
 
     // --- Méthode principale pour se connecter ---
-    public void connect(String url, OnConnected onConnected, OnError onError, OnMessageReceived onMessageReceived) {
+    public void connect(String url, OnConnected onConnected, OnError onError) {
 
         OkHttpClient client = new OkHttpClient();
 
@@ -41,9 +45,11 @@ public class WebSocketManager {
             }
 
             @Override
-            public void onMessage(WebSocket ws, String text) {
-                Log.d(TAG, "Message reçu: " + text);
-                if (onMessageReceived != null) onMessageReceived.run(text);
+            public void onMessage(WebSocket ws, String message) {
+                Log.d(TAG, "Message reçu: " + message);
+                if (messageListener != null) {
+                    messageListener.onMessage(message);
+                }
             }
 
             @Override
@@ -56,6 +62,7 @@ public class WebSocketManager {
                 Log.e(TAG, "Erreur WebSocket: " + t.getMessage());
                 if (onError != null) onError.run(t.getMessage());
             }
+
         });
     }
 
@@ -69,5 +76,14 @@ public class WebSocketManager {
         if (webSocket != null) {
             webSocket.close(1000, "Fermeture volontaire");
         }
+    }
+
+    public static WebSocketManager getInstance() {
+        if(instance == null)
+            instance = new WebSocketManager();
+        return instance;
+    }
+    public void setMessageListener(MessageListener listener) {
+        this.messageListener = listener;
     }
 }

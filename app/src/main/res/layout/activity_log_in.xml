@@ -2,7 +2,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <!-- Image de fond -->
     <ImageView
         android:layout_width="match_parent"
@@ -10,360 +9,42 @@
         android:src="@drawable/background"
         android:scaleType="centerCrop"
         android:contentDescription="@null" />
-    <ScrollView
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <!-- Conteneur qui occupe tout l'écran -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:weightSum="7"
-        android:paddingTop="12dp">
-
-    <!-- Texte en en-tête -->
-    <TextView
-        android:id="@+id/headerText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Au rythme de la production"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/bebas_neue"
-        android:textColor="@android:color/black"
-        android:paddingTop="12dp"
-        android:gravity="center"/>
-
-    <TextView
-        android:id="@+id/headerText2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Connexion"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/bebas_neue"
-        android:textColor="@android:color/black"
-        android:layout_marginBottom="32dp"
-        android:gravity="center"/>
-
-        <!-- Grille de boutons -->
-        <GridLayout
-            android:id="@+id/buttonGrid"
+        <!-- Texte en en-tête -->
+        <TextView
+            android:id="@+id/headerText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="3"
-            android:rowCount="10"
-            android:alignmentMode="alignMargins"
-            android:useDefaultMargins="true"
-            android:padding="16dp">
+            android:text="Au rythme de la production"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/bebas_neue"
+            android:textColor="@android:color/black"
+            android:paddingTop="12dp"
+            android:gravity="center"/>
 
-            <!-- Liste des boutons -->
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 1 A"
-                android:id="@+id/poste1a"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:backgroundTint="@null"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Animateur"
-                android:id="@+id/animateur"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 1 B"
-                android:id="@+id/poste1b"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 2 A"
-                android:id="@+id/poste2a"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 2 A"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"
-                android:visibility="invisible"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 2 B"
-                android:id="@+id/poste2b"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 3 A"
-                android:id="@+id/poste3a"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 2 A"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"
-                android:visibility="invisible"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 3 B"
-                android:id="@+id/poste3b"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 4 A"
-                android:id="@+id/poste4a"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 2 A"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"
-                android:visibility="invisible"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 4 B"
-                android:id="@+id/poste4b"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 5 A"
-                android:id="@+id/poste5a"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 2 A"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"
-                android:visibility="invisible"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 5 B"
-                android:id="@+id/poste5b"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 6 A"
-                android:id="@+id/poste6a"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 2 A"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"
-                android:visibility="invisible"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 6 B"
-                android:id="@+id/poste6b"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 7 A"
-                android:id="@+id/poste7a"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 2 A"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"
-                android:visibility="invisible"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 7 B"
-                android:id="@+id/poste7b"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 8 A"
-                android:id="@+id/poste8a"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 2 A"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"
-                android:visibility="invisible"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 8 B"
-                android:id="@+id/poste8b"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 9 A"
-                android:id="@+id/poste9a"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 2 A"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"
-                android:visibility="invisible"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 9 B"
-                android:id="@+id/poste9b"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 10 A"
-                android:id="@+id/poste10a"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 2 A"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"
-                android:visibility="invisible"/>
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="Poste 10 B"
-                android:id="@+id/poste10b"
-                android:fontFamily="@font/bebas_neue"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_button"/>
-
-
-        </GridLayout>
-
+        <TextView
+            android:id="@+id/headerText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Connexion"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/bebas_neue"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="32dp"
+            android:gravity="center"/>
+        <!-- Zone dynamique -->
+        <FrameLayout
+            android:id="@+id/fragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
     </LinearLayout>
-    </ScrollView>
+
 </FrameLayout>

@@ -7,22 +7,118 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import android.content.Intent;
 import android.widget.Toast;
+import org.json.JSONObject;
+import androidx.fragment.app.Fragment;
 
 public class LogIn extends AppCompatActivity {
 
+    private WebSocketManager wsm;
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_log_in);
+
+        wsm = WebSocketManager.getInstance();
+
+        retryConnection();
+    }
+
+    private void requestParticipants() {
+
+        JSONObject req = new JSONObject();
+        try {
+            req.put("type", "REQUEST_PARTICIPANTS");
+        } catch (Exception ignored) {}
+
+        wsm.send(req.toString());
+    }
+
+    private void handleServerMessage(String message) {
+
+        runOnUiThread(() -> {
+
+            try {
+
+                JSONObject json = new JSONObject(message);
+                String type = json.getString("type");
+
+                if (type.equals("PARTICIPANTS_STATUS")) {
+
+                    int count = json.getInt("count");
+
+                    if (count == 0) {
+
+                        loadFragment(new ParticipantSetupFragment());
+
+                    } else {
+
+                        requestProfiles();
+                        loadFragment(new ProfileSelectionFragment());
+                    }
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    private void requestProfiles() {
+
+        JSONObject req = new JSONObject();
+
+        try {
+            req.put("type", "REQUEST_PROFILES");
+        } catch (Exception ignored) {}
+
+        wsm.send(req.toString());
+    }
+
+    private void loadFragment(Fragment fragment) {
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .commit();
+    }
+
+    public void retryConnection() {
+
+        wsm.connect(
+                "ws://10.0.2.2:8887",
+
+                // succès
+                () -> runOnUiThread(() -> {
+
+                    wsm.setMessageListener(this::handleServerMessage);
+
+                    requestParticipants();
+                }),
+
+                // erreur
+                error -> runOnUiThread(() -> {
+
+                    loadFragment(new ConnectionErrorFragment());
+                })
+        );
+    }
+
+}
+// Ancienne activité
+/*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_log_in);
 
         // Connexion au serveur
-        WebSocketManager wsm = new WebSocketManager();
-        /* Insérer ici l'adresse locale du serveur
-        * --> ws://10.0.2.2:8887 est l'adresse qui permet à l'émulateur d'AndroidStudio d'avoir accès au serveur s'il tourne sur la machine hôte
-        * --> ws://192.168.137.1:8887 si l'adresse est sur Windows*/
-        wsm.connect(
+        WebSocketManager wsm = new WebSocketManager();*/
+/* Insérer ici l'adresse locale du serveur
+ * --> ws://10.0.2.2:8887 est l'adresse qui permet à l'émulateur d'AndroidStudio d'avoir accès au serveur s'il tourne sur la machine hôte
+ * --> ws://192.168.137.1:8887 si l'adresse est sur Windows*/
+        /* wsm.connect(
                 "ws://10.0.2.2:8887",
                 () -> runOnUiThread(() ->
                         Toast.makeText(this, "Connecté au serveur!", Toast.LENGTH_SHORT).show()
@@ -166,5 +262,4 @@ public class LogIn extends AppCompatActivity {
             Intent intent = new Intent(LogIn.this, Poste10B.class);
             startActivity(intent);
         });
-    }
-}
+    } */
