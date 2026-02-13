@@ -2,6 +2,8 @@ package com.example.aurythmedelaproduction;
 
 import android.util.Log;
 
+import org.json.JSONObject;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.WebSocket;
@@ -14,6 +16,7 @@ public class WebSocketManager {
     private WebSocket webSocket;
     private static WebSocketManager instance;
     private MessageListener messageListener;
+    private JSONObject lastActivityConfig;
 
     // --- Callbacks ---
     public interface OnConnected {
@@ -47,6 +50,20 @@ public class WebSocketManager {
             @Override
             public void onMessage(WebSocket ws, String message) {
                 Log.d(TAG, "Message reçu: " + message);
+
+                try {
+                    JSONObject json = new JSONObject(message);
+                    String type = json.getString("type");
+
+                    if (type.equals("ACTIVITY_CONFIG")) {
+                        lastActivityConfig = json;
+                        Log.d(TAG, "ACTIVITY_CONFIG sauvegardé");
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
                 if (messageListener != null) {
                     messageListener.onMessage(message);
                 }
@@ -85,5 +102,8 @@ public class WebSocketManager {
     }
     public void setMessageListener(MessageListener listener) {
         this.messageListener = listener;
+    }
+    public JSONObject getLastActivityConfig() {
+        return lastActivityConfig;
     }
 }

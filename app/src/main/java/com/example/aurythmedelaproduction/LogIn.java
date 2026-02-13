@@ -6,6 +6,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.TextView;
 import android.widget.Toast;
 import org.json.JSONObject;
 import androidx.fragment.app.Fragment;
@@ -59,6 +60,7 @@ public class LogIn extends AppCompatActivity {
                     }
                 }
 
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -103,6 +105,12 @@ public class LogIn extends AppCompatActivity {
                     loadFragment(new ConnectionErrorFragment());
                 })
         );
+    }
+
+    public void updateSubtitle(String text) {
+
+        TextView subtitle = findViewById(R.id.headerText2);
+        subtitle.setText(text);
     }
 
 }

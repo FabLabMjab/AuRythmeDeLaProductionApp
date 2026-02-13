@@ -5,11 +5,13 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -24,6 +26,10 @@ public class ProfileSelectionFragment extends Fragment {
     private LinearLayout left;
     private LinearLayout center;
     private LinearLayout right;
+
+    private TextView txtVehicle;
+    private TextView txtLines;
+    private TextView txtParticipants;
 
     @Nullable
     @Override
@@ -43,7 +49,12 @@ public class ProfileSelectionFragment extends Fragment {
         center = v.findViewById(R.id.columnCenter);
         right = v.findViewById(R.id.columnRight);
 
+        txtVehicle = v.findViewById(R.id.txtVehicle);
+        txtLines = v.findViewById(R.id.txtLines);
+        txtParticipants = v.findViewById(R.id.txtParticipants);
+
         requestProfiles();
+        requestActivityConfig();
 
         return v;
     }
@@ -58,9 +69,20 @@ public class ProfileSelectionFragment extends Fragment {
 
         WebSocketManager.getInstance().send(req.toString());
 
-        WebSocketManager.getInstance().setMessageListener(
-                this::handleProfiles
-        );
+        WebSocketManager.getInstance()
+                .setMessageListener(this::handleMessage);
+    }
+
+    private void requestActivityConfig() {
+
+        JSONObject req = new JSONObject();
+
+        try {
+            req.put("type", "REQUEST_ACTIVITY_CONFIG");
+        } catch (Exception ignored) {}
+
+        WebSocketManager.getInstance().send(req.toString());
+
     }
 
     private void handleProfiles(String message) {
@@ -167,8 +189,8 @@ public class ProfileSelectionFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        WebSocketManager.getInstance()
-                .setMessageListener(this::handleProfiles);
+        ((LogIn) requireActivity())
+                .updateSubtitle("Choix du profil");
     }
 
     @Override
@@ -177,5 +199,73 @@ public class ProfileSelectionFragment extends Fragment {
 
         WebSocketManager.getInstance()
                 .setMessageListener(null);
+    }
+
+    public void updateActivityConfig(String vehicle, int lines, int participants) {
+
+        if (getActivity() == null) return;
+
+        getActivity().runOnUiThread(() -> {
+
+            txtVehicle.setText("Véhicule : " + vehicle);
+            txtLines.setText("Lignes : " + lines);
+            txtParticipants.setText("Participants : " + participants);
+        });
+    }
+
+    private void handleMessage(String message) {
+
+        Log.d("WS_DEBUG", "Fragment reçu: " + message);
+
+        requireActivity().runOnUiThread(() -> {
+
+            try {
+
+                JSONObject json = new JSONObject(message);
+                String type = json.getString("type");
+
+                switch (type) {
+
+                    case "PROFILES_LIST": {
+
+                        JSONArray arr = json.getJSONArray("profiles");
+
+                        boolean twoLines = false;
+                        List<Profile> profiles = new ArrayList<>();
+
+                        for (int i = 0; i < arr.length(); i++) {
+
+                            JSONObject p = arr.getJSONObject(i);
+
+                            Profile profile = new Profile(
+                                    p.getString("id"),
+                                    p.getString("role"),
+                                    p.optString("line", "")
+                            );
+
+                            if (profile.line.equals("B"))
+                                twoLines = true;
+
+                            profiles.add(profile);
+                        }
+
+                        populateUI(profiles, twoLines);
+                        break;
+                    }
+
+                    case "ACTIVITY_CONFIG": {
+
+                        String vehicle = json.getString("vehicle");
+                        int lines = json.getInt("assemblyLines");
+                        int participants = json.getInt("participants");
+                        updateActivityConfig(vehicle, lines, participants);
+                        break;
+                    }
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 }
