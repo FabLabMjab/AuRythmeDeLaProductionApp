@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ParticipantButton">
+
+        <item name="android:fontFamily">@font/bebas_neue</item>
+        <item name="android:textColor">@android:color/white</item>
+
+        <!-- important pour ton drawable custom -->
+        <item name="android:backgroundTint">@null</item>
+        <item name="android:background">@drawable/rounded_button</item>
+
+        <!-- optionnel mais recommandé -->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_margin">6dp</item>
+        <item name="android:textSize">22sp</item>
+
+    </style>
+</resources>

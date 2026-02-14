@@ -43,8 +43,11 @@ public class ParticipantSetupFragment extends Fragment {
                 );
 
         GridLayout grid = v.findViewById(R.id.gridNumbers);
-        submitButton = v.findViewById(R.id.btnSubmit);
 
+        submitButton = v.findViewById(R.id.btnSubmit);
+        submitButton.setEnabled(false);
+        submitButton.setAlpha(0.5f);
+        submitButton.setTextAppearance(R.style.ParticipantButton);
         createNumberButtons(grid);
 
         submitButton.setOnClickListener(view -> sendSelection());
@@ -55,8 +58,14 @@ public class ParticipantSetupFragment extends Fragment {
 
         for (int i = 10; i <= 30; i++) {
 
-            Button btn = new Button(getContext());
+            Button btn = new Button(
+                    new android.view.ContextThemeWrapper(
+                            getContext(),
+                            R.style.ParticipantButton
+                    )
+            );
             btn.setText(String.valueOf(i));
+            btn.setBackgroundResource(R.drawable.rounded_button);
 
             GridLayout.LayoutParams params =
                     new GridLayout.LayoutParams();
@@ -77,16 +86,20 @@ public class ParticipantSetupFragment extends Fragment {
     private void selectButton(Button btn, int value) {
 
         // reset ancien bouton
-        if (lastSelectedButton != null)
-            lastSelectedButton.setBackgroundColor(Color.LTGRAY);
+        if (lastSelectedButton != null) {
+            lastSelectedButton.setAlpha(1f);
+            lastSelectedButton.setEnabled(true);
+        }
 
-        // nouveau bouton
-        btn.setBackgroundColor(Color.GRAY);
+        // bouton sélectionné
+        btn.setAlpha(0.5f);
+        btn.setEnabled(false);
 
         lastSelectedButton = btn;
         selectedValue = value;
 
         submitButton.setEnabled(true);
+        submitButton.setAlpha(1f);
     }
 
     private void sendSelection() {
