@@ -1,67 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:layout_height="match_parent">
 
+    <!-- ===== ZONE FIXE: INFOS ===== -->
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/infoRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:padding="12dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Infos activité -->
         <TextView
             android:id="@+id/txtParticipants"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="Participants : -"
-            android:textSize="18sp"/>
+            android:textSize="22sp"
+            android:fontFamily="@font/bebas_neue"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
 
         <TextView
             android:id="@+id/txtVehicle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="Véhicule : -"
-            android:textSize="18sp"/>
+            android:textSize="22sp"
+            android:fontFamily="@font/bebas_neue"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
 
         <TextView
             android:id="@+id/txtLines"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="Lignes : -"
-            android:textSize="18sp"/>
+            android:textSize="22sp"
+            android:fontFamily="@font/bebas_neue"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+    </LinearLayout>
 
-        <!-- Colonnes profils -->
+    <!-- ===== ZONE SCROLLABLE: BOUTONS ===== -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/infoRow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:baselineAligned="false">
+            android:orientation="horizontal">
 
+            <!-- Colonnes boutons -->
             <LinearLayout
                 android:id="@+id/columnLeft"
-                android:orientation="vertical"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"/>
+                android:orientation="vertical"/>
 
             <LinearLayout
                 android:id="@+id/columnCenter"
-                android:orientation="vertical"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"/>
+                android:orientation="vertical"/>
 
             <LinearLayout
                 android:id="@+id/columnRight"
-                android:orientation="vertical"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"/>
-
+                android:orientation="vertical"/>
         </LinearLayout>
+    </ScrollView>
 
-    </LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

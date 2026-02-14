@@ -167,8 +167,26 @@ public class ProfileSelectionFragment extends Fragment {
 
     private Button createButton(Profile p) {
 
-        Button btn = new Button(getContext());
+        Button btn = new Button(
+                new android.view.ContextThemeWrapper(
+                        getContext(),
+                        R.style.ParticipantButton
+                )
+        );
         btn.setText(p.id);
+        btn.setBackgroundResource(R.drawable.rounded_button);
+        LinearLayout.LayoutParams params =
+                new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                );
+
+        int margin = 8;
+        float scale = getResources().getDisplayMetrics().density;
+        int px = (int) (margin * scale + 0.5f);
+
+        params.setMargins(0, px, 0, px);
+        btn.setLayoutParams(params);
 
         btn.setOnClickListener(v -> openProfile(p));
 
