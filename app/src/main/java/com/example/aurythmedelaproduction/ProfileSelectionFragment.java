@@ -89,48 +89,6 @@ public class ProfileSelectionFragment extends Fragment {
 
     }
 
-    private void handleProfiles(String message) {
-
-        requireActivity().runOnUiThread(() -> {
-
-            try {
-
-                JSONObject json = new JSONObject(message);
-
-                if (!json.getString("type")
-                        .equals("PROFILES_LIST"))
-                    return;
-
-                JSONArray arr = json.getJSONArray("profiles");
-
-                boolean twoLines = false;
-
-                List<Profile> profiles = new ArrayList<>();
-
-                for (int i = 0; i < arr.length(); i++) {
-
-                    JSONObject p = arr.getJSONObject(i);
-
-                    Profile profile = new Profile(
-                            p.getString("id"),
-                            p.getString("role"),
-                            p.optString("line", "")
-                    );
-
-                    if (profile.line.equals("B"))
-                        twoLines = true;
-
-                    profiles.add(profile);
-                }
-
-                populateUI(profiles, twoLines);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
-
     private void populateUI(
             List<Profile> profiles,
             boolean twoLines
@@ -192,7 +150,18 @@ public class ProfileSelectionFragment extends Fragment {
         params.setMargins(0, px, 0, px);
         btn.setLayoutParams(params);
 
-        btn.setOnClickListener(v -> openProfile(p));
+        if (p.assigned) {
+
+            btn.setEnabled(false);
+            btn.setAlpha(0.35f);   // grisé visuellement
+
+        } else {
+
+            btn.setEnabled(true);
+            btn.setAlpha(1f);
+
+            btn.setOnClickListener(v -> openProfile(p));
+        }
 
         return btn;
     }
@@ -213,22 +182,6 @@ public class ProfileSelectionFragment extends Fragment {
             e.printStackTrace();
         }
 
-        /*if (p.role.equals("animateur")) {
-
-            AnimateurProfileFragment fragment =
-                    AnimateurProfileFragment.newInstance(
-                            currentParticipants,
-                            currentVehicle,
-                            currentLines
-                    );
-
-            getParentFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragmentContainer, fragment)
-                    .addToBackStack(null)
-                    .commit();
-
-        }*/
 
     }
 
@@ -291,7 +244,8 @@ public class ProfileSelectionFragment extends Fragment {
                             Profile profile = new Profile(
                                     p.getString("id"),
                                     p.getString("role"),
-                                    p.optString("line", "")
+                                    p.optString("line", ""),
+                                    p.optBoolean("assigned", false)
                             );
 
                             if (profile.line.equals("B"))
