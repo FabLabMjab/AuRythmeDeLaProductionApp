@@ -31,6 +31,10 @@ public class ProfileSelectionFragment extends Fragment {
     private TextView txtLines;
     private TextView txtParticipants;
 
+    private String currentVehicle = "";
+    private int currentLines = 0;
+    private int currentParticipants = 0;
+
     @Nullable
     @Override
     public View onCreateView(
@@ -195,12 +199,37 @@ public class ProfileSelectionFragment extends Fragment {
 
     private void openProfile(Profile p) {
 
-        // placeholder pour prochaine étape
-        Toast.makeText(
-                getContext(),
-                "Profil choisi: " + p.id,
-                Toast.LENGTH_SHORT
-        ).show();
+        try {
+
+            JSONObject msg = new JSONObject();
+
+            msg.put("type", "SELECT_PROFILE");
+            msg.put("profileName", p.id);
+            msg.put("clientId", DeviceIdManager.getId(getContext()));
+
+            WebSocketManager.getInstance().send(msg.toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        /*if (p.role.equals("animateur")) {
+
+            AnimateurProfileFragment fragment =
+                    AnimateurProfileFragment.newInstance(
+                            currentParticipants,
+                            currentVehicle,
+                            currentLines
+                    );
+
+            getParentFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentContainer, fragment)
+                    .addToBackStack(null)
+                    .commit();
+
+        }*/
+
     }
 
     @Override
@@ -220,6 +249,10 @@ public class ProfileSelectionFragment extends Fragment {
     }
 
     public void updateActivityConfig(String vehicle, int lines, int participants) {
+
+        currentVehicle = vehicle;
+        currentLines = lines;
+        currentParticipants = participants;
 
         if (getActivity() == null) return;
 
@@ -277,6 +310,37 @@ public class ProfileSelectionFragment extends Fragment {
                         int lines = json.getInt("assemblyLines");
                         int participants = json.getInt("participants");
                         updateActivityConfig(vehicle, lines, participants);
+                        break;
+                    }
+
+                    case "PROFILE_SELECTED": {
+
+                        boolean success = json.getBoolean("success");
+
+                        if (!success) {
+                            Toast.makeText(getContext(),
+                                    "Profil déjà pris",
+                                    Toast.LENGTH_SHORT).show();
+                            break;
+                        }
+
+                        String profileName = json.getString("profileName");
+
+                        if (profileName.equals("animateur")) {
+
+                            AnimateurProfileFragment fragment =
+                                    AnimateurProfileFragment.newInstance(
+                                            currentParticipants,
+                                            currentVehicle,
+                                            currentLines
+                                    );
+
+                            getParentFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.fragmentContainer, fragment)
+                                    .commit();
+                        }
+
                         break;
                     }
                 }

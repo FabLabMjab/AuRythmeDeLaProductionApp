@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <!-- Infos activité (sur une ligne) -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:id="@+id/txtParticipants"
+                android:text="Participants : -"
+                android:textColor="@android:color/black"
+                android:layout_margin="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:fontFamily="@font/bebas_neue"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/txtVehicle"
+                android:text="Véhicule : -"
+                android:textColor="@android:color/black"
+                android:layout_margin="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:fontFamily="@font/bebas_neue"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/txtLines"
+                android:text="Lignes : -"
+                android:textColor="@android:color/black"
+                android:layout_margin="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:fontFamily="@font/bebas_neue"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/txtIteration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Itération : -"
+                android:textSize="22sp"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bebas_neue"
+                android:textStyle="bold"
+                android:layout_margin="6dp"/>
+
+        </LinearLayout>
+
+        <!-- Conteneur boutons -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/actionsContainer">
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
