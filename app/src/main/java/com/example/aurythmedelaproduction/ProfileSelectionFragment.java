@@ -18,7 +18,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 
 public class ProfileSelectionFragment extends Fragment {
@@ -34,6 +38,9 @@ public class ProfileSelectionFragment extends Fragment {
     private String currentVehicle = "";
     private int currentLines = 0;
     private int currentParticipants = 0;
+
+    private final Map<String, Button> buttonsMap = new HashMap<>();
+    private Set<String> lastAvailableProfiles = new HashSet<>();
 
     @Nullable
     @Override
@@ -93,6 +100,7 @@ public class ProfileSelectionFragment extends Fragment {
             List<Profile> profiles,
             boolean twoLines
     ) {
+        buttonsMap.clear();
 
         left.removeAllViews();
         center.removeAllViews();
@@ -101,6 +109,9 @@ public class ProfileSelectionFragment extends Fragment {
         for (Profile p : profiles) {
 
             Button btn = createButton(p);
+
+
+            buttonsMap.put(p.id, btn);
 
             if (twoLines) {
 
@@ -125,6 +136,7 @@ public class ProfileSelectionFragment extends Fragment {
                     center.addView(btn);
             }
         }
+        updateButtonsStateIfReady();
     }
 
     private Button createButton(Profile p) {
@@ -150,16 +162,11 @@ public class ProfileSelectionFragment extends Fragment {
         params.setMargins(0, px, 0, px);
         btn.setLayoutParams(params);
 
-        if (p.assigned) {
+        buttonsMap.put(p.id, btn);
 
-            btn.setEnabled(false);
-            btn.setAlpha(0.35f);   // grisé visuellement
+        applyProfileState(btn, p.assigned);
 
-        } else {
-
-            btn.setEnabled(true);
-            btn.setAlpha(1f);
-
+        if (!p.assigned) {
             btn.setOnClickListener(v -> openProfile(p));
         }
 
@@ -255,6 +262,7 @@ public class ProfileSelectionFragment extends Fragment {
                         }
 
                         populateUI(profiles, twoLines);
+                        updateButtonsStateIfReady();
                         break;
                     }
 
@@ -297,11 +305,57 @@ public class ProfileSelectionFragment extends Fragment {
 
                         break;
                     }
+                    case "AVAILABLE_PROFILES": {
+
+                        JSONArray available = json.getJSONArray("profiles");
+
+                        lastAvailableProfiles.clear();
+
+                        for (int i = 0; i < available.length(); i++) {
+                            lastAvailableProfiles.add(available.getString(i));
+                        }
+
+                        updateButtonsStateIfReady();
+
+                        break;
+                    }
                 }
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
+    }
+    private void applyProfileState(Button btn, boolean assigned) {
+
+        if (assigned) {
+            btn.setEnabled(false);
+            btn.setAlpha(0.35f);
+        } else {
+            btn.setEnabled(true);
+            btn.setAlpha(1f);
+        }
+    }
+    private void updateButtonsState(Set<String> availableProfiles) {
+
+        for (Map.Entry<String, Button> entry : buttonsMap.entrySet()) {
+
+            String profileId = entry.getKey();
+            Button btn = entry.getValue();
+
+            boolean isAvailable = availableProfiles.contains(profileId);
+
+            applyProfileState(btn, !isAvailable);
+        }
+    }
+    private void updateButtonsStateIfReady() {
+
+        if (buttonsMap.isEmpty())
+            return;
+
+        if (lastAvailableProfiles.isEmpty())
+            return;
+
+        updateButtonsState(lastAvailableProfiles);
     }
 }
