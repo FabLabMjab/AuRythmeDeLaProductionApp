@@ -81,7 +81,7 @@ public class ProfileSelectionFragment extends Fragment {
         WebSocketManager.getInstance().send(req.toString());
 
         WebSocketManager.getInstance()
-                .setMessageListener(this::handleMessage);
+                .setFragmentListener(this::handleMessage);
     }
 
     private void requestActivityConfig() {
@@ -205,7 +205,7 @@ public class ProfileSelectionFragment extends Fragment {
         super.onPause();
 
         WebSocketManager.getInstance()
-                .setMessageListener(null);
+                .setFragmentListener(this::handleMessage);
     }
 
     public void updateActivityConfig(String vehicle, int lines, int participants) {

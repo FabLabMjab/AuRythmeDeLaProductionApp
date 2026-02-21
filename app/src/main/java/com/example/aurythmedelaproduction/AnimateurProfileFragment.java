@@ -1,5 +1,6 @@
 package com.example.aurythmedelaproduction;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -79,8 +80,10 @@ public class AnimateurProfileFragment extends Fragment {
         txtVehicle = view.findViewById(R.id.txtVehicle);
         txtLines = view.findViewById(R.id.txtLines);
         txtIteration = view.findViewById(R.id.txtIteration);
+        /*WebSocketManager.getInstance()
+                .setMessageListener(this::handleMessage);*/
         WebSocketManager.getInstance()
-                .setMessageListener(this::handleMessage);
+                .setFragmentListener(this::handleMessage);
         requestIteration();
 
 
@@ -207,7 +210,8 @@ public class AnimateurProfileFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        WebSocketManager.getInstance().setMessageListener(null);
+        WebSocketManager.getInstance()
+                .setFragmentListener(null);
     }
     private void openPlanSalle() {
 
@@ -240,8 +244,23 @@ public class AnimateurProfileFragment extends Fragment {
                 break;
 
             case "Réinitialisation de l'activité":
-                //requestReset();
+                new AlertDialog.Builder(getContext())
+                        .setTitle("Réinitialisation")
+                        .setMessage("Voulez-vous vraiment réinitialiser l'activité ?")
+                        .setPositiveButton("Oui", (d, w) -> requestReset())
+                        .setNegativeButton("Annuler", null)
+                        .show();
                 break;
         }
+    }
+    private void requestReset() {
+
+        JSONObject msg = new JSONObject();
+
+        try {
+            msg.put("type", "RESET_SERVER");
+        } catch (Exception ignored) {}
+
+        WebSocketManager.getInstance().send(msg.toString());
     }
 }

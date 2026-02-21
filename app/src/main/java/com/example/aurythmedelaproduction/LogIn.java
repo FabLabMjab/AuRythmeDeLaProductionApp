@@ -25,6 +25,8 @@ public class LogIn extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
 
         wsm = WebSocketManager.getInstance();
+        WebSocketManager.getInstance()
+                .setGlobalListener(this::handleServerMessage);
 
         retryConnection();
     }
@@ -89,6 +91,17 @@ public class LogIn extends AppCompatActivity {
                     }
                 }
 
+                if (type.equals("RESET")) {
+
+                    lastParticipants = 0;
+                    lastVehicle = "";
+                    lastLines = 1;
+
+                    loadFragment(new ParticipantSetupFragment());
+                    updateSubtitle("Nouvelle activité");
+
+                }
+
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -123,7 +136,6 @@ public class LogIn extends AppCompatActivity {
                 // succès
                 () -> runOnUiThread(() -> {
 
-                    wsm.setMessageListener(this::handleServerMessage);
 
                     attemptReconnect();
                 }),

@@ -4,6 +4,8 @@ import android.util.Log;
 
 import org.json.JSONObject;
 
+import java.util.function.Consumer;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.WebSocket;
@@ -15,8 +17,9 @@ public class WebSocketManager {
     private static final String TAG = "WebSocket";
     private WebSocket webSocket;
     private static WebSocketManager instance;
-    private MessageListener messageListener;
     private JSONObject lastActivityConfig;
+    private Consumer<String> fragmentListener;
+    private Consumer<String> globalListener;
 
     // --- Callbacks ---
     public interface OnConnected {
@@ -24,10 +27,6 @@ public class WebSocketManager {
     }
     public interface OnError {
         void run(String error);
-    }
-
-    public interface MessageListener {
-        void onMessage(String message);
     }
 
     // --- Méthode principale pour se connecter ---
@@ -63,10 +62,11 @@ public class WebSocketManager {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                if (globalListener != null)
+                    globalListener.accept(message);
 
-                if (messageListener != null) {
-                    messageListener.onMessage(message);
-                }
+                if (fragmentListener != null)
+                    fragmentListener.accept(message);
             }
 
             @Override
@@ -100,10 +100,13 @@ public class WebSocketManager {
             instance = new WebSocketManager();
         return instance;
     }
-    public void setMessageListener(MessageListener listener) {
-        this.messageListener = listener;
-    }
     public JSONObject getLastActivityConfig() {
         return lastActivityConfig;
+    }
+    public void setFragmentListener(Consumer<String> listener) {
+        this.fragmentListener = listener;
+    }
+    public void setGlobalListener(Consumer<String> listener) {
+        this.globalListener = listener;
     }
 }
