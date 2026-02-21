@@ -228,7 +228,10 @@ public class ProfileSelectionFragment extends Fragment {
 
         Log.d("WS_DEBUG", "Fragment reçu: " + message);
 
-        requireActivity().runOnUiThread(() -> {
+        if (getActivity() == null)
+            return;
+
+        getActivity().runOnUiThread(() -> {
 
             try {
 

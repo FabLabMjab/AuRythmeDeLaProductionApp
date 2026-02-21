@@ -184,7 +184,7 @@ public class AnimateurProfileFragment extends Fragment {
     private void handleMessage(String message) {
 
         if (getActivity() == null) return;
-        requireActivity().runOnUiThread(() -> {
+        getActivity().runOnUiThread(() -> {
 
             try {
 

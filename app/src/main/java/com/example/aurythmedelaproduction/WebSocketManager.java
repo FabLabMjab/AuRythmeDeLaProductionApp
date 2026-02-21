@@ -32,6 +32,11 @@ public class WebSocketManager {
     // --- Méthode principale pour se connecter ---
     public void connect(String url, OnConnected onConnected, OnError onError) {
 
+        if (webSocket != null) {
+            webSocket.cancel();
+            webSocket = null;
+        }
+
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
@@ -77,7 +82,16 @@ public class WebSocketManager {
             @Override
             public void onFailure(WebSocket ws, Throwable t, okhttp3.Response response) {
                 Log.e(TAG, "Erreur WebSocket: " + t.getMessage());
+                webSocket = null;
                 if (onError != null) onError.run(t.getMessage());
+            }
+
+            @Override
+            public void onClosed(WebSocket ws, int code, String reason) {
+
+                Log.d(TAG, "WebSocket fermé");
+
+                webSocket = null;
             }
 
         });
