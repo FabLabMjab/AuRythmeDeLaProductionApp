@@ -135,7 +135,7 @@ public class PlanSalleFragment extends Fragment {
                 break;
 
             default:
-                resId = R.drawable.plan_salle_29_30;
+                resId = R.drawable.plan_salle_30;
                 notes = "Configuration non standard";
                 break;
         }
