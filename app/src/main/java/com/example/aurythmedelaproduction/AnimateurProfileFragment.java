@@ -60,9 +60,7 @@ public class AnimateurProfileFragment extends Fragment {
 
             Button btn = createActionButton(action);
 
-            btn.setOnClickListener(v -> {
-                // placeholder pour plus tard
-            });
+            btn.setOnClickListener(v -> handleAction(action));
 
             actionsContainer.addView(btn);
         }
@@ -94,6 +92,7 @@ public class AnimateurProfileFragment extends Fragment {
 
         txtLines.setText(
                 "Lignes : " + lines);
+
 
 
 
@@ -209,5 +208,40 @@ public class AnimateurProfileFragment extends Fragment {
     public void onPause() {
         super.onPause();
         WebSocketManager.getInstance().setMessageListener(null);
+    }
+    private void openPlanSalle() {
+
+        PlanSalleFragment fragment =
+                PlanSalleFragment.newInstance(participants, vehicle, lines);
+
+        getParentFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .addToBackStack(null)   // important pour bouton retour
+                .commit();
+    }
+    private void handleAction(String action) {
+
+        switch (action) {
+
+            case "Plan de la salle":
+                openPlanSalle();
+                break;
+
+            case "Améliorations":
+                // futur fragment
+                break;
+
+            case "Connexions":
+                break;
+
+            case "Prochaine itération":
+                //requestNextIteration();
+                break;
+
+            case "Réinitialisation de l'activité":
+                //requestReset();
+                break;
+        }
     }
 }

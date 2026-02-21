@@ -280,9 +280,17 @@ public class ProfileSelectionFragment extends Fragment {
                         boolean success = json.getBoolean("success");
 
                         if (!success) {
-                            Toast.makeText(getContext(),
-                                    "Profil déjà pris",
-                                    Toast.LENGTH_SHORT).show();
+                            String reason = json.optString("reason", "");
+
+                            if (reason.equals("CLIENT_ALREADY_ASSIGNED")) {
+                                Toast.makeText(getContext(),
+                                        "Un profil est déjà actif sur cette tablette",
+                                        Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getContext(),
+                                        "Profil déjà pris",
+                                        Toast.LENGTH_SHORT).show();
+                            }
                             break;
                         }
 
