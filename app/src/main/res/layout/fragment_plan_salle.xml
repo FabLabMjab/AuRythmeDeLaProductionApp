@@ -1,65 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
+<ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="12dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Infos activité -->
-    <LinearLayout
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Infos activité -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtParticipants"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Participants : -"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bebas_neue"
+                android:layout_margin="6dp"/>
+
+            <TextView
+                android:id="@+id/txtVehicle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Véhicule : -"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bebas_neue"
+                android:layout_margin="6dp"/>
+
+            <TextView
+                android:id="@+id/txtLines"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lignes : -"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:fontFamily="@font/bebas_neue"
+                android:layout_margin="6dp"/>
+
+        </LinearLayout>
+
+        <ImageView
+        android:id="@+id/imgPlanSalle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"/>
 
         <TextView
-            android:id="@+id/txtParticipants"
-            android:layout_width="wrap_content"
+            android:id="@+id/txtPlanNotes"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Participants : -"
-            android:textSize="22sp"
-            android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:fontFamily="@font/bebas_neue"
-            android:layout_margin="6dp"/>
+            android:textSize="20sp"
+            android:layout_marginTop="12dp"
+            android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/txtVehicle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Véhicule : -"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:fontFamily="@font/bebas_neue"
-            android:layout_margin="6dp"/>
-
-        <TextView
-            android:id="@+id/txtLines"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lignes : -"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:fontFamily="@font/bebas_neue"
-            android:layout_margin="6dp"/>
+        <ImageButton
+            android:id="@+id/btnReturn"
+            android:layout_width="144dp"
+            android:layout_height="144dp"
+            android:src="@drawable/returnbutton"
+            android:background="@android:color/transparent"
+            android:contentDescription="Retour"
+            android:layout_margin="8dp"
+            android:layout_gravity="center_horizontal"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"/>
 
     </LinearLayout>
-
-    <ImageView
-    android:id="@+id/imgPlanSalle"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:adjustViewBounds="true"
-    android:scaleType="fitCenter"/>
-
-    <TextView
-        android:id="@+id/txtPlanNotes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:layout_marginTop="12dp"/>
-
-</LinearLayout>
+</ScrollView>

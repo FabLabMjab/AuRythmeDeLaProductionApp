@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -74,6 +75,12 @@ public class PlanSalleFragment extends Fragment {
 
         updatePlanSalleContent(view);
 
+        ImageButton btnReturn = view.findViewById(R.id.btnReturn);
+
+        btnReturn.setOnClickListener(v ->
+                getParentFragmentManager().popBackStack()
+        );
+
         return view;
     }
 
@@ -95,43 +102,133 @@ public class PlanSalleFragment extends Fragment {
 
             case 10:
                 resId = R.drawable.plan_salle_10_11_12;
-                notes = "Configuration pour 10 participants\n\n"
-                        + "• Tous les postes sont occupés\n"
-                        + "• Une seule ligne d’assemblage";
+                notes = "Notes\n\n"
+                        + "• Le chef d'équipe occupe également le rôle de mécanicien\n"
+                        + "• Le contrôleur qualité occupe également le rôle de l'expédition";
                 break;
 
             case 11:
                 resId = R.drawable.plan_salle_10_11_12;
-                notes = "Configuration pour 11 participants\n\n"
-                        + "• Poste assembleur 6 vacant\n"
-                        + "• Redistribution recommandée";
+                notes = "Notes\n\n"
+                        + "• Le contrôleur qualité occupe également le rôle de l'expédition";
                 break;
 
             case 12:
                 resId = R.drawable.plan_salle_10_11_12;
-                notes = "Configuration pour 12 participants\n\n"
-                        + "• Équilibre optimal\n"
-                        + "• Rotation possible";
+                notes = "Notes\n\n"
+                        + "• Tous les postes sont occupés";
                 break;
 
             case 13:
                 resId = R.drawable.plan_salle_13;
-                notes = "Configuration pour 13 participants\n\n"
-                        + "• Deux lignes activées\n"
-                        + "• Nombre impair → un poste flottant";
+                notes = "Notes\n\n"
+                        + "• Tous les postes sont occupés";
                 break;
 
             case 14:
                 resId = R.drawable.plan_salle_14;
-                notes = "Configuration pour 14 participants\n\n"
-                        + "• Deux lignes équilibrées";
+                notes = "Notes\n\n"
+                        + "• Tous les postes sont occupés";
                 break;
 
             case 15:
                 resId = R.drawable.plan_salle_15;
-                notes = "Configuration pour 15 participants\n\n"
-                        + "• Deux lignes activées\n"
-                        + "• Nombre impair → chef d’équipe mobile";
+                notes = "Notes\n\n"
+                        + "• Tous les postes sont occupés";
+                break;
+
+            case 16:
+                resId = R.drawable.plan_salle_16_17_18_19;
+                notes = "Notes\n\n"
+                        + "• Le chef d'équipe occupe également le rôle de mécanicien pour les deux lignes\n"
+                        + "• Le contrôleur qualité occupe également le rôle de l'expédition pour les deux lignes";
+                break;
+
+            case 17:
+                resId = R.drawable.plan_salle_16_17_18_19;
+                notes = "Notes\n\n"
+                        + "• Le chef d'équipe occupe également le rôle de mécanicien pour les deux lignes\n"
+                        + "• Le contrôleur qualité occupe également le rôle de l'expédition pour la ligne B";
+                break;
+
+            case 18:
+                resId = R.drawable.plan_salle_16_17_18_19;
+                notes = "Notes\n\n"
+                        + "• Le chef d'équipe occupe également le rôle de mécanicien pour les deux lignes";
+                break;
+
+            case 19:
+                resId = R.drawable.plan_salle_16_17_18_19;
+                notes = "Notes\n\n"
+                        + "• Le chef d'équipe occupe également le rôle de mécanicien pour la ligne B";
+                break;
+
+            case 20:
+                resId = R.drawable.plan_salle_20_21_22_23_24;
+                notes = "Notes\n\n"
+                        + "• Le chef d'équipe occupe également le rôle de mécanicien pour les deux lignes\n"
+                        + "• Le contrôleur qualité occupe également le rôle de l'expédition pour les deux lignes";
+                break;
+
+            case 21:
+                resId = R.drawable.plan_salle_20_21_22_23_24;
+                notes = "Notes\n\n"
+                        + "• Le chef d'équipe occupe également le rôle de mécanicien pour les deux lignes\n"
+                        + "• Le contrôleur qualité occupe également le rôle de l'expédition pour la ligne B";
+                break;
+
+            case 22:
+                resId = R.drawable.plan_salle_20_21_22_23_24;
+                notes = "Notes\n\n"
+                        + "• Le chef d'équipe occupe également le rôle de mécanicien pour les deux lignes";
+                break;
+
+            case 23:
+                resId = R.drawable.plan_salle_20_21_22_23_24;
+                notes = "Notes\n\n"
+                        + "• Le chef d'équipe occupe également le rôle de mécanicien pour la ligne B";
+                break;
+
+            case 24:
+                resId = R.drawable.plan_salle_20_21_22_23_24;
+                notes = "Notes\n\n"
+                        + "• Tous les postes sont occupés";
+                break;
+
+            case 25:
+                resId = R.drawable.plan_salle_25;
+                notes = "Notes\n\n"
+                        + "• Cariste supplémentaire pour la ligne A";
+                break;
+
+            case 26:
+                resId = R.drawable.plan_salle_26;
+                notes = "Notes\n\n"
+                        + "• Tous les postes sont occupés";
+                break;
+
+            case 27:
+                resId = R.drawable.plan_salle_27;
+                notes = "Notes\n\n"
+                        + "• Un sous-assembleur supplémentaire pour la ligne A";
+                break;
+
+            case 28:
+                resId = R.drawable.plan_salle_28;
+                notes = "Notes\n\n"
+                        + "• Tous les postes sont occupés";
+                break;
+
+            case 29:
+                resId = R.drawable.plan_salle_29;
+                notes = "Notes\n\n"
+                        + "• Un sous-assembleur supplémentaire pour la ligne A";
+                break;
+
+            case 30:
+                resId = R.drawable.plan_salle_30;
+                notes = "Notes\n\n"
+                        + "• Tous les postes sont occupés";
                 break;
 
             default:
