@@ -208,6 +208,14 @@ public class ProfileSelectionFragment extends Fragment {
                 .setFragmentListener(this::handleMessage);
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        WebSocketManager.getInstance()
+                .setFragmentListener(null);
+    }
+
     public void updateActivityConfig(String vehicle, int lines, int participants) {
 
         currentVehicle = vehicle;

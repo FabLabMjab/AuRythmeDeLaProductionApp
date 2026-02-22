@@ -213,6 +213,14 @@ public class AnimateurProfileFragment extends Fragment {
         WebSocketManager.getInstance()
                 .setFragmentListener(null);
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        WebSocketManager.getInstance()
+                .setFragmentListener(null);
+    }
     private void openPlanSalle() {
 
         PlanSalleFragment fragment =
