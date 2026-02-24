@@ -52,8 +52,7 @@ public class AnimateurProfileFragment extends Fragment {
         String[] actions = {
                 "Plan de la salle",
                 "Améliorations",
-                "Connexions",
-                "Prochaine itération",
+                "Afficher statistiques",
                 "Réinitialisation de l'activité"
         };
 
@@ -241,15 +240,16 @@ public class AnimateurProfileFragment extends Fragment {
                 break;
 
             case "Améliorations":
-                // futur fragment
+                getParentFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer, new ImprovementsFragment())
+                        .addToBackStack(null)
+                        .commit();
                 break;
 
-            case "Connexions":
+            case "Afficher statistiques":
                 break;
 
-            case "Prochaine itération":
-                //requestNextIteration();
-                break;
 
             case "Réinitialisation de l'activité":
                 new AlertDialog.Builder(getContext())
