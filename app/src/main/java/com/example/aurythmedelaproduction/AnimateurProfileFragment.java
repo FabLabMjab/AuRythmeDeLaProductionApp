@@ -31,6 +31,7 @@ public class AnimateurProfileFragment extends Fragment {
     private String vehicle;
     private int lines;
     private TextView txtIteration;
+    private int lastIteration = -1;
 
     public AnimateurProfileFragment() {
         // constructeur vide requis
@@ -79,8 +80,7 @@ public class AnimateurProfileFragment extends Fragment {
         txtVehicle = view.findViewById(R.id.txtVehicle);
         txtLines = view.findViewById(R.id.txtLines);
         txtIteration = view.findViewById(R.id.txtIteration);
-        /*WebSocketManager.getInstance()
-                .setMessageListener(this::handleMessage);*/
+
         WebSocketManager.getInstance()
                 .setFragmentListener(this::handleMessage);
         requestIteration();
@@ -192,9 +192,11 @@ public class AnimateurProfileFragment extends Fragment {
                 switch(type) {
                     case "ITERATION_STATUS": {
 
-                        int iteration = json.getInt("iteration");
+                        lastIteration = json.getInt("iteration");
 
-                        txtIteration.setText("Itération : " + iteration);
+                        if (txtIteration != null) {
+                            txtIteration.setText("Itération : " + lastIteration);
+                        }
 
                         break;
                     }
@@ -270,5 +272,15 @@ public class AnimateurProfileFragment extends Fragment {
         } catch (Exception ignored) {}
 
         WebSocketManager.getInstance().send(msg.toString());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        WebSocketManager.getInstance()
+                .setFragmentListener(this::handleMessage);
+
+        requestIteration();
     }
 }
