@@ -215,6 +215,7 @@ public class ImprovementsFragment extends Fragment {
             WebSocketManager.getInstance().send(msg.toString());
 
             requestNextIteration();
+            requestImprovements();
 
             Toast.makeText(getContext(),
                     "Itération suivante démarrée",
@@ -250,6 +251,16 @@ public class ImprovementsFragment extends Fragment {
         super.onPause();
         WebSocketManager.getInstance()
                 .setFragmentListener(null);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        WebSocketManager.getInstance()
+                .setFragmentListener(this::handleMessage);
+
+        requestImprovements();
     }
 
     private void animateBackground(CheckBox cb, int drawableRes) {
