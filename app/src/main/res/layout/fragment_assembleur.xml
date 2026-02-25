@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Description tâche -->
+    <TextView
+        android:id="@+id/txtTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tâche d’assemblage"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/bebas_neue"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:layout_marginBottom="12dp"/>
+
+    <!-- Image assemblage -->
+    <ImageView
+        android:id="@+id/imgAssembly"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Ligne boutons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnHelp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Demande d’aide"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/btnParts"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Demande de pièces"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -182,10 +182,9 @@ public class ImprovementsFragment extends Fragment {
 
     private String formatLabel(String key) {
 
-        // Rendu plus lisible (optionnel mais conseillé)
+        // Rendu plus lisible
         switch (key) {
 
-            case "boutonAideSon": return "Bouton aide sonore";
             case "boutonAideEnvoi": return "Bouton aide chef d’équipe";
             case "boutonDemandePieces": return "Demande de pièces";
             case "controleQualiteUpgrade": return "Amélioration contrôle qualité";

@@ -322,6 +322,17 @@ public class ProfileSelectionFragment extends Fragment {
                                     .commit();
                         }
 
+                        else if (profileName.startsWith("assembleur")) {
+
+                            AssembleurFragment fragment =
+                                    AssembleurFragment.newInstance(profileName);
+
+                            getParentFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.fragmentContainer, fragment)
+                                    .commit();
+                        }
+
                         break;
                     }
                     case "AVAILABLE_PROFILES": {
