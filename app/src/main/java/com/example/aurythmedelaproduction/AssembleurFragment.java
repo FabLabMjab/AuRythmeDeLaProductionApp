@@ -75,17 +75,76 @@ public class AssembleurFragment extends Fragment {
     private void configureUI() {
 
         switch (assembleurId) {
-
+            /******* Les assembleur# et assembleur#A ont le même affichage (jaune)********/
             case "assembleur1":
+            case "assembleur1A":
                 imgAssembly.setImageResource(R.drawable.assembleur1);
-                txtInstructions.setText("Assembler les skis...");
+                txtInstructions.setText("--- Description de la tâche ---");
                 break;
 
             case "assembleur2":
+            case "assembleur2A":
                 imgAssembly.setImageResource(R.drawable.assembleur2);
-                txtInstructions.setText("Installer le moteur...");
+                txtInstructions.setText("--- Description de la tâche ---");
                 break;
 
+            case "assembleur3":
+            case "assembleur3A":
+                imgAssembly.setImageResource(R.drawable.assembleur2);
+                txtInstructions.setText("--- Description de la tâche ---");
+                break;
+
+            case "assembleur4":
+            case "assembleur4A":
+                imgAssembly.setImageResource(R.drawable.assembleur2);
+                txtInstructions.setText("--- Description de la tâche ---");
+                break;
+
+            case "assembleur5":
+            case "assembleur5A":
+                imgAssembly.setImageResource(R.drawable.assembleur2);
+                txtInstructions.setText("--- Description de la tâche ---");
+                break;
+
+            case "assembleur6":
+            case "assembleur6A":
+                imgAssembly.setImageResource(R.drawable.assembleur2);
+                txtInstructions.setText("--- Description de la tâche ---");
+                break;
+
+            case "assembleur7":
+            case "assembleur7A":
+                imgAssembly.setImageResource(R.drawable.assembleur2);
+                txtInstructions.setText("--- Description de la tâche ---");
+                break;
+
+            case "assembleur8":
+            case "assembleur8A":
+                imgAssembly.setImageResource(R.drawable.assembleur2);
+                txtInstructions.setText("--- Description de la tâche ---");
+                break;
+
+            case "assembleur9":
+            case "assembleur9A":
+                imgAssembly.setImageResource(R.drawable.assembleur2);
+                txtInstructions.setText("--- Description de la tâche ---");
+                break;
+
+            /******* Les assembleur#B ont un affichage différent (rouge)********/
+            case "assembleur1B":
+                imgAssembly.setImageResource(R.drawable.assembleur1);
+                txtInstructions.setText("--- Description de la tâche ---");
+                break;
+
+            case "assembleur2B":
+                imgAssembly.setImageResource(R.drawable.assembleur1);
+                txtInstructions.setText("--- Description de la tâche ---");
+                break;
+
+            case "assembleur3B":
+                imgAssembly.setImageResource(R.drawable.assembleur1);
+                txtInstructions.setText("--- Description de la tâche ---");
+                break;
         }
     }
 
