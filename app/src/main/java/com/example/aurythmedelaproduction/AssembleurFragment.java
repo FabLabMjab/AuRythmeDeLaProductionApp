@@ -90,43 +90,43 @@ public class AssembleurFragment extends Fragment {
 
             case "assembleur3":
             case "assembleur3A":
-                imgAssembly.setImageResource(R.drawable.assembleur2);
+                imgAssembly.setImageResource(R.drawable.assembleur3);
                 txtInstructions.setText("--- Description de la tâche ---");
                 break;
 
             case "assembleur4":
             case "assembleur4A":
-                imgAssembly.setImageResource(R.drawable.assembleur2);
+                imgAssembly.setImageResource(R.drawable.assembleur4);
                 txtInstructions.setText("--- Description de la tâche ---");
                 break;
 
             case "assembleur5":
             case "assembleur5A":
-                imgAssembly.setImageResource(R.drawable.assembleur2);
+                imgAssembly.setImageResource(R.drawable.assembleur5);
                 txtInstructions.setText("--- Description de la tâche ---");
                 break;
 
             case "assembleur6":
             case "assembleur6A":
-                imgAssembly.setImageResource(R.drawable.assembleur2);
+                imgAssembly.setImageResource(R.drawable.assembleur6);
                 txtInstructions.setText("--- Description de la tâche ---");
                 break;
 
             case "assembleur7":
             case "assembleur7A":
-                imgAssembly.setImageResource(R.drawable.assembleur2);
+                imgAssembly.setImageResource(R.drawable.assembleur7);
                 txtInstructions.setText("--- Description de la tâche ---");
                 break;
 
             case "assembleur8":
             case "assembleur8A":
-                imgAssembly.setImageResource(R.drawable.assembleur2);
+                imgAssembly.setImageResource(R.drawable.assembleur8);
                 txtInstructions.setText("--- Description de la tâche ---");
                 break;
 
             case "assembleur9":
             case "assembleur9A":
-                imgAssembly.setImageResource(R.drawable.assembleur2);
+                imgAssembly.setImageResource(R.drawable.assembleur9);
                 txtInstructions.setText("--- Description de la tâche ---");
                 break;
 
@@ -137,12 +137,42 @@ public class AssembleurFragment extends Fragment {
                 break;
 
             case "assembleur2B":
-                imgAssembly.setImageResource(R.drawable.assembleur1);
+                imgAssembly.setImageResource(R.drawable.assembleur2b);
                 txtInstructions.setText("--- Description de la tâche ---");
                 break;
 
             case "assembleur3B":
-                imgAssembly.setImageResource(R.drawable.assembleur1);
+                imgAssembly.setImageResource(R.drawable.assembleur3b);
+                txtInstructions.setText("--- Description de la tâche ---");
+                break;
+
+            case "assembleur4B":
+                imgAssembly.setImageResource(R.drawable.assembleur4b);
+                txtInstructions.setText("--- Description de la tâche ---");
+                break;
+
+            case "assembleur5B":
+                imgAssembly.setImageResource(R.drawable.assembleur5b);
+                txtInstructions.setText("--- Description de la tâche ---");
+                break;
+
+            case "assembleur6B":
+                imgAssembly.setImageResource(R.drawable.assembleur6b);
+                txtInstructions.setText("--- Description de la tâche ---");
+                break;
+
+            case "assembleur7B":
+                imgAssembly.setImageResource(R.drawable.assembleur7b);
+                txtInstructions.setText("--- Description de la tâche ---");
+                break;
+
+            case "assembleur8B":
+                imgAssembly.setImageResource(R.drawable.assembleur8);
+                txtInstructions.setText("--- Description de la tâche ---");
+                break;
+
+            case "assembleur9B":
+                imgAssembly.setImageResource(R.drawable.assembleur9);
                 txtInstructions.setText("--- Description de la tâche ---");
                 break;
         }
