@@ -325,7 +325,7 @@ public class ProfileSelectionFragment extends Fragment {
                         else if (profileName.startsWith("assembleur")) {
 
                             AssembleurFragment fragment =
-                                    AssembleurFragment.newInstance(profileName);
+                                    AssembleurFragment.newInstance(profileName, currentVehicle);
 
                             getParentFragmentManager()
                                     .beginTransaction()
