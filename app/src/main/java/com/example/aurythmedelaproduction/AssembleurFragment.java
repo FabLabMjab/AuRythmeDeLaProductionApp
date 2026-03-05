@@ -1,5 +1,6 @@
 package com.example.aurythmedelaproduction;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,8 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.json.JSONObject;
 
 
 public class AssembleurFragment extends Fragment {
@@ -18,6 +22,7 @@ public class AssembleurFragment extends Fragment {
     private ImageView imgAssembly;
     private TextView txtInstructions;
     private String vehicle;
+    private boolean boutonAideEnvoi = false;
 
     public AssembleurFragment() {
 
@@ -50,6 +55,9 @@ public class AssembleurFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        WebSocketManager.getInstance()
+                .setFragmentListener(this::handleMessage);
+
         updateSubtitle();
         configureUI();
     }
@@ -66,7 +74,7 @@ public class AssembleurFragment extends Fragment {
         txtInstructions = view.findViewById(R.id.txtTask);
         imgAssembly = view.findViewById(R.id.imgAssembly);
 
-        Button btnHelp = view.findViewById(R.id.btnHelp);
+        ImageButton btnHelp = view.findViewById(R.id.btnHelp);
         Button btnParts = view.findViewById(R.id.btnParts);
 
         btnHelp.setOnClickListener(v -> requestHelp());
@@ -97,7 +105,14 @@ public class AssembleurFragment extends Fragment {
                 .updateSubtitle(assembleurId);
     }
     private void requestHelp() {
-        // websocket → HELP_REQUEST
+        if (!boutonAideEnvoi) {
+
+            playHelpSound();
+
+        } else {
+
+            sendHelpRequest();
+        }
     }
 
     private void requestParts() {
@@ -269,6 +284,92 @@ public class AssembleurFragment extends Fragment {
             default:
                 txtInstructions.setText("Poste non configuré");
                 break;
+        }
+    }
+
+    /*@Override
+    public void onPause() {
+        super.onPause();
+
+        WebSocketManager.getInstance()
+                .setFragmentListener(this::handleMessage);
+    }*/
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        WebSocketManager.getInstance()
+                .setFragmentListener(null);
+    }
+
+    private void handleMessage(String message) {
+
+        if (getActivity() == null) return;
+
+        getActivity().runOnUiThread(() -> {
+
+            try {
+
+                JSONObject json = new JSONObject(message);
+                String type = json.optString("type");
+
+                if (type.equals("IMPROVEMENTS_UPDATE") || type.equals("IMPROVEMENTS")) {
+
+                    JSONObject improvements = json.optJSONObject("improvements");
+
+                    if (improvements == null)
+                        improvements = json.optJSONObject("liste");
+
+                    if (improvements != null) {
+                        boutonAideEnvoi =
+                                improvements.optBoolean("boutonAideEnvoi", false);
+                    }
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    private void playHelpSound() {
+
+        MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.help_button_sound);
+
+        mp.setOnCompletionListener(player -> {
+            player.release();
+        });
+
+        mp.start();
+    }
+
+    private String getLine() {
+
+        if (assembleurId.endsWith("A"))
+            return "A";
+
+        if (assembleurId.endsWith("B"))
+            return "B";
+
+        return "";
+    }
+
+    private void sendHelpRequest() {
+
+        try {
+
+            JSONObject msg = new JSONObject();
+
+            msg.put("type", "HELP_REQUEST");
+            msg.put("assembleur", assembleurId);
+            msg.put("line", getLine());
+
+            WebSocketManager.getInstance()
+                    .send(msg.toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
