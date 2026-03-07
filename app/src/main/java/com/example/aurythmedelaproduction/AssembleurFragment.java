@@ -1,5 +1,6 @@
 package com.example.aurythmedelaproduction;
 
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -11,9 +12,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.json.JSONObject;
+
+import java.util.List;
 
 
 public class AssembleurFragment extends Fragment {
@@ -23,6 +27,11 @@ public class AssembleurFragment extends Fragment {
     private TextView txtInstructions;
     private String vehicle;
     private boolean boutonAideEnvoi = false;
+    private boolean boutonDemandePieces = false;
+    private LinearLayout partsContainer;
+
+    private boolean improvementsLoaded = false;
+    private LinearLayout partsBox;
 
     public AssembleurFragment() {
 
@@ -60,6 +69,8 @@ public class AssembleurFragment extends Fragment {
 
         updateSubtitle();
         configureUI();
+        requestImprovements();
+
     }
 
     @Override
@@ -73,12 +84,29 @@ public class AssembleurFragment extends Fragment {
 
         txtInstructions = view.findViewById(R.id.txtTask);
         imgAssembly = view.findViewById(R.id.imgAssembly);
+        partsBox = view.findViewById(R.id.partsBox);
+        partsContainer = view.findViewById(R.id.partsContainer);
+
+
 
         ImageButton btnHelp = view.findViewById(R.id.btnHelp);
-        Button btnParts = view.findViewById(R.id.btnParts);
+        //Button btnParts = view.findViewById(R.id.btnParts);
 
         btnHelp.setOnClickListener(v -> requestHelp());
-        btnParts.setOnClickListener(v -> requestParts());
+        /*btnParts.setOnClickListener(v -> {
+
+            if (!boutonDemandePieces)
+                return;
+
+            if (partsContainer.getVisibility() == View.VISIBLE) {
+
+                partsContainer.setVisibility(View.GONE);
+
+            } else {
+
+                updatePartsUI();
+            }
+        });*/
 
         return view;
     }
@@ -115,8 +143,24 @@ public class AssembleurFragment extends Fragment {
         }
     }
 
-    private void requestParts() {
-        // websocket → PARTS_REQUEST
+    private void requestPart(String partId) {
+
+        try {
+
+            JSONObject msg = new JSONObject();
+
+            msg.put("type", "PART_REQUEST");
+            msg.put("assembleur", assembleurId);
+            msg.put("part", partId);
+            msg.put("line", getLine());
+
+            WebSocketManager
+                    .getInstance()
+                    .send(msg.toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void configureSkiDoo() {
@@ -296,6 +340,21 @@ public class AssembleurFragment extends Fragment {
     }*/
 
     @Override
+    public void onPause() {
+        super.onPause();
+        WebSocketManager.getInstance()
+                .setFragmentListener(null);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        WebSocketManager.getInstance()
+                .setFragmentListener(this::handleMessage);
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
 
@@ -314,7 +373,7 @@ public class AssembleurFragment extends Fragment {
                 JSONObject json = new JSONObject(message);
                 String type = json.optString("type");
 
-                if (type.equals("IMPROVEMENTS_UPDATE") || type.equals("IMPROVEMENTS")) {
+                if ("IMPROVEMENTS_UPDATE".equals(type) || "IMPROVEMENTS".equals(type)) {
 
                     JSONObject improvements = json.optJSONObject("improvements");
 
@@ -324,6 +383,15 @@ public class AssembleurFragment extends Fragment {
                     if (improvements != null) {
                         boutonAideEnvoi =
                                 improvements.optBoolean("boutonAideEnvoi", false);
+                        boutonDemandePieces =
+                                improvements.optBoolean("boutonDemandePieces", false);
+
+                        System.out.println("DEBUG boutonDemandePieces = " + boutonDemandePieces);
+                        improvementsLoaded = true;
+                        if (getView() != null) {
+                            getActivity().runOnUiThread(() -> updatePartsUI());
+                        }
+
                     }
                 }
 
@@ -366,6 +434,80 @@ public class AssembleurFragment extends Fragment {
             msg.put("line", getLine());
 
             WebSocketManager.getInstance()
+                    .send(msg.toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void buildPartsUI() {
+
+        partsContainer.removeAllViews();
+
+        List<Part> parts = PartsRepository.getPartsForAssembleur(assembleurId, vehicle);
+
+        for (Part part : parts) {
+
+            ImageButton btn = new ImageButton(getContext());
+
+            btn.setImageResource(part.imageRes);
+
+            //btn.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            btn.setPadding(0,0,0,0);
+            //btn.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            //btn.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            btn.setScaleType(ImageView.ScaleType.FIT_XY);
+            btn.setCropToPadding(false);
+            btn.setAdjustViewBounds(true);
+            btn.setBackground(null);
+
+
+            LinearLayout.LayoutParams params =
+                    new LinearLayout.LayoutParams(200, 200);
+
+            params.setMargins(20,20,20,20);
+
+            btn.setLayoutParams(params);
+
+            btn.setOnClickListener(v -> requestPart(part.id));
+
+            partsContainer.addView(btn);
+        }
+    }
+
+    private void updatePartsUI() {
+
+        if (partsContainer == null || partsBox == null)
+            return;
+
+        if (!improvementsLoaded)
+            return;
+
+        if (!boutonDemandePieces) {
+
+            partsBox.setVisibility(View.GONE);
+            partsContainer.removeAllViews();
+            return;
+        }
+
+        partsBox.setVisibility(View.VISIBLE);
+
+        System.out.println("DEBUG updatePartsUI appelé");
+        System.out.println("DEBUG container = " + partsContainer);
+
+        buildPartsUI();
+    }
+
+    private void requestImprovements() {
+
+        try {
+
+            JSONObject msg = new JSONObject();
+            msg.put("type", "GET_IMPROVEMENTS");
+
+            WebSocketManager
+                    .getInstance()
                     .send(msg.toString());
 
         } catch (Exception e) {

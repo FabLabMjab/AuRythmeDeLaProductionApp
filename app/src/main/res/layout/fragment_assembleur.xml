@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center_vertical">
 
         <ImageButton
             android:id="@+id/btnHelp"
@@ -46,13 +46,41 @@
             android:elevation="8dp"
             android:contentDescription="Demande d'aide"/>
 
-        <Button
-            android:id="@+id/btnParts"
-            android:layout_width="0dp"
+        <!-- Encadré demande de pièces -->
+        <LinearLayout
+            android:id="@+id/partsBox"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Demande de pièces"/>
+            android:orientation="vertical"
+            android:background="@drawable/parts_box_background"
+            android:visibility="gone"
+            android:layout_marginStart="24dp"
+            android:padding="2dp">
+
+            <!-- Titre -->
+            <TextView
+                android:id="@+id/txtPartsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Demande de pièces"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/bebas_neue"
+                android:textColor="@android:color/black"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Conteneur des boutons -->
+            <LinearLayout
+                android:id="@+id/partsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"/>
+
+        </LinearLayout>
 
     </LinearLayout>
+
 
 </LinearLayout>
