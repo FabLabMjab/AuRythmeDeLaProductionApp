@@ -333,6 +333,16 @@ public class ProfileSelectionFragment extends Fragment {
                                     .commit();
                         }
 
+                        else if (profileName.startsWith("chefEquipe")) {
+
+                            ChefEquipeFragment fragment = new ChefEquipeFragment();
+
+                            getParentFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.fragmentContainer, fragment)
+                                    .commit();
+                        }
+
                         break;
                     }
                     case "AVAILABLE_PROFILES": {

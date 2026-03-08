@@ -120,8 +120,8 @@ public class AssembleurFragment extends Fragment {
             return;
         }
 
-        imgAssembly.setImageResource(step.imageRes);
-        txtInstructions.setText(step.instruction);
+        imgAssembly.setImageResource(step.getImageRes());
+        txtInstructions.setText(step.getInstruction());
 
     }
 
