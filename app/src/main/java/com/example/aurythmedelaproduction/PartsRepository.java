@@ -160,4 +160,79 @@ public class PartsRepository {
                 break;
         }
     }
+
+    public static int getImageForPart(String partId) {
+
+        List<Part> parts = new ArrayList<>();
+
+        // on génère toutes les pièces possibles
+        configureSkiDoo(parts, "assembleur1");
+        configureSkiDoo(parts, "assembleur2");
+        configureSkiDoo(parts, "assembleur2B");
+        configureSkiDoo(parts, "assembleur3");
+        configureSkiDoo(parts, "assembleur4");
+        configureSkiDoo(parts, "assembleur4B");
+        configureSkiDoo(parts, "assembleur5");
+        configureSkiDoo(parts, "assembleur5B");
+        configureSkiDoo(parts, "assembleur6");
+        configureSkiDoo(parts, "assembleur7");
+        configureSkiDoo(parts, "assembleur8");
+        configureSkiDoo(parts, "assembleur9");
+
+        configureSpyder(parts, "assembleur1A");
+        configureSpyder(parts, "assembleur2A");
+        configureSpyder(parts, "assembleur2B");
+        configureSpyder(parts, "assembleur3A");
+        configureSpyder(parts, "assembleur4A");
+        configureSpyder(parts, "assembleur4B");
+        configureSpyder(parts, "assembleur5A");
+        configureSpyder(parts, "assembleur5B");
+
+        for (Part p : parts) {
+
+            if (p.getId().equals(partId)) {
+                return p.getImageRes();
+            }
+        }
+
+        return R.drawable.ic_launcher_foreground;
+    }
+
+    public static Part getPart(String partId) {
+
+        List<Part> parts = new ArrayList<>();
+
+        // Générer toutes les pièces Ski-Doo
+        configureSkiDoo(parts, "assembleur1");
+        configureSkiDoo(parts, "assembleur2");
+        configureSkiDoo(parts, "assembleur2B");
+        configureSkiDoo(parts, "assembleur3");
+        configureSkiDoo(parts, "assembleur4");
+        configureSkiDoo(parts, "assembleur4B");
+        configureSkiDoo(parts, "assembleur5");
+        configureSkiDoo(parts, "assembleur5B");
+        configureSkiDoo(parts, "assembleur6");
+        configureSkiDoo(parts, "assembleur7");
+        configureSkiDoo(parts, "assembleur8");
+        configureSkiDoo(parts, "assembleur9");
+
+        // Générer toutes les pièces Spyder
+        configureSpyder(parts, "assembleur1A");
+        configureSpyder(parts, "assembleur2A");
+        configureSpyder(parts, "assembleur2B");
+        configureSpyder(parts, "assembleur3A");
+        configureSpyder(parts, "assembleur4A");
+        configureSpyder(parts, "assembleur4B");
+        configureSpyder(parts, "assembleur5A");
+        configureSpyder(parts, "assembleur5B");
+
+        for (Part p : parts) {
+
+            if (p.getId().equals(partId)) {
+                return p;
+            }
+        }
+
+        return null;
+    }
 }

@@ -343,6 +343,16 @@ public class ProfileSelectionFragment extends Fragment {
                                     .commit();
                         }
 
+                        else if (profileName.startsWith("cariste")) {
+
+                            CaristeFragment fragment = new CaristeFragment();
+
+                            getParentFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.fragmentContainer, fragment)
+                                    .commit();
+                        }
+
                         break;
                     }
                     case "AVAILABLE_PROFILES": {
