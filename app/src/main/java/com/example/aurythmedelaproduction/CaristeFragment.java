@@ -49,6 +49,7 @@ public class CaristeFragment extends Fragment {
             ((LogIn) requireActivity())
                     .updateSubtitle("Cariste");
         }
+        requestImprovements();
     }
 
     @Override
@@ -167,6 +168,22 @@ public class CaristeFragment extends Fragment {
             });
 
             partsContainer.addView(line);
+        }
+    }
+
+    private void requestImprovements() {
+
+        try {
+
+            JSONObject msg = new JSONObject();
+            msg.put("type", "GET_IMPROVEMENTS");
+
+            WebSocketManager
+                    .getInstance()
+                    .send(msg.toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
