@@ -353,6 +353,16 @@ public class ProfileSelectionFragment extends Fragment {
                                     .commit();
                         }
 
+                        else if (profileName.startsWith("mecanicien")) {
+
+                            MecanicienFragment fragment = MecanicienFragment.newInstance(profileName, currentParticipants, currentVehicle);
+
+                            getParentFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.fragmentContainer, fragment)
+                                    .commit();
+                        }
+
                         break;
                     }
                     case "AVAILABLE_PROFILES": {

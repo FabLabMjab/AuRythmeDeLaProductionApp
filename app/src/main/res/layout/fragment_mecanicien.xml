@@ -4,6 +4,27 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical">
 
+    <!-- description rôle -->
+
+    <TextView
+        android:id="@+id/txtRole"
+        android:text="Réparer les véhciules selon l'étape à laquelle ils se trouvent"
+        android:textSize="26sp"
+        android:fontFamily="@font/bebas_neue"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- MODE NORMAL -->
+
+    <LinearLayout
+        android:id="@+id/layoutCarousel"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
 <androidx.viewpager2.widget.ViewPager2
     android:id="@+id/stepPager"
     android:layout_width="match_parent"
@@ -13,20 +34,63 @@ android:orientation="vertical">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center">
+    android:gravity="center"
+    android:layout_marginTop="8dp">
 
     <Button
         android:id="@+id/btnPrev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="←"/>
 
     <Button
         android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="→"/>
 
 </LinearLayout>
 
-<Button
-    android:id="@+id/btnHelp"
-    android:text="Demande d'aide"/>
+    </LinearLayout>
+
+    <!-- MODE UPGRADE -->
+    <LinearLayout
+        android:id="@+id/layoutUpgrade"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <!-- Liste des étapes -->
+        <LinearLayout
+            android:id="@+id/stepButtons"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_vertical"/>
+
+        <!-- Image -->
+        <ImageView
+            android:id="@+id/stepImage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:scaleType="fitCenter"/>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnHelp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/bouton_aide"
+        android:background="@drawable/help_button_selector"
+        android:padding="30dp"
+        android:scaleType="fitCenter"
+        android:elevation="8dp"
+        android:contentDescription="Demande d'aide"/>
 
 </LinearLayout>

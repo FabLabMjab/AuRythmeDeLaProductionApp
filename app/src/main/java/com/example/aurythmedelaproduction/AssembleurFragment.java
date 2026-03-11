@@ -90,23 +90,10 @@ public class AssembleurFragment extends Fragment {
 
 
         ImageButton btnHelp = view.findViewById(R.id.btnHelp);
-        //Button btnParts = view.findViewById(R.id.btnParts);
+
 
         btnHelp.setOnClickListener(v -> requestHelp());
-        /*btnParts.setOnClickListener(v -> {
 
-            if (!boutonDemandePieces)
-                return;
-
-            if (partsContainer.getVisibility() == View.VISIBLE) {
-
-                partsContainer.setVisibility(View.GONE);
-
-            } else {
-
-                updatePartsUI();
-            }
-        });*/
 
         return view;
     }
@@ -235,7 +222,11 @@ public class AssembleurFragment extends Fragment {
 
     private void playHelpSound() {
 
+        if (getContext() == null) return;
+
         MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.help_button_sound);
+
+        if (mp == null) return;
 
         mp.setOnCompletionListener(player -> {
             player.release();

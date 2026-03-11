@@ -39,6 +39,7 @@
             android:id="@+id/btnHelp"
             android:layout_width="200dp"
             android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
             android:src="@drawable/bouton_aide"
             android:background="@drawable/help_button_selector"
             android:padding="30dp"
