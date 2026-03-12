@@ -34,6 +34,7 @@ public class AnimateurProfileFragment extends Fragment {
     private TextView txtIteration;
     private int lastIteration = -1;
 
+
     public AnimateurProfileFragment() {
         // constructeur vide requis
     }
@@ -251,7 +252,7 @@ public class AnimateurProfileFragment extends Fragment {
                         .commit();
                 break;
 
-            case "Véhicule produit":
+            case "Ajouter nouveau véhicule produit":
                 sendVehicleProduced();
                 Toast.makeText(getContext(),
                         "Véhicule enregistré",
