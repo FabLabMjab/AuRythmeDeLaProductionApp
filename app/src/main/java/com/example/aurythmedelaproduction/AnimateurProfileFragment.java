@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -53,6 +54,7 @@ public class AnimateurProfileFragment extends Fragment {
         String[] actions = {
                 "Plan de la salle",
                 "Améliorations",
+                "Ajouter nouveau véhicule produit",
                 "Afficher statistiques",
                 "Réinitialisation de l'activité"
         };
@@ -249,6 +251,13 @@ public class AnimateurProfileFragment extends Fragment {
                         .commit();
                 break;
 
+            case "Véhicule produit":
+                sendVehicleProduced();
+                Toast.makeText(getContext(),
+                        "Véhicule enregistré",
+                        Toast.LENGTH_SHORT).show();
+                break;
+
             case "Afficher statistiques":
                 break;
 
@@ -282,5 +291,21 @@ public class AnimateurProfileFragment extends Fragment {
                 .setFragmentListener(this::handleMessage);
 
         requestIteration();
+    }
+
+    private void sendVehicleProduced() {
+
+        try {
+
+            JSONObject msg = new JSONObject();
+            msg.put("type", "VEHICLE_PRODUCED");
+
+            WebSocketManager
+                    .getInstance()
+                    .send(msg.toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

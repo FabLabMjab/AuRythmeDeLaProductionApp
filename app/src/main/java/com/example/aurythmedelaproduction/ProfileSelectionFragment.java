@@ -373,6 +373,16 @@ public class ProfileSelectionFragment extends Fragment {
                                     .commit();
                         }
 
+                        else if (profileName.startsWith("expedition")) {
+
+                            ExpeditionFragment fragment = ExpeditionFragment.newInstance(currentVehicle, profileName);
+
+                            getParentFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.fragmentContainer, fragment)
+                                    .commit();
+                        }
+
                         break;
                     }
                     case "AVAILABLE_PROFILES": {
