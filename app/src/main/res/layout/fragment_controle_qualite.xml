@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+
+    <!-- description rôle -->
+
+    <TextView
+        android:id="@+id/txtRole"
+        android:text="Assurez-vous que le véhicule soit conforme au standard attendu"
+        android:textSize="26sp"
+        android:fontFamily="@font/bebas_neue"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- CONTENU PRINCIPAL -->
+    <LinearLayout
+        android:id="@+id/layoutMain"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <!-- COLONNE GAUCHE -->
+        <LinearLayout
+            android:id="@+id/checklistColumn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:visibility="gone"
+            android:gravity="center">
+
+        <!-- LISTE CHECKBOX (upgrade seulement) -->
+        <TextView
+            android:id="@+id/txtChecklistTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Liste de vérification"
+            android:fontFamily="@font/bebas_neue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:textColor="@android:color/black"/>
+
+        <LinearLayout
+            android:id="@+id/checklistContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:visibility="gone"/>
+
+            <!-- bouton reset checklist -->
+            <Button
+                android:id="@+id/btnResetChecklist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Réinitialiser"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+        <!-- IMAGE -->
+        <ImageView
+            android:id="@+id/imgVehicle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:scaleType="fitCenter"/>
+
+    </LinearLayout>
+
+
+
+    <ImageButton
+        android:id="@+id/btnHelp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/bouton_aide"
+        android:background="@drawable/help_button_selector"
+        android:padding="30dp"
+        android:scaleType="fitCenter"
+        android:elevation="8dp"
+        android:contentDescription="Demande d'aide"/>
+
+</LinearLayout>

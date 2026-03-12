@@ -45,11 +45,11 @@ public class ChefEquipeFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         if (getActivity() != null) {
             ((LogIn) requireActivity()).updateSubtitle("Chef d'équipe");
         }
 
-        requestImprovements();
     }
 
     @Override
@@ -62,9 +62,10 @@ public class ChefEquipeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
         WebSocketManager.getInstance()
                 .setFragmentListener(this::handleMessage);
+
+        requestImprovements();
     }
 
     @Override
