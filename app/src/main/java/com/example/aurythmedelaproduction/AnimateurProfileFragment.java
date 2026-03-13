@@ -55,7 +55,6 @@ public class AnimateurProfileFragment extends Fragment {
         String[] actions = {
                 "Plan de la salle",
                 "Améliorations",
-                "Ajouter nouveau véhicule produit",
                 "Afficher statistiques",
                 "Réinitialisation de l'activité"
         };
@@ -68,6 +67,34 @@ public class AnimateurProfileFragment extends Fragment {
 
             actionsContainer.addView(btn);
         }
+
+        // Conteneur horizontal pour les boutons de production
+        LinearLayout vehicleRow = new LinearLayout(getContext());
+        vehicleRow.setOrientation(LinearLayout.HORIZONTAL);
+        vehicleRow.setGravity(android.view.Gravity.CENTER);
+
+        // marge au-dessus
+        LinearLayout.LayoutParams rowParams =
+                new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                );
+
+        rowParams.topMargin = 60;
+
+        vehicleRow.setLayoutParams(rowParams);
+
+        // Boutons de production de véhicules selon les lignes
+
+        if (lines >= 1) {
+            vehicleRow.addView(createVehicleButton("A"));
+        }
+
+        if (lines >= 2) {
+            vehicleRow.addView(createVehicleButton("B"));
+        }
+
+        actionsContainer.addView(vehicleRow);
 
         // Changer sous-titre activité
         ((LogIn) requireActivity())
@@ -252,13 +279,6 @@ public class AnimateurProfileFragment extends Fragment {
                         .commit();
                 break;
 
-            case "Ajouter nouveau véhicule produit":
-                sendVehicleProduced();
-                Toast.makeText(getContext(),
-                        "Véhicule enregistré",
-                        Toast.LENGTH_SHORT).show();
-                break;
-
             case "Afficher statistiques":
                 break;
 
@@ -294,12 +314,13 @@ public class AnimateurProfileFragment extends Fragment {
         requestIteration();
     }
 
-    private void sendVehicleProduced() {
+    private void sendVehicleProduced(String line) {
 
         try {
 
             JSONObject msg = new JSONObject();
             msg.put("type", "VEHICLE_PRODUCED");
+            msg.put("line", line);
 
             WebSocketManager
                     .getInstance()
@@ -308,5 +329,41 @@ public class AnimateurProfileFragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private Button createVehicleButton(String line) {
+
+        Button btn = createActionButton("Véhicule produit ligne " + line);
+
+        if ("A".equals(line)) {
+            btn.setBackgroundColor(getResources().getColor(R.color.lineA_yellow));
+        } else if ("B".equals(line)) {
+            btn.setBackgroundColor(getResources().getColor(R.color.lineB_red));
+        }
+
+        LinearLayout.LayoutParams params =
+                new LinearLayout.LayoutParams(
+                        0,
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        1
+                );
+
+        params.setMargins(10,0,10,0);
+
+        btn.setLayoutParams(params);
+
+        btn.setOnClickListener(v -> {
+
+            sendVehicleProduced(line);
+
+            Toast.makeText(
+                    getContext(),
+                    "Véhicule enregistré ligne " + line,
+                    Toast.LENGTH_SHORT
+            ).show();
+
+        });
+
+        return btn;
     }
 }
