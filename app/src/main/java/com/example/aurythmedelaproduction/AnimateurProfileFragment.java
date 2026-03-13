@@ -280,6 +280,14 @@ public class AnimateurProfileFragment extends Fragment {
                 break;
 
             case "Afficher statistiques":
+                getParentFragmentManager()
+                        .beginTransaction()
+                        .replace(
+                                R.id.fragmentContainer,
+                                StatisticsFragment.newInstance(lines)
+                        )
+                        .addToBackStack(null)
+                        .commit();
                 break;
 
 
