@@ -16,6 +16,7 @@ import okio.ByteString;
 public class WebSocketManager {
     private static final String TAG = "WebSocket";
     private WebSocket webSocket;
+    private String lastUrl;
     private static WebSocketManager instance;
     private JSONObject lastActivityConfig;
     private Consumer<String> fragmentListener;
@@ -32,12 +33,16 @@ public class WebSocketManager {
     // --- Méthode principale pour se connecter ---
     public void connect(String url, OnConnected onConnected, OnError onError) {
 
+        this.lastUrl = url;
+
         if (webSocket != null) {
             webSocket.cancel();
             webSocket = null;
         }
 
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .pingInterval(30, java.util.concurrent.TimeUnit.SECONDS)
+                .build();
 
         Request request = new Request.Builder()
                 .url(url)
@@ -83,6 +88,9 @@ public class WebSocketManager {
             public void onFailure(WebSocket ws, Throwable t, okhttp3.Response response) {
                 Log.e(TAG, "Erreur WebSocket: " + t.getMessage());
                 webSocket = null;
+                new android.os.Handler().postDelayed(() -> {
+                    connect(lastUrl, null, null);
+                }, 3000);
                 if (onError != null) onError.run(t.getMessage());
             }
 

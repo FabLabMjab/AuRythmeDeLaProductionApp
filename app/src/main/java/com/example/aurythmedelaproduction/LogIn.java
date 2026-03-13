@@ -125,13 +125,15 @@ public class LogIn extends AppCompatActivity {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragmentContainer, fragment)
-                .commit();
+                .commitAllowingStateLoss();
     }
 
     public void retryConnection() {
-
+        // Pour émulateur: ws://10.0.2.2:8887
+        // Pour réseau sur le laptop de Ben: ws://192.168.137.1:8887
+        //
         wsm.connect(
-                "ws://10.0.2.2:8887",
+                "ws://192.168.50.151:8887", // Pour le réseau sur le routeur Asus
 
                 // succès
                 () -> runOnUiThread(() -> {
