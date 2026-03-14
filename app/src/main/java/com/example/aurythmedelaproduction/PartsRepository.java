@@ -72,7 +72,7 @@ public class PartsRepository {
                 new Part("ZT5P", R.drawable.pieceassembleur5_2));
 
         register("Ski-Doo", "assembleur5B",
-                new Part("AT7P2P", R.drawable.pieceassembleur5_1b),
+                new Part("BT7P2P", R.drawable.pieceassembleur5_1b),
                 new Part("ZT5P", R.drawable.pieceassembleur5_2));
 
         register("Ski-Doo", "assembleur6",

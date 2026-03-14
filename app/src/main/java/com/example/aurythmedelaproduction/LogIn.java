@@ -133,7 +133,7 @@ public class LogIn extends AppCompatActivity {
         // Pour réseau sur le laptop de Ben: ws://192.168.137.1:8887
         //
         wsm.connect(
-                "ws://192.168.50.151:8887", // Pour le réseau sur le routeur Asus
+                "ws://192.168.50.116:8887", // Adresse statique du PC salle éducative
 
                 // succès
                 () -> runOnUiThread(() -> {
