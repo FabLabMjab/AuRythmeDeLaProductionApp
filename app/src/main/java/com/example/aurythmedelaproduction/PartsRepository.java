@@ -77,37 +77,37 @@ public class PartsRepository {
 
         register("Ski-Doo", "assembleur6",
                 new Part("ZP", R.drawable.pieceassembleur6_1),
-                new Part("ZSMS", R.drawable.pieceassembleur6_2),
+                new Part("ZSMSAG", R.drawable.pieceassembleur6_2), // Ski avant, à continuer à partir d'ici
                 new Part("ZT2LR", R.drawable.pieceassembleur6_3),
                 new Part("ZT4PX2P", R.drawable.pieceassembleur6_4));
 
         register("Ski-Doo", "assembleur6A",
                 new Part("ZP", R.drawable.pieceassembleur6_1),
-                new Part("ZSMS", R.drawable.pieceassembleur6_2),
+                new Part("ZSMSAG", R.drawable.pieceassembleur6_2),
                 new Part("ZT2LR", R.drawable.pieceassembleur6_3),
                 new Part("ZT4PX2P", R.drawable.pieceassembleur6_4));
 
         register("Ski-Doo", "assembleur6B",
                 new Part("ZP", R.drawable.pieceassembleur6_1),
-                new Part("ZSMS", R.drawable.pieceassembleur6_2),
+                new Part("ZSMSAG", R.drawable.pieceassembleur6_2),
                 new Part("ZT2LR", R.drawable.pieceassembleur6_3),
                 new Part("ZT4PX2P", R.drawable.pieceassembleur6_4));
 
         register("Ski-Doo", "assembleur7",
                 new Part("ZP", R.drawable.pieceassembleur6_1),
-                new Part("ZSMS", R.drawable.pieceassembleur6_2),
+                new Part("ZSMSAD", R.drawable.pieceassembleur6_2),
                 new Part("ZT2LR", R.drawable.pieceassembleur6_3),
                 new Part("ZT4PX2P", R.drawable.pieceassembleur6_4));
 
         register("Ski-Doo", "assembleur7A",
                 new Part("ZP", R.drawable.pieceassembleur6_1),
-                new Part("ZSMS", R.drawable.pieceassembleur6_2),
+                new Part("ZSMSAD", R.drawable.pieceassembleur6_2),
                 new Part("ZT2LR", R.drawable.pieceassembleur6_3),
                 new Part("ZT4PX2P", R.drawable.pieceassembleur6_4));
 
         register("Ski-Doo", "assembleur7B",
                 new Part("ZP", R.drawable.pieceassembleur6_1),
-                new Part("ZSMS", R.drawable.pieceassembleur6_2),
+                new Part("ZSMSAD", R.drawable.pieceassembleur6_2),
                 new Part("ZT2LR", R.drawable.pieceassembleur6_3),
                 new Part("ZT4PX2P", R.drawable.pieceassembleur6_4));
 
