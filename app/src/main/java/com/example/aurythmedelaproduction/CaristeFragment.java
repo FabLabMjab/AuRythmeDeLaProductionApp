@@ -2,6 +2,7 @@ package com.example.aurythmedelaproduction;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,12 +29,34 @@ public class CaristeFragment extends Fragment {
     private LinearLayout partsBox;
     private LinearLayout partsContainer;
 
+    private String caristeID;
+
     private List<PartRequest> partRequests = new ArrayList<>();
 
     private boolean boutonDemandePieces = false;
+    private boolean boutonAideEnvoi = false;
+    private ImageButton btnHelp;
 
     public CaristeFragment() {
         // Required empty public constructor
+    }
+
+    public static CaristeFragment newInstance(String profileId) {
+        CaristeFragment fragment = new CaristeFragment();
+        Bundle args = new Bundle();
+        args.putString("PROFILE_ID", profileId);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            if (getArguments() != null) {
+                caristeID = getArguments().getString("PROFILE_ID");
+            }
+        }
     }
 
     @Override
@@ -42,6 +66,10 @@ public class CaristeFragment extends Fragment {
 
         partsBox = view.findViewById(R.id.partsBox);
         partsContainer = view.findViewById(R.id.partsContainer);
+
+        btnHelp = view.findViewById(R.id.btnHelp);
+
+        btnHelp.setOnClickListener(v -> requestHelp());
 
         return view;
     }
@@ -115,6 +143,9 @@ public class CaristeFragment extends Fragment {
 
                         boutonDemandePieces =
                                 improvements.optBoolean("boutonDemandePieces", false);
+
+                        boutonAideEnvoi =
+                                improvements.optBoolean("boutonAideEnvoi", false);
 
                         updatePartsUI();
                     }
@@ -233,5 +264,60 @@ public class CaristeFragment extends Fragment {
         blink.setRepeatCount(5);
 
         view.startAnimation(blink);
+    }
+
+    private void requestHelp() {
+        if (!boutonAideEnvoi) {
+            playHelpSound();
+        }
+
+        sendHelpRequest();
+    }
+
+    private void sendHelpRequest() {
+
+        try {
+
+            JSONObject msg = new JSONObject();
+
+            msg.put("type", "HELP_REQUEST");
+            msg.put("assembleur", caristeID);
+            msg.put("line", getLine());
+
+            WebSocketManager.getInstance()
+                    .send(msg.toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String getLine() {
+
+        if (caristeID == null)
+            return "";
+
+        if (caristeID.endsWith("A"))
+            return "A";
+
+        if (caristeID.endsWith("B"))
+            return "B";
+
+        return "";
+    }
+
+    private void playHelpSound() {
+
+        if (getContext() == null) return;
+
+        MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.help_button_sound);
+
+        if (mp == null) return;
+
+        mp.setOnCompletionListener(player -> {
+            player.release();
+        });
+
+        mp.start();
     }
 }

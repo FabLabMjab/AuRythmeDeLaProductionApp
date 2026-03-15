@@ -345,7 +345,7 @@ public class ProfileSelectionFragment extends Fragment {
 
                         else if (profileName.startsWith("cariste")) {
 
-                            CaristeFragment fragment = new CaristeFragment();
+                            CaristeFragment fragment = CaristeFragment.newInstance(profileName);
 
                             getParentFragmentManager()
                                     .beginTransaction()

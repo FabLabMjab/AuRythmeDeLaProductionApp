@@ -172,13 +172,10 @@ public class ExpeditionFragment extends Fragment {
 
     private void requestHelp() {
         if (!boutonAideEnvoi) {
-
             playHelpSound();
-
-        } else {
-
-            sendHelpRequest();
         }
+
+        sendHelpRequest();
     }
 
     private void playHelpSound() {

@@ -121,13 +121,10 @@ public class AssembleurFragment extends Fragment {
     }
     private void requestHelp() {
         if (!boutonAideEnvoi) {
-
             playHelpSound();
-
-        } else {
-
-            sendHelpRequest();
         }
+
+        sendHelpRequest();
     }
 
     private void requestPart(String partId) {
