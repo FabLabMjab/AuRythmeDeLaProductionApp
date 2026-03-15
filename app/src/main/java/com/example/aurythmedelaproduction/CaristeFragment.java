@@ -1,13 +1,17 @@
 package com.example.aurythmedelaproduction;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -95,6 +99,8 @@ public class CaristeFragment extends Fragment {
 
                     partRequests.add(new PartRequest(assembleur, part, line));
 
+                    vibrateAlert();
+
                     updatePartsUI();
                 }
 
@@ -127,15 +133,25 @@ public class CaristeFragment extends Fragment {
 
         partsBox.setVisibility(View.VISIBLE);
 
+        if (!boutonDemandePieces) {
+
+            partsBox.setVisibility(View.GONE);
+            return;
+        }
+
         partsContainer.removeAllViews();
 
-        for (PartRequest req : partRequests) {
+        for (int i = 0; i < partRequests.size(); i++) {
 
+            PartRequest req = partRequests.get(i);
             LinearLayout line = new LinearLayout(getContext());
             line.setOrientation(LinearLayout.HORIZONTAL);
             line.setPadding(20,20,20,20);
 
             line.setBackgroundResource(R.drawable.part_button_selector);
+            if (i == partRequests.size() - 1) {
+                startBlinkAnimation(line);
+            }
 
             ImageView img = new ImageView(getContext());
 
@@ -164,6 +180,8 @@ public class CaristeFragment extends Fragment {
 
             line.setOnClickListener(v -> {
 
+                v.clearAnimation();
+
                 partRequests.remove(req);
 
                 updatePartsUI();
@@ -187,5 +205,33 @@ public class CaristeFragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void vibrateAlert() {
+
+        if (getContext() == null) return;
+
+        Vibrator vibrator =
+                (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+
+        if (vibrator == null) return;
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            vibrator.vibrate(
+                    VibrationEffect.createOneShot(150, VibrationEffect.DEFAULT_AMPLITUDE)
+            );
+        } else {
+            vibrator.vibrate(150);
+        }
+    }
+
+    private void startBlinkAnimation(View view) {
+
+        AlphaAnimation blink = new AlphaAnimation(0.3f, 1.0f);
+        blink.setDuration(600);
+        blink.setRepeatMode(AlphaAnimation.REVERSE);
+        blink.setRepeatCount(5);
+
+        view.startAnimation(blink);
     }
 }
