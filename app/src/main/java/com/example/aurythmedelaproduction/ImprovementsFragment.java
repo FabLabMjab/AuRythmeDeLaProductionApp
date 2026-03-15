@@ -1,5 +1,6 @@
 package com.example.aurythmedelaproduction;
 
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 
@@ -136,6 +137,7 @@ public class ImprovementsFragment extends Fragment {
             cb.setChecked(value);
             cb.setBackgroundResource(R.drawable.improvement_item_bg);
             cb.setTextSize(32);
+            cb.setTextColor(Color.BLACK);
             cb.setTypeface(null, Typeface.BOLD);
             Typeface bebas = ResourcesCompat.getFont(
                     requireContext(),

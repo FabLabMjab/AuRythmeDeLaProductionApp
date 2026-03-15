@@ -1,5 +1,6 @@
 package com.example.aurythmedelaproduction;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -155,6 +156,7 @@ public class CaristeFragment extends Fragment {
                         "   Pièce : " + part.getId());
             }
             txt.setTextSize(22);
+            txt.setTextColor(Color.BLACK);
             txt.setPadding(20,0,0,0);
 
             line.addView(img);
