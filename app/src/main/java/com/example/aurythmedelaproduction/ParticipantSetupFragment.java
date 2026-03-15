@@ -47,7 +47,7 @@ public class ParticipantSetupFragment extends Fragment {
         submitButton = v.findViewById(R.id.btnSubmit);
         submitButton.setEnabled(false);
         submitButton.setAlpha(0.5f);
-        submitButton.setTextAppearance(R.style.ParticipantButton);
+        //submitButton.setTextAppearance(R.style.ParticipantButton);
         createNumberButtons(grid);
 
         submitButton.setOnClickListener(view -> sendSelection());

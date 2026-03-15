@@ -30,9 +30,12 @@ android:padding="16dp"
         android:gravity="center_horizontal"/>
 </ScrollView>
 
-<Button
+    <androidx.appcompat.widget.AppCompatButton
     android:id="@+id/btnNextIteration"
     android:text="Passer à la prochaine itération"
+    style="@style/ParticipantButton"
+    android:backgroundTint="@null"
+    android:background="@android:color/black"
     android:layout_width="match_parent"
     android:layout_height="72dp"
     android:layout_marginTop="12dp"/>

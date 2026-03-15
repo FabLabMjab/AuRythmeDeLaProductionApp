@@ -38,7 +38,7 @@ public class ImprovementsFragment extends Fragment {
         container = v.findViewById(R.id.improvementsContainer);
         Log.d("IMPROVEMENTS_DEBUG", "Container = " + container);
         Button btnNext = v.findViewById(R.id.btnNextIteration);
-        btnNext.setTextAppearance(R.style.ParticipantButton);
+        //btnNext.setTextAppearance(R.style.ParticipantButton);
         ImageButton btnReturn = v.findViewById(R.id.btnReturn);
 
         btnReturn.setOnClickListener(view ->
