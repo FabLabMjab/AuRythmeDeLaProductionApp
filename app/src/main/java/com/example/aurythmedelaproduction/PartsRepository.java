@@ -36,7 +36,7 @@ public class PartsRepository {
                 new Part("ZT3L", R.drawable.pieceassembleur2_2));
 
         register("Ski-Doo", "assembleur2B",
-                new Part("ASMCA", R.drawable.pieceassembleur2_1b),
+                new Part("BSMCA", R.drawable.pieceassembleur2_1b),
                 new Part("ZT3L", R.drawable.pieceassembleur2_2));
 
         register("Ski-Doo", "assembleur3",
@@ -60,20 +60,17 @@ public class PartsRepository {
                 new Part("ZSMBC", R.drawable.pieceassembleur4_2));
 
         register("Ski-Doo", "assembleur4B",
-                new Part("AT11P1P", R.drawable.pieceassembleur4_1b),
+                new Part("BT11P1P", R.drawable.pieceassembleur4_1b),
                 new Part("ZSMBC", R.drawable.pieceassembleur4_2));
 
         register("Ski-Doo", "assembleur5",
-                new Part("AT7P2P", R.drawable.pieceassembleur5_1),
-                new Part("ZT5P", R.drawable.pieceassembleur5_2));
+                new Part("ASMCC", R.drawable.pieceassembleur5_1));
 
         register("Ski-Doo", "assembleur5A",
-                new Part("AT7P2P", R.drawable.pieceassembleur5_1),
-                new Part("ZT5P", R.drawable.pieceassembleur5_2));
+                new Part("ASMCC", R.drawable.pieceassembleur5_1));
 
         register("Ski-Doo", "assembleur5B",
-                new Part("BT7P2P", R.drawable.pieceassembleur5_1b),
-                new Part("ZT5P", R.drawable.pieceassembleur5_2));
+                new Part("BSMCC", R.drawable.pieceassembleur5_1b));
 
         register("Ski-Doo", "assembleur6",
                 new Part("ZSMSAG", R.drawable.pieceassembleur6_1), // Ski avant, à continuer à partir d'ici
@@ -178,35 +175,32 @@ public class PartsRepository {
 
         register("Spyder", "assembleur4",
                 new Part("ZRM", R.drawable.spyder_pieceassembleur4_1),
-                new Part("AT11P", R.drawable.spyder_pieceassembleur4_2),
-                new Part("ZT5PX3P3PD", R.drawable.spyder_pieceassembleur4_3),
-                new Part("ZT5PX3P3PG", R.drawable.spyder_pieceassembleur4_4));
+                new Part("ASMCSG", R.drawable.spyder_pieceassembleur4_2),
+                new Part("ASMCSD", R.drawable.spyder_pieceassembleur4_3));
 
         register("Spyder", "assembleur4A",
                 new Part("ZRM", R.drawable.spyder_pieceassembleur4_1),
-                new Part("AT11P", R.drawable.spyder_pieceassembleur4_2),
-                new Part("ZT5PX3P3PD", R.drawable.spyder_pieceassembleur4_3),
-                new Part("ZT5PX3P3PG", R.drawable.spyder_pieceassembleur4_4));
+                new Part("ASMCSG", R.drawable.spyder_pieceassembleur4_2),
+                new Part("ASMCSD", R.drawable.spyder_pieceassembleur4_3));
 
         register("Spyder", "assembleur4B",
                 new Part("ZRM", R.drawable.spyder_pieceassembleur4_1),
-                new Part("BT11P", R.drawable.spyder_pieceassembleur4_2),
-                new Part("ZT5PX3P3PD", R.drawable.spyder_pieceassembleur4_3),
-                new Part("ZT5PX3P3PG", R.drawable.spyder_pieceassembleur4_4));
+                new Part("BSMCSG", R.drawable.spyder_pieceassembleur4_2b),
+                new Part("BSMCSD", R.drawable.spyder_pieceassembleur4_3b));
 
         register("Spyder", "assembleur5",
-                new Part("AT7P2P", R.drawable.spyder_pieceassembleur5_1),
-                new Part("ZT9PX2P", R.drawable.spyder_pieceassembleur5_2),
+                new Part("ASMBLD", R.drawable.spyder_pieceassembleur5_1),
+                new Part("ASMBLG", R.drawable.spyder_pieceassembleur5_2),
                 new Part("ZRR", R.drawable.spyder_pieceassembleur5_3));
 
         register("Spyder", "assembleur5A",
-                new Part("AT7P2P", R.drawable.spyder_pieceassembleur5_1),
-                new Part("ZT9PX2P", R.drawable.spyder_pieceassembleur5_2),
+                new Part("ASMBLD", R.drawable.spyder_pieceassembleur5_1),
+                new Part("ASMBLG", R.drawable.spyder_pieceassembleur5_2),
                 new Part("ZRR", R.drawable.spyder_pieceassembleur5_3));
 
         register("Spyder", "assembleur5B",
-                new Part("BT7P2P", R.drawable.spyder_pieceassembleur5_1b),
-                new Part("ZT9PX2P", R.drawable.spyder_pieceassembleur5_2),
+                new Part("BSMBLD", R.drawable.spyder_pieceassembleur5_1b),
+                new Part("BSMBLG", R.drawable.spyder_pieceassembleur5_2b),
                 new Part("ZRR", R.drawable.spyder_pieceassembleur5_3));
     }
 
