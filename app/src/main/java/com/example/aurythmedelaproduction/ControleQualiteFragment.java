@@ -1,5 +1,6 @@
 package com.example.aurythmedelaproduction;
 
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -264,10 +265,12 @@ public class ControleQualiteFragment extends Fragment {
 
             CheckBox checkBox = new CheckBox(getContext());
             checkBox.setText(item);
-            checkBox.setTextSize(18);
+            checkBox.setTypeface(null, Typeface.BOLD);
             checkBox.setTypeface(font);
             checkBox.setTextSize(20);
             checkBox.setAllCaps(false);
+            checkBox.setTextColor(Color.BLACK);
+
 
             checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
 

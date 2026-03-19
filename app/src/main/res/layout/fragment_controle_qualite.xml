@@ -59,8 +59,9 @@
             android:visibility="gone"/>
 
             <!-- bouton reset checklist -->
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnResetChecklist"
+                android:fontFamily="@font/bebas_neue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Réinitialiser"

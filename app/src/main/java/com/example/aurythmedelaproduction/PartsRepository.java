@@ -223,9 +223,16 @@ public class PartsRepository {
 
     public static List<Part> getPartsForAssembleur(String assembleurId, String vehicle) {
 
-        String station = assembleurId.replace("A", "").replace("B", "");
+        //String station = assembleurId.replace("A", "").replace("B", "");
 
-        String key = vehicle + "_" + station;
+        //String key = vehicle + "_" + station;
+
+        String key = vehicle + "_" + assembleurId;
+
+        if (!partsByStation.containsKey(key)) {
+            String baseStation = assembleurId.replace("A", "").replace("B", "");
+            key = vehicle + "_" + baseStation;
+        }
 
         return partsByStation.getOrDefault(key, new ArrayList<>());
     }
