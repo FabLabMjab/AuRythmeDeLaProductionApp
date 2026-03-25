@@ -2,9 +2,11 @@ package com.example.aurythmedelaproduction;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.VibrationEffect;
@@ -128,7 +130,7 @@ public class CaristeFragment extends Fragment {
                     partRequests.add(new PartRequest(assembleur, part, line));
 
                     vibrateAlert();
-
+                    playRequestSound();
                     updatePartsUI();
                 }
 
@@ -198,6 +200,9 @@ public class CaristeFragment extends Fragment {
             img.setLayoutParams(imgParams);
 
             TextView txt = new TextView(getContext());
+            Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.bebas_neue);
+            txt.setTypeface(typeface);
+
             if (part != null) {
                 txt.setText("Poste : " + req.getAssembleurId() +
                         "   Pièce : " + part.getId());
@@ -311,6 +316,21 @@ public class CaristeFragment extends Fragment {
         if (getContext() == null) return;
 
         MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.help_button_sound);
+
+        if (mp == null) return;
+
+        mp.setOnCompletionListener(player -> {
+            player.release();
+        });
+
+        mp.start();
+    }
+
+    private void playRequestSound() {
+
+        if (getContext() == null) return;
+
+        MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.part_request_sound);
 
         if (mp == null) return;
 
