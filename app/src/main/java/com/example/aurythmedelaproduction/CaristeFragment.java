@@ -180,8 +180,8 @@ public class CaristeFragment extends Fragment {
             LinearLayout line = new LinearLayout(getContext());
             line.setOrientation(LinearLayout.HORIZONTAL);
             line.setPadding(20,20,20,20);
-
             line.setBackgroundResource(R.drawable.part_button_selector);
+
             if (i == partRequests.size() - 1) {
                 startBlinkAnimation(line);
             }
@@ -195,24 +195,44 @@ public class CaristeFragment extends Fragment {
             }
 
             LinearLayout.LayoutParams imgParams =
-                    new LinearLayout.LayoutParams(120,120);
-
+                    new LinearLayout.LayoutParams(0, 120, 1); // poids = 1
             img.setLayoutParams(imgParams);
+            img.setScaleType(ImageView.ScaleType.FIT_CENTER);
 
-            TextView txt = new TextView(getContext());
+// TEXTE POSTE
+            TextView txtPoste = new TextView(getContext());
             Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.bebas_neue);
-            txt.setTypeface(typeface);
+            txtPoste.setTypeface(typeface);
+
+            txtPoste.setText("Poste\n" + req.getAssembleurId());
+            txtPoste.setTextSize(24);
+            txtPoste.setTextColor(Color.BLACK);
+            txtPoste.setGravity(android.view.Gravity.CENTER);
+
+            LinearLayout.LayoutParams posteParams =
+                    new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
+            txtPoste.setLayoutParams(posteParams);
+
+// TEXTE PIÈCE
+            TextView txtPiece = new TextView(getContext());
+            txtPiece.setTypeface(typeface);
 
             if (part != null) {
-                txt.setText("Poste : " + req.getAssembleurId() +
-                        "   Pièce : " + part.getId());
+                txtPiece.setText("Pièce\n" + part.getId());
             }
-            txt.setTextSize(22);
-            txt.setTextColor(Color.BLACK);
-            txt.setPadding(20,0,0,0);
 
+            txtPiece.setTextSize(24);
+            txtPiece.setTextColor(Color.BLACK);
+            txtPiece.setGravity(android.view.Gravity.CENTER);
+
+            LinearLayout.LayoutParams pieceParams =
+                    new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
+            txtPiece.setLayoutParams(pieceParams);
+
+// AJOUT DES VUES
             line.addView(img);
-            line.addView(txt);
+            line.addView(txtPoste);
+            line.addView(txtPiece);
 
             line.setOnClickListener(v -> {
 
