@@ -2,8 +2,11 @@ package com.example.aurythmedelaproduction;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.VibrationEffect;
@@ -101,6 +104,8 @@ public class ChefEquipeFragment extends Fragment {
             HelpRequest req = helpRequests.get(i);
 
             TextView line = new TextView(getContext());
+            Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.bebas_neue);
+            line.setTypeface(typeface);
 
             line.setText("Aide demandée : " + req.getPosteId());
 
@@ -144,7 +149,7 @@ public class ChefEquipeFragment extends Fragment {
                     helpRequests.add(new HelpRequest(assembleur, line));
 
                     vibrateAlert();
-
+                    playHelpSound();
                     updateHelpUI();
                 }
 
@@ -209,5 +214,20 @@ public class ChefEquipeFragment extends Fragment {
         blink.setRepeatCount(5);
 
         view.startAnimation(blink);
+    }
+
+    private void playHelpSound() {
+
+        if (getContext() == null) return;
+
+        MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.help_button_sound);
+
+        if (mp == null) return;
+
+        mp.setOnCompletionListener(player -> {
+            player.release();
+        });
+
+        mp.start();
     }
 }
