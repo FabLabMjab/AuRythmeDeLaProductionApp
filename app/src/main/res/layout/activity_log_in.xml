@@ -32,7 +32,7 @@
             android:id="@+id/headerText2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Connexion"
+            android:text="@string/connexion"
             android:textSize="34sp"
             android:textStyle="bold"
             android:fontFamily="@font/bebas_neue"

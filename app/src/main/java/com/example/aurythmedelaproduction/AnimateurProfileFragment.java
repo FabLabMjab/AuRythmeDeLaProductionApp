@@ -52,18 +52,18 @@ public class AnimateurProfileFragment extends Fragment {
         LinearLayout actionsContainer =
                 view.findViewById(R.id.actionsContainer);
 
-        String[] actions = {
-                "Plan de la salle",
-                "Améliorations",
-                "Afficher statistiques",
-                "Réinitialisation de l'activité"
-        };
+        String[] actions = requireContext()
+                .getResources()
+                .getStringArray(R.array.animateur_actions);
 
-        for (String action : actions) {
+        for (int i = 0; i < actions.length; i++) {
+
+            String action = actions[i];
+            int index = i;
 
             Button btn = createActionButton(action);
 
-            btn.setOnClickListener(v -> handleAction(action));
+            btn.setOnClickListener(v -> handleAction(index));
 
             actionsContainer.addView(btn);
         }
@@ -102,7 +102,7 @@ public class AnimateurProfileFragment extends Fragment {
                 .post(() ->
                         ((android.widget.TextView)
                                 requireActivity().findViewById(R.id.headerText2))
-                                .setText("Profil animateur")
+                                .setText(getString(R.string.animateur_sous_titre))
                 );
 
         // Références aux textes infos activité
@@ -117,13 +117,13 @@ public class AnimateurProfileFragment extends Fragment {
 
 
         txtParticipants.setText(
-                "Participants : " + participants);
+                getString(R.string.animateur_ligne_participant) + participants);
 
         txtVehicle.setText(
-                "Véhicule : " + vehicle);
+                getString(R.string.animateur_ligne_vehicule) + vehicle);
 
         txtLines.setText(
-                "Lignes : " + lines);
+                getString(R.string.animateur_ligne_ligne) + lines);
 
 
 
@@ -225,7 +225,7 @@ public class AnimateurProfileFragment extends Fragment {
                         lastIteration = json.getInt("iteration");
 
                         if (txtIteration != null) {
-                            txtIteration.setText("Itération : " + lastIteration);
+                            txtIteration.setText(getString(R.string.animateur_ligne_iteration) + lastIteration);
                         }
 
                         break;
@@ -263,15 +263,15 @@ public class AnimateurProfileFragment extends Fragment {
                 .addToBackStack(null)   // important pour bouton retour
                 .commit();
     }
-    private void handleAction(String action) {
+    private void handleAction(int position) {
 
-        switch (action) {
+        switch (position) {
 
-            case "Plan de la salle":
+            case 0: // Plan de la salle
                 openPlanSalle();
                 break;
 
-            case "Améliorations":
+            case 1: // Améliorations
                 getParentFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragmentContainer, new ImprovementsFragment())
@@ -279,7 +279,7 @@ public class AnimateurProfileFragment extends Fragment {
                         .commit();
                 break;
 
-            case "Afficher statistiques":
+            case 2: // Afficher statistiques
                 getParentFragmentManager()
                         .beginTransaction()
                         .replace(
@@ -290,13 +290,12 @@ public class AnimateurProfileFragment extends Fragment {
                         .commit();
                 break;
 
-
-            case "Réinitialisation de l'activité":
+            case 3: // Réinitialisation
                 new AlertDialog.Builder(getContext())
-                        .setTitle("Réinitialisation")
-                        .setMessage("Voulez-vous vraiment réinitialiser l'activité ?")
-                        .setPositiveButton("Oui", (d, w) -> requestReset())
-                        .setNegativeButton("Annuler", null)
+                        .setTitle(getString(R.string.animateur_alerte_titre))
+                        .setMessage(getString(R.string.animateur_alerte_message))
+                        .setPositiveButton(getString(R.string.animateur_alerte_positif), (d, w) -> requestReset())
+                        .setNegativeButton(getString(R.string.animateur_alerte_negatif), null)
                         .show();
                 break;
         }
@@ -341,7 +340,7 @@ public class AnimateurProfileFragment extends Fragment {
 
     private Button createVehicleButton(String line) {
 
-        Button btn = createActionButton("Véhicule produit ligne " + line);
+        Button btn = createActionButton(getString(R.string.animateur_bouton_vehicule_produit) + line);
 
         if ("A".equals(line)) {
             btn.setBackgroundColor(getResources().getColor(R.color.lineA_yellow));
@@ -366,7 +365,7 @@ public class AnimateurProfileFragment extends Fragment {
 
             Toast.makeText(
                     getContext(),
-                    "Véhicule enregistré ligne " + line,
+                    getString(R.string.animateur_notification_vehicule_produit) + line,
                     Toast.LENGTH_SHORT
             ).show();
 

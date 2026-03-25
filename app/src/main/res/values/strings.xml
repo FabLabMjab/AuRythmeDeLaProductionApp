@@ -1,4 +1,26 @@
 <resources>
+    <!-- Activité LogIn -->
     <string name="app_name">Au Rythme de la Production</string>
+    <string name="connexion">Connexion</string>
 
+    <!-- Fragment du profil animateur -->
+    <string name="animateur_ligne_participant">Participants : </string>
+    <string name="animateur_ligne_vehicule">Véhicule : </string>
+    <string name="animateur_ligne_ligne">Lignes : </string>
+    <string name="animateur_ligne_iteration">Itération : </string>
+    <string name="animateur_sous_titre">Profil animateur</string>
+    <string name="animateur_alerte_titre">Réinitialisation</string>
+    <string name="animateur_alerte_message">Voulez-vous vraiment réinitialiser l\'activité ?</string>
+    <string name="animateur_alerte_positif">Oui</string>
+    <string name="animateur_alerte_negatif">Annuler</string>
+    <string name="animateur_bouton_vehicule_produit">Véhicule produit ligne </string>
+    <string name="animateur_notification_vehicule_produit">Véhicule enregistré ligne </string>
+
+    <!-- Profil animateur - actions -->
+    <string-array name="animateur_actions">
+        <item>Plan de la salle</item>
+        <item>Améliorations</item>
+        <item>Afficher statistiques</item>
+        <item>Réinitialisation de l\'activité</item>
+    </string-array>
 </resources>

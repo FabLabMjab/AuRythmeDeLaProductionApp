@@ -23,7 +23,7 @@
 
             <TextView
                 android:id="@+id/txtParticipants"
-                android:text="Participants : -"
+                android:text="@string/animateur_ligne_participant"
                 android:textColor="@android:color/black"
                 android:layout_margin="6dp"
                 android:layout_width="wrap_content"
@@ -34,7 +34,7 @@
 
             <TextView
                 android:id="@+id/txtVehicle"
-                android:text="Véhicule : -"
+                android:text="@string/animateur_ligne_vehicule"
                 android:textColor="@android:color/black"
                 android:layout_margin="6dp"
                 android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
 
             <TextView
                 android:id="@+id/txtLines"
-                android:text="Lignes : -"
+                android:text="@string/animateur_ligne_ligne"
                 android:textColor="@android:color/black"
                 android:layout_margin="6dp"
                 android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
                 android:id="@+id/txtIteration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Itération : -"
+                android:text="@string/animateur_ligne_iteration"
                 android:textSize="22sp"
                 android:textColor="@android:color/black"
                 android:fontFamily="@font/bebas_neue"
