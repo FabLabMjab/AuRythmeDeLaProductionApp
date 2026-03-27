@@ -23,4 +23,25 @@
         <item>Afficher statistiques</item>
         <item>Réinitialisation de l\'activité</item>
     </string-array>
+
+    <!-- Fragment du profil assembleur -->
+    <string name="assembleur_tache">Tâche d\'assemblage</string>
+    <string name="assembleur_bouton_demande_aide">Demande d\'aide</string>
+    <string name="assembleur_image_assemblage">Image de l\'étape d\'assemblage</string>
+    <string name="assembleur_titre_espace_piece">Demande de pièces</string>
+    <string name="assembleur_titre_poste_non_configure">Poste non configuré</string>
+
+    <!-- Classe AssemblyRepository (pour les étapes d'assemblage) -->
+    <string name="assemblyrepository_assembleur1">Installation de la transmission</string>
+    <string name="assemblyrepository_assembleur2">Installation du chassis avant</string>
+    <string name="assemblyrepository_assembleur3">Pose du volant et du banc</string>
+    <string name="assemblyrepository_assembleur4">Installation du chassis inférieur et de la chenille</string>
+    <string name="assemblyrepository_assembleur5">Installation latérale du chassis</string>
+    <string name="assemblyrepository_assembleur6">Installation du patin gauche</string>
+    <string name="assemblyrepository_assembleur7">Installation du patin droit</string>
+    <string name="assemblyrepository_assembleur8">Assemblage de la structure de la chenille</string>
+    <string name="assemblyrepository_assembleur9">Pose de la chenille</string>
+    <string name="assemblyrepository_spyder_assembleur4">Installation du chassis arrière (première partie)</string>
+    <string name="assemblyrepository_spyder_assembleur5">Installation du chassis arrière (deuxième partie)</string>
+
 </resources>

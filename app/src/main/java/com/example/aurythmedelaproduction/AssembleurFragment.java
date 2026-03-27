@@ -103,12 +103,12 @@ public class AssembleurFragment extends Fragment {
                 AssemblyRepository.getStep(assembleurId, vehicle);
 
         if (step == null) {
-            txtInstructions.setText("Poste non configuré");
+            txtInstructions.setText(getString(R.string.assembleur_titre_poste_non_configure));
             return;
         }
 
         imgAssembly.setImageResource(step.getImageRes());
-        txtInstructions.setText(step.getInstruction());
+        txtInstructions.setText(getString(step.getInstruction()));
 
     }
 

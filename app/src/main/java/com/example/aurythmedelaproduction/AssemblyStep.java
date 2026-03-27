@@ -2,9 +2,9 @@ package com.example.aurythmedelaproduction;
 
 public class AssemblyStep {
     private int imageRes;
-    private String instruction;
+    private int instructionRes;
 
-    public AssemblyStep(int imageRes, String instruction) {
+    public AssemblyStep(int imageRes, int instruction) {
         setImageRes(imageRes);
         setInstruction(instruction);
     }
@@ -20,12 +20,12 @@ public class AssemblyStep {
     }
 
     // Getter instructions
-    public String getInstruction() {
-        return instruction;
+    public int getInstruction() {
+        return instructionRes;
     }
 
     // Setter instructions
-    public void setInstruction(String instructions) {
-        this.instruction = instructions;
+    public void setInstruction(int instructions) {
+        this.instructionRes = instructions;
     }
 }
