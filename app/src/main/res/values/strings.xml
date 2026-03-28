@@ -44,4 +44,12 @@
     <string name="assemblyrepository_spyder_assembleur4">Installation du chassis arrière (première partie)</string>
     <string name="assemblyrepository_spyder_assembleur5">Installation du chassis arrière (deuxième partie)</string>
 
+    <!-- Fragment du profil cariste -->
+    <string name="cariste_tache">Apportez les pièces aux assembleurs</string>
+    <string name="cariste_titre_espace_demande_piece">Demandes de pièces</string>
+    <string name="cariste_poste_espace_demande_piece">Poste</string>
+    <string name="cariste_piece_espace_demande_piece">Pièce</string>
+
+    <!-- Fragment du profil chef d'équipe -->
+
 </resources>

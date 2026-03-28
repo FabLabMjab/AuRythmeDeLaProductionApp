@@ -204,7 +204,7 @@ public class CaristeFragment extends Fragment {
             Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.bebas_neue);
             txtPoste.setTypeface(typeface);
 
-            txtPoste.setText("Poste\n" + req.getAssembleurId());
+            txtPoste.setText(getString(R.string.cariste_poste_espace_demande_piece) + "\n" + req.getAssembleurId());
             txtPoste.setTextSize(24);
             txtPoste.setTextColor(Color.BLACK);
             txtPoste.setGravity(android.view.Gravity.CENTER);
@@ -218,7 +218,7 @@ public class CaristeFragment extends Fragment {
             txtPiece.setTypeface(typeface);
 
             if (part != null) {
-                txtPiece.setText("Pièce\n" + part.getId());
+                txtPiece.setText(getString(R.string.cariste_piece_espace_demande_piece) + "Pièce\n" + part.getId());
             }
 
             txtPiece.setTextSize(24);

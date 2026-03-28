@@ -11,7 +11,7 @@
         android:id="@+id/txtRole"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Apportez les pièces aux assembleurs"
+        android:text="@string/cariste_tache"
         android:textSize="26sp"
         android:fontFamily="@font/bebas_neue"
         android:textColor="@android:color/black"
@@ -39,7 +39,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Demandes de pièces"
+            android:text="@string/cariste_titre_espace_demande_piece"
             android:textSize="26sp"
             android:fontFamily="@font/bebas_neue"
             android:textColor="@android:color/black"
@@ -70,7 +70,7 @@
         android:padding="30dp"
         android:scaleType="fitCenter"
         android:elevation="8dp"
-        android:contentDescription="Demande d'aide"
+        android:contentDescription="@string/assembleur_bouton_demande_aide"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
