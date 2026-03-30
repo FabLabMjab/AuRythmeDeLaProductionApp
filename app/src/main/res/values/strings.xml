@@ -59,4 +59,13 @@
     <string name="erreur_connexion_message">Connexion au serveur impossible</string>
     <string name="erreur_connexion_bouton">Réessayer</string>
 
+    <!-- Fragment du contrôleur qualité -->
+    <string name="controle_qualite_tache">Assurez-vous que le véhicule soit conforme au standard attendu</string>
+    <string name="controle_qualite_liste_verification_titre">Liste de vérification</string>
+    <string name="controle_qualite_liste_verification_bouton_reinitialiser">Réinitialiser</string>
+    <string name="controle_qualite_liste_verification_bouton_general_un">Suspension fonctionnelle</string>
+    <string name="controle_qualite_liste_verification_bouton_general_deux">Transmission adéquate</string>
+    <string name="controle_qualite_liste_verification_bouton_skidoo">Chenille tourne</string>
+    <string name="controle_qualite_liste_verification_bouton_spyder">Roues tournent</string>
+
 </resources>

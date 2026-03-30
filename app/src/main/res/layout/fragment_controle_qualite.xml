@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/txtRole"
-        android:text="Assurez-vous que le véhicule soit conforme au standard attendu"
+        android:text="@string/controle_qualite_tache"
         android:textSize="26sp"
         android:fontFamily="@font/bebas_neue"
         android:textColor="@android:color/black"
@@ -42,7 +42,7 @@
             android:id="@+id/txtChecklistTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Liste de vérification"
+            android:text="@string/controle_qualite_liste_verification_titre"
             android:fontFamily="@font/bebas_neue"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -64,7 +64,7 @@
                 android:fontFamily="@font/bebas_neue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Réinitialiser"
+                android:text="@string/controle_qualite_liste_verification_bouton_reinitialiser"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/rounded_button"
@@ -94,6 +94,6 @@
         android:padding="30dp"
         android:scaleType="fitCenter"
         android:elevation="8dp"
-        android:contentDescription="Demande d'aide"/>
+        android:contentDescription="@string/assembleur_bouton_demande_aide"/>
 
 </LinearLayout>

@@ -313,17 +313,17 @@ public class ControleQualiteFragment extends Fragment {
         if ("spyder".equalsIgnoreCase(vehicule)) {
 
             return Arrays.asList(
-                    "Suspension fonctionnelle",
-                    "Transmission adéquate",
-                    "Roues tournent"
+                    getString(R.string.controle_qualite_liste_verification_bouton_general_un),
+                    getString(R.string.controle_qualite_liste_verification_bouton_general_deux),
+                    getString(R.string.controle_qualite_liste_verification_bouton_spyder)
 
             );
         }
 
         return Arrays.asList(
-                "Suspension fonctionnelle",
-                "Transmission adéquate",
-                "Chenille tourne"
+                getString(R.string.controle_qualite_liste_verification_bouton_general_un),
+                getString(R.string.controle_qualite_liste_verification_bouton_general_deux),
+                getString(R.string.controle_qualite_liste_verification_bouton_skidoo)
         );
     }
 }
