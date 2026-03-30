@@ -68,4 +68,9 @@
     <string name="controle_qualite_liste_verification_bouton_skidoo">Chenille tourne</string>
     <string name="controle_qualite_liste_verification_bouton_spyder">Roues tournent</string>
 
+    <!-- Fragment du profil expédition -->
+    <string name="expedition_tache">Vous devez assembler la boîte de livraison et déposer le véhicule à l\'intérieur</string>
+    <string name="expedition_tache_ameliore">La boîte est déjà assemblée, déposer le véhicule à l'intérieur</string>
+    <string name="expedition_profile_name">Expédition</string>
+
 </resources>

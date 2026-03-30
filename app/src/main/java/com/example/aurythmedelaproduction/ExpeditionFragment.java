@@ -65,7 +65,7 @@ public class ExpeditionFragment extends Fragment {
 
 
         if (getActivity() != null) {
-            ((LogIn) requireActivity()).updateSubtitle("Expédition");
+            ((LogIn) requireActivity()).updateSubtitle(getString(R.string.expedition_profile_name));
         }
 
         txtRole = view.findViewById(R.id.txtRole);
@@ -221,13 +221,13 @@ public class ExpeditionFragment extends Fragment {
 
         if (expeditionUpgrade) {
 
-            txtRole.setText("La boîte est déjà assemblée, déposer le véhicule à l'intérieur");
+            txtRole.setText(getString(R.string.expedition_tache_ameliore));
 
             imgInstruction.setImageResource(R.drawable.assemblage_boite_expedition_complete);
 
         } else {
 
-            txtRole.setText("Vous devez assembler la boîte de livraison et déposer le véhicule à l'intérieur");
+            txtRole.setText(getString(R.string.expedition_tache));
 
             imgInstruction.setImageResource(R.drawable.assemblage_boite_expedition);
         }

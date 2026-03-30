@@ -14,7 +14,7 @@
 
     <TextView
         android:id="@+id/txtRole"
-        android:text="Vous devez assembler la boîte de livraison et déposer le véhicule à l'intérieur"
+        android:text="@string/expedition_tache"
         android:textSize="26sp"
         android:fontFamily="@font/bebas_neue"
         android:textColor="@android:color/black"
@@ -41,7 +41,7 @@
         android:padding="30dp"
         android:scaleType="fitCenter"
         android:elevation="8dp"
-        android:contentDescription="Demande d'aide"/>
+        android:contentDescription="@string/assembleur_bouton_demande_aide"/>
 
     </LinearLayout>
 
