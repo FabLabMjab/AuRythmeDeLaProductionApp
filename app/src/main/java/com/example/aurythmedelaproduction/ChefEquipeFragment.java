@@ -107,7 +107,7 @@ public class ChefEquipeFragment extends Fragment {
             Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.bebas_neue);
             line.setTypeface(typeface);
 
-            line.setText("Aide demandée : " + req.getPosteId());
+            line.setText(getString(R.string.chef_equipe_ligne_demande_aide) + req.getPosteId());
 
             line.setTextSize(22);
             line.setTextColor(Color.BLACK);
