@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="Connexion au serveur impossible"
+        android:text="@string/erreur_connexion_message"
         android:textSize="20sp"
         android:padding="16dp"
         android:layout_width="wrap_content"
@@ -15,7 +15,7 @@
 
     <Button
         android:id="@+id/btnRetry"
-        android:text="Réessayer"
+        android:text="@string/erreur_connexion_bouton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

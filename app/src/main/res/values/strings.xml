@@ -51,8 +51,12 @@
     <string name="cariste_piece_espace_demande_piece">Pièce</string>
 
     <!-- Fragment du profil chef d'équipe -->
-    <string name="chef_equipe_tache">Coordonnez l’équipe et répondez aux demandes d\'aide.</string>
+    <string name="chef_equipe_tache">Coordonnez l’équipe et répondez aux demandes d\'aide</string>
     <string name="chef_equipe_titre_espace_demande_aide">Demandes d\'aide</string>
     <string name="chef_equipe_ligne_demande_aide">Aide demandée : </string>
+
+    <!-- Fragment d'erreur de connexion -->
+    <string name="erreur_connexion_message">Connexion au serveur impossible</string>
+    <string name="erreur_connexion_bouton">Réessayer</string>
 
 </resources>
