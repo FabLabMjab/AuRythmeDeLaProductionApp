@@ -218,7 +218,7 @@ public class CaristeFragment extends Fragment {
             txtPiece.setTypeface(typeface);
 
             if (part != null) {
-                txtPiece.setText(getString(R.string.cariste_piece_espace_demande_piece) + "Pièce\n" + part.getId());
+                txtPiece.setText(getString(R.string.cariste_piece_espace_demande_piece) + "\n" + part.getId());
             }
 
             txtPiece.setTextSize(24);
