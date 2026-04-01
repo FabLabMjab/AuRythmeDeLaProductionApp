@@ -211,7 +211,7 @@ public class ControleQualiteFragment extends Fragment {
         if (getActivity() == null) return;
 
         ((LogIn) requireActivity())
-                .updateSubtitle(controleQualiteID);
+                .updateSubtitle(ProfileFormatter.format(getContext(), controleQualiteID));
     }
 
     private String getLine() {

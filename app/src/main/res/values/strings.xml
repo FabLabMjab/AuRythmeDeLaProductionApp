@@ -174,5 +174,14 @@
         <item>• Tous les postes sont occupés</item>
     </string-array>
 
+    <!-- Fragment de sélection du profil -->
+    <string name="choix_profil_sous_titre">Choix du profil</string>
+    <string name="profil_assembleur">Assembleur %1$s</string>
+    <string name="profil_mecanicien">Mécanicien %1$s</string>
+    <string name="profil_cariste">Cariste %1$s</string>
+    <string name="profil_chef_equipe">Chef d\'équipe %1$s</string>
+    <string name="profil_controle_qualite">Contrôle qualité %1$s</string>
+    <string name="profil_expedition">Expédition %1$s</string>
+    <string name="profil_animateur">Animateur</string>
 
 </resources>

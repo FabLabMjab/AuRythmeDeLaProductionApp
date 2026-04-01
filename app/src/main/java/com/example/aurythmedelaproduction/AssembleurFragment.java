@@ -117,7 +117,7 @@ public class AssembleurFragment extends Fragment {
         if (getActivity() == null) return;
 
         ((LogIn) requireActivity())
-                .updateSubtitle(assembleurId);
+                .updateSubtitle(ProfileFormatter.format(getContext(),assembleurId));
     }
     private void requestHelp() {
         if (!boutonAideEnvoi) {

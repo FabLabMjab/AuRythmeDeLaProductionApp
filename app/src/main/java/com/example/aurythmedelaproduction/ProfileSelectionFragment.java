@@ -147,7 +147,7 @@ public class ProfileSelectionFragment extends Fragment {
                         R.style.ParticipantButton
                 )
         );
-        btn.setText(p.id);
+        btn.setText(ProfileFormatter.format(getContext(), p.id));
         btn.setBackgroundResource(R.drawable.rounded_button);
         LinearLayout.LayoutParams params =
                 new LinearLayout.LayoutParams(
@@ -197,7 +197,7 @@ public class ProfileSelectionFragment extends Fragment {
         super.onResume();
 
         ((LogIn) requireActivity())
-                .updateSubtitle("Choix du profil");
+                .updateSubtitle(getString(R.string.choix_profil_sous_titre));
     }
 
     @Override
@@ -226,9 +226,9 @@ public class ProfileSelectionFragment extends Fragment {
 
         getActivity().runOnUiThread(() -> {
 
-            txtVehicle.setText("Véhicule : " + vehicle);
-            txtLines.setText("Lignes : " + lines);
-            txtParticipants.setText("Participants : " + participants);
+            txtVehicle.setText(getString(R.string.animateur_ligne_vehicule) + vehicle);
+            txtLines.setText(getString(R.string.animateur_ligne_ligne) + lines);
+            txtParticipants.setText(getString(R.string.animateur_ligne_participant) + participants);
         });
     }
 
@@ -335,7 +335,7 @@ public class ProfileSelectionFragment extends Fragment {
 
                         else if (profileName.startsWith("chefEquipe")) {
 
-                            ChefEquipeFragment fragment = new ChefEquipeFragment();
+                            ChefEquipeFragment fragment = ChefEquipeFragment.newInstance(profileName);
 
                             getParentFragmentManager()
                                     .beginTransaction()
@@ -438,4 +438,5 @@ public class ProfileSelectionFragment extends Fragment {
 
         updateButtonsState(lastAvailableProfiles);
     }
+
 }

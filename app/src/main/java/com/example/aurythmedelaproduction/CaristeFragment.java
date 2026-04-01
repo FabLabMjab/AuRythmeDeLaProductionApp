@@ -82,7 +82,7 @@ public class CaristeFragment extends Fragment {
 
         if (getActivity() != null) {
             ((LogIn) requireActivity())
-                    .updateSubtitle("Cariste");
+                    .updateSubtitle(ProfileFormatter.format(getContext(), caristeID));
         }
         requestImprovements();
     }

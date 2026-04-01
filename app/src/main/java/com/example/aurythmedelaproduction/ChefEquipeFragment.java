@@ -33,8 +33,28 @@ public class ChefEquipeFragment extends Fragment {
 
     private List<HelpRequest> helpRequests = new ArrayList<>();
 
+    private String chefEquipeID;
+
     public ChefEquipeFragment() {
         // Required empty public constructor
+    }
+
+    public static ChefEquipeFragment newInstance(String profileId) {
+        ChefEquipeFragment fragment = new ChefEquipeFragment();
+        Bundle args = new Bundle();
+        args.putString("PROFILE_ID", profileId);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            if (getArguments() != null) {
+                chefEquipeID = getArguments().getString("PROFILE_ID");
+            }
+        }
     }
 
     @Override
@@ -55,7 +75,7 @@ public class ChefEquipeFragment extends Fragment {
 
 
         if (getActivity() != null) {
-            ((LogIn) requireActivity()).updateSubtitle("Chef d'équipe");
+            ((LogIn) requireActivity()).updateSubtitle(ProfileFormatter.format(getContext(), chefEquipeID));
         }
 
     }

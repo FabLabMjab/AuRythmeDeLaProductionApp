@@ -65,7 +65,7 @@ public class ExpeditionFragment extends Fragment {
 
 
         if (getActivity() != null) {
-            ((LogIn) requireActivity()).updateSubtitle(getString(R.string.expedition_profile_name));
+            ((LogIn) requireActivity()).updateSubtitle(ProfileFormatter.format(getContext(), expeditionID));
         }
 
         txtRole = view.findViewById(R.id.txtRole);
