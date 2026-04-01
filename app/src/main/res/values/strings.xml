@@ -95,4 +95,84 @@
     <string name="choix_participants_bouton_soumettre">Soumettre</string>
     <string name="choix_participants_sous_titre">Choix du nombre de participants</string>
 
+    <!-- Fragment du choix du plan de la salle -->
+    <string name="plan_salle_texte_participants">Participants : </string>
+    <string name="plan_salle_texte_vehicule">Véhicule : </string>
+    <string name="plan_salle_texte_ligne">Lignes : </string>
+    <string name="plan_salle_bouton_retour">Retour</string>
+    <string name="plan_salle_sous_titre">Plan de la salle</string>
+
+    <!-- Notes sur le placement de la salle -->
+    <!-- Les répétitions sont volontaires, si on veut éventuellement modifier une configuration de la salle -->
+    <string name="plan_salle_notes_titre">Notes</string>
+    <string-array name="plan_notes_case10">
+        <item>• Le chef d\'équipe occupe également le rôle de mécanicien</item>
+        <item>• Le contrôleur qualité occupe également le rôle de l\'expédition</item>
+    </string-array>
+    <string-array name="plan_notes_case11">
+        <item>• Le contrôleur qualité occupe également le rôle de l\'expédition</item>
+    </string-array>
+    <string-array name="plan_notes_case12">
+        <item>• Tous les postes sont occupés</item>
+    </string-array>
+    <string-array name="plan_notes_case13">
+        <item>• Tous les postes sont occupés</item>
+    </string-array>
+    <string-array name="plan_notes_case14">
+        <item>• Tous les postes sont occupés</item>
+    </string-array>
+    <string-array name="plan_notes_case15">
+        <item>• Tous les postes sont occupés</item>
+    </string-array>
+    <string-array name="plan_notes_case16">
+        <item>• Le chef d\'équipe occupe également le rôle de mécanicien pour les deux lignes</item>
+        <item>• Le contrôleur qualité occupe également le rôle de l\'expédition pour les deux lignes</item>
+    </string-array>
+    <string-array name="plan_notes_case17">
+        <item>• Le chef d\'équipe occupe également le rôle de mécanicien pour les deux lignes</item>
+        <item>• Le contrôleur qualité occupe également le rôle de l\'expédition pour la ligne B</item>
+    </string-array>
+    <string-array name="plan_notes_case18">
+        <item>• Le chef d\'équipe occupe également le rôle de mécanicien pour les deux lignes</item>
+    </string-array>
+    <string-array name="plan_notes_case19">
+        <item>• Le chef d\'équipe occupe également le rôle de mécanicien pour la ligne B</item>
+    </string-array>
+    <string-array name="plan_notes_case20">
+        <item>• Le chef d\'équipe occupe également le rôle de mécanicien pour les deux lignes</item>
+        <item>• Le contrôleur qualité occupe également le rôle de l\'expédition pour les deux lignes</item>
+    </string-array>
+    <string-array name="plan_notes_case21">
+        <item>• Le chef d\'équipe occupe également le rôle de mécanicien pour les deux lignes</item>
+        <item>• Le contrôleur qualité occupe également le rôle de l\'expédition pour la ligne B</item>
+    </string-array>
+    <string-array name="plan_notes_case22">
+        <item>• Le chef d\'équipe occupe également le rôle de mécanicien pour les deux lignes</item>
+    </string-array>
+    <string-array name="plan_notes_case23">
+        <item>• Le chef d\'équipe occupe également le rôle de mécanicien pour la ligne B</item>
+    </string-array>
+    <string-array name="plan_notes_case24">
+        <item>• Tous les postes sont occupés</item>
+    </string-array>
+    <string-array name="plan_notes_case25">
+        <item>• Cariste supplémentaire pour la ligne A</item>
+    </string-array>
+    <string-array name="plan_notes_case26">
+        <item>• Tous les postes sont occupés</item>
+    </string-array>
+    <string-array name="plan_notes_case27">
+        <item>• Un sous-assembleur supplémentaire pour la ligne A</item>
+    </string-array>
+    <string-array name="plan_notes_case28">
+        <item>• Tous les postes sont occupés</item>
+    </string-array>
+    <string-array name="plan_notes_case29">
+        <item>• Un sous-assembleur supplémentaire pour la ligne A</item>
+    </string-array>
+    <string-array name="plan_notes_case30">
+        <item>• Tous les postes sont occupés</item>
+    </string-array>
+
+
 </resources>

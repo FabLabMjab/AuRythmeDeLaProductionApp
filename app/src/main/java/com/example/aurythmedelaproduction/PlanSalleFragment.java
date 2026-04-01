@@ -69,9 +69,9 @@ public class PlanSalleFragment extends Fragment {
         txtVehicle = view.findViewById(R.id.txtVehicle);
         txtLines = view.findViewById(R.id.txtLines);
 
-        txtParticipants.setText("Participants : " + participants);
-        txtVehicle.setText("Véhicule : " + vehicle);
-        txtLines.setText("Lignes : " + lines);
+        txtParticipants.setText(getString(R.string.plan_salle_texte_participants) + participants);
+        txtVehicle.setText(getString(R.string.plan_salle_texte_vehicule) + vehicle);
+        txtLines.setText(getString(R.string.plan_salle_texte_ligne) + lines);
 
         updatePlanSalleContent(view);
 
@@ -87,7 +87,7 @@ public class PlanSalleFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((LogIn) requireActivity()).updateSubtitle("Plan de la salle");
+        ((LogIn) requireActivity()).updateSubtitle(getString(R.string.plan_salle_sous_titre));
     }
 
     private void updatePlanSalleContent(View view) {
@@ -102,133 +102,106 @@ public class PlanSalleFragment extends Fragment {
 
             case 10:
                 resId = R.drawable.plan_salle_10_11_12;
-                notes = "Notes\n\n"
-                        + "• Le chef d'équipe occupe également le rôle de mécanicien\n"
-                        + "• Le contrôleur qualité occupe également le rôle de l'expédition";
+                setNotes(txtNotes, R.array.plan_notes_case10);
                 break;
 
             case 11:
                 resId = R.drawable.plan_salle_10_11_12;
-                notes = "Notes\n\n"
-                        + "• Le contrôleur qualité occupe également le rôle de l'expédition";
+                setNotes(txtNotes, R.array.plan_notes_case11);
                 break;
 
             case 12:
                 resId = R.drawable.plan_salle_10_11_12;
-                notes = "Notes\n\n"
-                        + "• Tous les postes sont occupés";
+                setNotes(txtNotes, R.array.plan_notes_case12);
                 break;
 
             case 13:
                 resId = R.drawable.plan_salle_13;
-                notes = "Notes\n\n"
-                        + "• Tous les postes sont occupés";
+                setNotes(txtNotes, R.array.plan_notes_case13);
                 break;
 
             case 14:
                 resId = R.drawable.plan_salle_14;
-                notes = "Notes\n\n"
-                        + "• Tous les postes sont occupés";
+                setNotes(txtNotes, R.array.plan_notes_case14);
                 break;
 
             case 15:
                 resId = R.drawable.plan_salle_15;
-                notes = "Notes\n\n"
-                        + "• Tous les postes sont occupés";
+                setNotes(txtNotes, R.array.plan_notes_case15);
                 break;
 
             case 16:
                 resId = R.drawable.plan_salle_16_17_18_19;
-                notes = "Notes\n\n"
-                        + "• Le chef d'équipe occupe également le rôle de mécanicien pour les deux lignes\n"
-                        + "• Le contrôleur qualité occupe également le rôle de l'expédition pour les deux lignes";
+                setNotes(txtNotes, R.array.plan_notes_case16);
                 break;
 
             case 17:
                 resId = R.drawable.plan_salle_16_17_18_19;
-                notes = "Notes\n\n"
-                        + "• Le chef d'équipe occupe également le rôle de mécanicien pour les deux lignes\n"
-                        + "• Le contrôleur qualité occupe également le rôle de l'expédition pour la ligne B";
+                setNotes(txtNotes, R.array.plan_notes_case17);
                 break;
 
             case 18:
                 resId = R.drawable.plan_salle_16_17_18_19;
-                notes = "Notes\n\n"
-                        + "• Le chef d'équipe occupe également le rôle de mécanicien pour les deux lignes";
+                setNotes(txtNotes, R.array.plan_notes_case18);
                 break;
 
             case 19:
                 resId = R.drawable.plan_salle_16_17_18_19;
-                notes = "Notes\n\n"
-                        + "• Le chef d'équipe occupe également le rôle de mécanicien pour la ligne B";
+                setNotes(txtNotes, R.array.plan_notes_case19);
                 break;
 
             case 20:
                 resId = R.drawable.plan_salle_20_21_22_23_24;
-                notes = "Notes\n\n"
-                        + "• Le chef d'équipe occupe également le rôle de mécanicien pour les deux lignes\n"
-                        + "• Le contrôleur qualité occupe également le rôle de l'expédition pour les deux lignes";
+                setNotes(txtNotes, R.array.plan_notes_case20);
                 break;
 
             case 21:
                 resId = R.drawable.plan_salle_20_21_22_23_24;
-                notes = "Notes\n\n"
-                        + "• Le chef d'équipe occupe également le rôle de mécanicien pour les deux lignes\n"
-                        + "• Le contrôleur qualité occupe également le rôle de l'expédition pour la ligne B";
+                setNotes(txtNotes, R.array.plan_notes_case21);
                 break;
 
             case 22:
                 resId = R.drawable.plan_salle_20_21_22_23_24;
-                notes = "Notes\n\n"
-                        + "• Le chef d'équipe occupe également le rôle de mécanicien pour les deux lignes";
+                setNotes(txtNotes, R.array.plan_notes_case22);
                 break;
 
             case 23:
                 resId = R.drawable.plan_salle_20_21_22_23_24;
-                notes = "Notes\n\n"
-                        + "• Le chef d'équipe occupe également le rôle de mécanicien pour la ligne B";
+                setNotes(txtNotes, R.array.plan_notes_case23);
                 break;
 
             case 24:
                 resId = R.drawable.plan_salle_20_21_22_23_24;
-                notes = "Notes\n\n"
-                        + "• Tous les postes sont occupés";
+                setNotes(txtNotes, R.array.plan_notes_case24);
                 break;
 
             case 25:
                 resId = R.drawable.plan_salle_25;
-                notes = "Notes\n\n"
-                        + "• Cariste supplémentaire pour la ligne A";
+                setNotes(txtNotes, R.array.plan_notes_case25);
                 break;
 
             case 26:
                 resId = R.drawable.plan_salle_26;
-                notes = "Notes\n\n"
-                        + "• Tous les postes sont occupés";
+                setNotes(txtNotes, R.array.plan_notes_case26);
                 break;
 
             case 27:
                 resId = R.drawable.plan_salle_27;
-                notes = "Notes\n\n"
-                        + "• Un sous-assembleur supplémentaire pour la ligne A";
+                setNotes(txtNotes, R.array.plan_notes_case27);
                 break;
 
             case 28:
                 resId = R.drawable.plan_salle_28;
-                notes = "Notes\n\n"
-                        + "• Tous les postes sont occupés";
-                break;
+                setNotes(txtNotes, R.array.plan_notes_case28);
 
             case 29:
                 resId = R.drawable.plan_salle_29;
-                notes = "Notes\n\n"
-                        + "• Un sous-assembleur supplémentaire pour la ligne A";
+                setNotes(txtNotes, R.array.plan_notes_case29);
                 break;
 
             case 30:
                 resId = R.drawable.plan_salle_30;
-                notes = "Notes\n\n"
-                        + "• Tous les postes sont occupés";
+                setNotes(txtNotes, R.array.plan_notes_case30);
                 break;
 
             default:
@@ -238,6 +211,20 @@ public class PlanSalleFragment extends Fragment {
         }
 
         imgPlan.setImageResource(resId);
-        txtNotes.setText(notes);
+    }
+
+    private void setNotes(TextView txtNotes, int arrayResId) {
+
+        String title = getString(R.string.plan_salle_notes_titre);
+        String[] notesArray = getResources().getStringArray(arrayResId);
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(title).append("\n\n");
+
+        for (String note : notesArray) {
+            sb.append(note).append("\n");
+        }
+
+        txtNotes.setText(sb.toString());
     }
 }
