@@ -14,7 +14,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSubmit"
-        android:text="Soumettre"
+        android:text="@string/choix_participants_bouton_soumettre"
         style="@style/ParticipantButton"
         android:enabled="false"
         android:layout_marginTop="16dp"

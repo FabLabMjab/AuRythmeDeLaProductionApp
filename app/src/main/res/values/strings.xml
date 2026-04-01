@@ -91,4 +91,8 @@
     <string name="mecanicien_boutons_amelioration">Assembleur </string>
     <string name="mecanicien_profile_name">Mécanicien %1$s</string> <!-- %1$s est un placeholder pour "A" ou "B" -->
 
+    <!-- Fragment du choix du nombre de participants -->
+    <string name="choix_participants_bouton_soumettre">Soumettre</string>
+    <string name="choix_participants_sous_titre">Choix du nombre de participants</string>
+
 </resources>

@@ -39,7 +39,7 @@ public class ParticipantSetupFragment extends Fragment {
                 .post(() ->
                         ((android.widget.TextView)
                                 requireActivity().findViewById(R.id.headerText2))
-                                .setText("Choix du nombre de participants")
+                                .setText(getString(R.string.choix_participants_sous_titre))
                 );
 
         GridLayout grid = v.findViewById(R.id.gridNumbers);
