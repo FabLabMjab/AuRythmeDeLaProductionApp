@@ -86,4 +86,9 @@
     <string name="improvement_expedition">Amélioration expédition</string>
     <string name="improvement_mecanicien">Amélioration mécanicien</string>
 
+    <!-- Fragment du profil mécanicien -->
+    <string name="mecanicien_tache">Réparer les véhciules selon l\'étape à laquelle ils se trouvent</string>
+    <string name="mecanicien_boutons_amelioration">Assembleur </string>
+    <string name="mecanicien_profile_name">Mécanicien %1$s</string> <!-- %1$s est un placeholder pour "A" ou "B" -->
+
 </resources>

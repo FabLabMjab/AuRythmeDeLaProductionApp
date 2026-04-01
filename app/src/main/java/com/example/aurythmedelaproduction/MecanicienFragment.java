@@ -234,8 +234,15 @@ public class MecanicienFragment extends Fragment {
 
         if (getActivity() == null) return;
 
+        String line = getLine(); // A ou B
+
+        String subtitle = getString(
+                R.string.mecanicien_profile_name,
+                line
+        );
+
         ((LogIn) requireActivity())
-                .updateSubtitle(mecanicienID);
+                .updateSubtitle(subtitle);
     }
 
     private String getLine() {
@@ -394,7 +401,7 @@ public class MecanicienFragment extends Fragment {
             int stepIndex = i;
 
             Button btn = new Button(getContext());
-            btn.setText("Assembleur " + (i + 1));
+            btn.setText(getString(R.string.mecanicien_boutons_amelioration) + (i + 1));
 
             btn.setBackgroundResource(R.drawable.rounded_button);
             btn.setTextColor(Color.WHITE);
