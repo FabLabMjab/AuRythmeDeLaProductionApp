@@ -22,7 +22,7 @@
         android:layout_height="144dp"
         android:src="@drawable/returnbutton"
         android:background="@android:color/transparent"
-        android:contentDescription="Retour"
+        android:contentDescription="@string/plan_salle_bouton_retour"
         android:layout_margin="8dp"
         android:layout_gravity="center_horizontal"
         android:foreground="?attr/selectableItemBackgroundBorderless"

@@ -184,4 +184,11 @@
     <string name="profil_expedition">Expédition %1$s</string>
     <string name="profil_animateur">Animateur</string>
 
+    <!-- Fragment d'affichage des statistiques -->
+    <string name="statistiques_iteration">Itération </string>
+    <string name="statistiques_ligne">Ligne </string>
+    <string name="statistiques_vehicules">Véhicules : </string>
+    <string name="statistiques_aides">Aides : </string>
+    <string name="statistiques_pieces">Pièces : </string>
+
 </resources>

@@ -160,7 +160,7 @@ public class StatisticsFragment extends Fragment {
     ) {
 
         TextView header = new TextView(getContext());
-        header.setText("Itération " + iteration);
+        header.setText(getString(R.string.statistiques_iteration) + iteration);
         header.setTextSize(32);
         header.setTextColor(Color.BLACK);
         header.setTypeface(ResourcesCompat.getFont(getContext(), R.font.bebas_neue));
@@ -214,16 +214,16 @@ public class StatisticsFragment extends Fragment {
             column.setBackgroundResource(R.drawable.stats_line_b);
         }
 
-        TextView title = createStatsText("Ligne " + line, 26);
+        TextView title = createStatsText(getString(R.string.statistiques_ligne) + line, 26);
 
         TextView vehiclesTxt =
-                createStatsText("Véhicules : " + vehicles, 22);
+                createStatsText(getString(R.string.statistiques_vehicules) + vehicles, 22);
 
         TextView helpTxt =
-                createStatsText("Aides : " + help, 22);
+                createStatsText(getString(R.string.statistiques_aides) + help, 22);
 
         TextView partsTxt =
-                createStatsText("Pièces : " + parts, 22);
+                createStatsText(getString(R.string.statistiques_pieces) + parts, 22);
 
         column.addView(title);
         column.addView(vehiclesTxt);
