@@ -60,7 +60,7 @@ public class ImprovementsFragment extends Fragment {
         if (getActivity() == null) return;
 
         ((LogIn) getActivity())
-                .updateSubtitle("Améliorations");
+                .updateSubtitle(getString(R.string.ameliorations_titre));
     }
 
     private void requestImprovements() {
@@ -187,11 +187,20 @@ public class ImprovementsFragment extends Fragment {
         // Rendu plus lisible
         switch (key) {
 
-            case "boutonAideEnvoi": return "Bouton aide chef d’équipe";
-            case "boutonDemandePieces": return "Demande de pièces";
-            case "controleQualiteUpgrade": return "Amélioration contrôle qualité";
-            case "expeditionUpgrade": return "Amélioration expédition";
-            case "mecanicienUpgrade": return "Amélioration mécanicien";
+            case "boutonAideEnvoi":
+                return getString(R.string.improvement_bouton_aide);
+
+            case "boutonDemandePieces":
+                return getString(R.string.improvement_demande_pieces);
+
+            case "controleQualiteUpgrade":
+                return getString(R.string.improvement_controle_qualite);
+
+            case "expeditionUpgrade":
+                return getString(R.string.improvement_expedition);
+
+            case "mecanicienUpgrade":
+                return getString(R.string.improvement_mecanicien);
         }
 
         return key;
@@ -219,7 +228,7 @@ public class ImprovementsFragment extends Fragment {
             requestImprovements();
 
             Toast.makeText(getContext(),
-                    "Itération suivante démarrée",
+                    getString(R.string.ameliorations_notification_iteration),
                     Toast.LENGTH_SHORT).show();
 
             getParentFragmentManager().popBackStack();

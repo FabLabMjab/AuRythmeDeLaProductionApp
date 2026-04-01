@@ -8,7 +8,7 @@ android:padding="16dp"
 
 <TextView
     android:id="@+id/txtTitle"
-    android:text="Liste des améliorations"
+    android:text="@string/ameliorations_liste_titre"
     android:textColor="@android:color/black"
     android:fontFamily="@font/bebas_neue"
     android:textSize="32sp"
@@ -32,7 +32,7 @@ android:padding="16dp"
 
     <androidx.appcompat.widget.AppCompatButton
     android:id="@+id/btnNextIteration"
-    android:text="Passer à la prochaine itération"
+    android:text="@string/ameliorations_bouton_iteration"
     style="@style/ParticipantButton"
     android:backgroundTint="@null"
     android:background="@android:color/black"

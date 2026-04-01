@@ -73,4 +73,17 @@
     <string name="expedition_tache_ameliore">La boîte est déjà assemblée, déposer le véhicule à l\'intérieur</string>
     <string name="expedition_profile_name">Expédition</string>
 
+    <!-- Fragment améliorations -->
+    <string name="ameliorations_liste_titre">Liste des améliorations</string>
+    <string name="ameliorations_bouton_iteration">Passer à la prochaine itération</string>
+    <string name="ameliorations_titre">Améliorations</string>
+    <string name="ameliorations_notification_iteration">Itération suivante démarrée</string>
+
+    <!-- Fragment améliorations - boutons -->
+    <string name="improvement_bouton_aide">Bouton aide chef d\'équipe</string>
+    <string name="improvement_demande_pieces">Demande de pièces</string>
+    <string name="improvement_controle_qualite">Amélioration contrôle qualité</string>
+    <string name="improvement_expedition">Amélioration expédition</string>
+    <string name="improvement_mecanicien">Amélioration mécanicien</string>
+
 </resources>
