@@ -2,22 +2,22 @@
     tools:locale="fr">
     <!-- Activité LogIn -->
     <string name="app_name">Au Rythme de la Production</string>
-    <string name="connexion">Connexion</string>
+    <string name="connexion">Login</string>
 
-    <!-- Fragment du profil animateur -->
+    <!-- Facilitator profile fragment -->
     <string name="animateur_ligne_participant">Participants : %1$d</string>
-    <string name="animateur_ligne_vehicule">Véhicule : %1$d</string>
-    <string name="animateur_ligne_ligne">Lignes : %1$d</string>
-    <string name="animateur_ligne_iteration">Itération : %1$d</string>
-    <string name="animateur_sous_titre">Profil animateur</string>
-    <string name="animateur_alerte_titre">Réinitialisation</string>
-    <string name="animateur_alerte_message">Voulez-vous vraiment réinitialiser l\'activité ?</string>
-    <string name="animateur_alerte_positif">Oui</string>
-    <string name="animateur_alerte_negatif">Annuler</string>
-    <string name="animateur_bouton_vehicule_produit">Véhicule produit ligne </string>
-    <string name="animateur_notification_vehicule_produit">Véhicule enregistré ligne </string>
+    <string name="animateur_ligne_vehicule">Vehicle : %1$d</string>
+    <string name="animateur_ligne_ligne">Lines : %1$d</string>
+    <string name="animateur_ligne_iteration">Iteration : %1$d</string>
+    <string name="animateur_sous_titre">Facilitator Profile</string>
+    <string name="animateur_alerte_titre">Reset</string>
+    <string name="animateur_alerte_message">Do you really want to reset the activity?</string>
+    <string name="animateur_alerte_positif">Yes</string>
+    <string name="animateur_alerte_negatif">Cancel</string>
+    <string name="animateur_bouton_vehicule_produit">Vehicle produced line </string>
+    <string name="animateur_notification_vehicule_produit">Vehicle recorded line </string>
 
-    <!-- Profil animateur - actions -->
+    <!-- Facilitator actions -->
     <string-array name="animateur_actions">
         <item>Plan de la salle</item>
         <item>Améliorations</item>
