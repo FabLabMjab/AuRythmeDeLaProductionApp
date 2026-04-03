@@ -1,5 +1,7 @@
 package com.example.aurythmedelaproduction;
 
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -12,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import org.json.JSONObject;
 import androidx.fragment.app.Fragment;
+
+import java.util.Locale;
 
 public class LogIn extends AppCompatActivity {
 
@@ -29,8 +33,8 @@ public class LogIn extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
 
         wsm = WebSocketManager.getInstance();
-        WebSocketManager.getInstance()
-                .setGlobalListener(this::handleServerMessage);
+        wsm.setGlobalListener(null);
+        wsm.setGlobalListener(this::handleServerMessage);
 
         retryConnection();
     }
@@ -49,8 +53,6 @@ public class LogIn extends AppCompatActivity {
 
         android.util.Log.d("SERVER_MSG", message);
 
-        runOnUiThread(() -> {
-
             try {
 
                 JSONObject json = new JSONObject(message);
@@ -60,6 +62,15 @@ public class LogIn extends AppCompatActivity {
                     lastVehicle = json.getString("vehicle");
                     lastLines = json.getInt("assemblyLines");
                     lastParticipants = json.getInt("participants");
+
+                    if (json.has("language")) {
+                        String lang = json.getString("language");
+
+                        if (!Locale.getDefault().getLanguage().equals(lang)) {
+                            applyLanguage(lang);
+                            return; // IMPORTANT → stop traitement après recreate()
+                        }
+                    }
                 }
 
                 if (type.equals("RECONNECT_RESULT")) {
@@ -110,7 +121,6 @@ public class LogIn extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        });
     }
 
     private void requestProfiles() {
@@ -133,11 +143,15 @@ public class LogIn extends AppCompatActivity {
     }
 
     public void retryConnection() {
+
+        if (WebSocketManager.getInstance().getLastActivityConfig() != null) {
+            // déjà connecté et configuré → skip
+            return;
+        }
         // Pour émulateur: ws://10.0.2.2:8887
-        // Pour réseau sur le laptop de Ben: ws://192.168.137.1:8887
         // Adresse statique du PC salle éducative ws://192.168.50.116:8887
         wsm.connect(
-                "ws://192.168.50.116:8887",
+                "ws://10.0.2.2:8887",
 
                 // succès
                 () -> runOnUiThread(() -> {
@@ -195,5 +209,24 @@ public class LogIn extends AppCompatActivity {
                     "Profil restauré : " + profileName,
                     Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void applyLanguage(String lang) {
+
+        String current = Locale.getDefault().getLanguage();
+
+        if (current.equals(lang)) return; // évite reload inutile
+
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+
+        Resources resources = getResources();
+        Configuration config = resources.getConfiguration();
+
+        config.setLocale(locale);
+
+        resources.updateConfiguration(config, resources.getDisplayMetrics());
+
+        recreate(); // Recharge toute l'activité
     }
 }

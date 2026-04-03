@@ -18,6 +18,7 @@ public class ParticipantSetupFragment extends Fragment {
     private int selectedValue = -1;
     private Button submitButton;
     private Button lastSelectedButton;
+    private String selectedLanguage = "fr";
 
     @Nullable
     @Override
@@ -34,13 +35,10 @@ public class ParticipantSetupFragment extends Fragment {
         );
 
         // Changer sous-titre activité
-        ((LogIn) requireActivity())
-                .findViewById(R.id.headerText2)
-                .post(() ->
-                        ((android.widget.TextView)
-                                requireActivity().findViewById(R.id.headerText2))
-                                .setText(getString(R.string.choix_participants_sous_titre))
-                );
+        if (isAdded()) {
+            ((LogIn) requireActivity())
+                    .updateSubtitle(getString(R.string.choix_participants_sous_titre));
+        }
 
         GridLayout grid = v.findViewById(R.id.gridNumbers);
 
@@ -51,6 +49,21 @@ public class ParticipantSetupFragment extends Fragment {
         createNumberButtons(grid);
 
         submitButton.setOnClickListener(view -> sendSelection());
+
+        Button btnFR = v.findViewById(R.id.btnFR);
+        Button btnEN = v.findViewById(R.id.btnEN);
+
+        highlightLanguageButton(btnFR, btnEN); // défaut = français
+
+        btnFR.setOnClickListener(v1 -> {
+            selectedLanguage = "fr";
+            highlightLanguageButton(btnFR, btnEN);
+        });
+
+        btnEN.setOnClickListener(v1 -> {
+            selectedLanguage = "en";
+            highlightLanguageButton(btnEN, btnFR);
+        });
 
         return v;
     }
@@ -109,8 +122,17 @@ public class ParticipantSetupFragment extends Fragment {
         try {
             msg.put("type", "SET_PARTICIPANTS");
             msg.put("count", selectedValue);
+            msg.put("lang", selectedLanguage);
         } catch (Exception ignored) {}
 
         WebSocketManager.getInstance().send(msg.toString());
+    }
+
+    private void highlightLanguageButton(Button selected, Button other) {
+        selected.setAlpha(0.5f);
+        selected.setEnabled(false);
+
+        other.setAlpha(1f);
+        other.setEnabled(true);
     }
 }

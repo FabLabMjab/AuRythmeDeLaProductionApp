@@ -36,8 +36,8 @@ public class WebSocketManager {
         this.lastUrl = url;
 
         if (webSocket != null) {
-            webSocket.cancel();
-            webSocket = null;
+            Log.d(TAG, "Déjà connecté, pas de reconnexion");
+            return;
         }
 
         OkHttpClient client = new OkHttpClient.Builder()
@@ -72,11 +72,20 @@ public class WebSocketManager {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                if (globalListener != null)
-                    globalListener.accept(message);
+                android.os.Handler mainHandler =
+                        new android.os.Handler(android.os.Looper.getMainLooper());
 
-                if (fragmentListener != null)
-                    fragmentListener.accept(message);
+                Consumer<String> global = globalListener;
+
+                if (global != null) {
+                    mainHandler.post(() -> global.accept(message));
+                }
+
+                Consumer<String> fragment = fragmentListener;
+
+                if (fragment != null) {
+                    mainHandler.post(() -> fragment.accept(message));
+                }
             }
 
             @Override
@@ -88,10 +97,16 @@ public class WebSocketManager {
             public void onFailure(WebSocket ws, Throwable t, okhttp3.Response response) {
                 Log.e(TAG, "Erreur WebSocket: " + t.getMessage());
                 webSocket = null;
-                new android.os.Handler().postDelayed(() -> {
+
+                /*new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(() -> {
                     connect(lastUrl, null, null);
-                }, 3000);
-                if (onError != null) onError.run(t.getMessage());
+                }, 3000);*/
+
+                if (onError != null) {
+                    new android.os.Handler(android.os.Looper.getMainLooper()).post(() -> {
+                        onError.run(t.getMessage());
+                    });
+                }
             }
 
             @Override

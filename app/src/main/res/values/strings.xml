@@ -5,10 +5,10 @@
     <string name="connexion">Connexion</string>
 
     <!-- Fragment du profil animateur -->
-    <string name="animateur_ligne_participant">Participants : %1$d</string>
-    <string name="animateur_ligne_vehicule">Véhicule : %1$d</string>
-    <string name="animateur_ligne_ligne">Lignes : %1$d</string>
-    <string name="animateur_ligne_iteration">Itération : %1$d</string>
+    <string name="animateur_ligne_participant">Participants : </string>
+    <string name="animateur_ligne_vehicule">Véhicule : </string>
+    <string name="animateur_ligne_ligne">Lignes : </string>
+    <string name="animateur_ligne_iteration">Itération : </string>
     <string name="animateur_sous_titre">Profil animateur</string>
     <string name="animateur_alerte_titre">Réinitialisation</string>
     <string name="animateur_alerte_message">Voulez-vous vraiment réinitialiser l\'activité ?</string>
@@ -95,6 +95,8 @@
     <!-- Fragment du choix du nombre de participants -->
     <string name="choix_participants_bouton_soumettre">Soumettre</string>
     <string name="choix_participants_sous_titre">Choix du nombre de participants</string>
+    <string name="choix_participants_bouton_francais">FR</string>
+    <string name="choix_participants_bouton_anglais">EN</string>
 
     <!-- Fragment du choix du plan de la salle -->
     <string name="plan_salle_texte_participants">Participants : %1$d</string>
@@ -188,8 +190,8 @@
     <!-- Fragment d'affichage des statistiques -->
     <string name="statistiques_iteration">Itération </string>
     <string name="statistiques_ligne">Ligne </string>
-    <string name="statistiques_vehicules">Véhicules : %1$d</string>
-    <string name="statistiques_aides">Aides : %1$d</string>
-    <string name="statistiques_pieces">Pièces : %1$d</string>
+    <string name="statistiques_vehicules">Véhicules : </string>
+    <string name="statistiques_aides">Aides : </string>
+    <string name="statistiques_pieces">Pièces : </string>
 
 </resources>

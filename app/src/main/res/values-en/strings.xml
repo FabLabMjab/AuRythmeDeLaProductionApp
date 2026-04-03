@@ -1,14 +1,13 @@
-<resources xmlns:tools="http://schemas.android.com/tools"
-    tools:locale="fr">
+<resources>
     <!-- Activité LogIn -->
-    <string name="app_name">Au Rythme de la Production</string>
+    <string name="app_name">Production in Motion</string>
     <string name="connexion">Login</string>
 
     <!-- Facilitator profile fragment -->
-    <string name="animateur_ligne_participant">Participants : %1$d</string>
-    <string name="animateur_ligne_vehicule">Vehicle : %1$d</string>
-    <string name="animateur_ligne_ligne">Lines : %1$d</string>
-    <string name="animateur_ligne_iteration">Iteration : %1$d</string>
+    <string name="animateur_ligne_participant">Participants : </string>
+    <string name="animateur_ligne_vehicule">Vehicle : </string>
+    <string name="animateur_ligne_ligne">Lines : </string>
+    <string name="animateur_ligne_iteration">Iteration : </string>
     <string name="animateur_sous_titre">Facilitator Profile</string>
     <string name="animateur_alerte_titre">Reset</string>
     <string name="animateur_alerte_message">Do you really want to reset the activity?</string>
@@ -19,177 +18,179 @@
 
     <!-- Facilitator actions -->
     <string-array name="animateur_actions">
-        <item>Plan de la salle</item>
-        <item>Améliorations</item>
-        <item>Afficher statistiques</item>
-        <item>Réinitialisation de l\'activité</item>
+        <item>Room layout</item>
+        <item>Improvements</item>
+        <item>Show statistics</item>
+        <item>Reset activity</item>
     </string-array>
 
-    <!-- Fragment du profil assembleur -->
-    <string name="assembleur_tache">Tâche d\'assemblage</string>
-    <string name="assembleur_bouton_demande_aide">Demande d\'aide</string>
-    <string name="assembleur_image_assemblage">Image de l\'étape d\'assemblage</string>
-    <string name="assembleur_titre_espace_piece">Demande de pièces</string>
-    <string name="assembleur_titre_poste_non_configure">Poste non configuré</string>
+    <!-- Assembler profile -->
+    <string name="assembleur_tache">Assembly task</string>
+    <string name="assembleur_bouton_demande_aide">Request help</string>
+    <string name="assembleur_image_assemblage">Assembly step image</string>
+    <string name="assembleur_titre_espace_piece">Parts request</string>
+    <string name="assembleur_titre_poste_non_configure">Workstation not configured</string>
 
-    <!-- Classe AssemblyRepository (pour les étapes d'assemblage) -->
-    <string name="assemblyrepository_assembleur1">Installation de la transmission</string>
-    <string name="assemblyrepository_assembleur2">Installation du chassis avant</string>
-    <string name="assemblyrepository_assembleur3">Pose du volant et du banc</string>
-    <string name="assemblyrepository_assembleur4">Installation du chassis inférieur et de la chenille</string>
-    <string name="assemblyrepository_assembleur5">Installation latérale du chassis</string>
-    <string name="assemblyrepository_assembleur6">Installation du patin gauche</string>
-    <string name="assemblyrepository_assembleur7">Installation du patin droit</string>
-    <string name="assemblyrepository_assembleur8">Assemblage de la structure de la chenille</string>
-    <string name="assemblyrepository_assembleur9">Pose de la chenille</string>
-    <string name="assemblyrepository_spyder_assembleur4">Installation du chassis arrière (première partie)</string>
-    <string name="assemblyrepository_spyder_assembleur5">Installation du chassis arrière (deuxième partie)</string>
+    <!-- Assembly steps -->
+    <string name="assemblyrepository_assembleur1">Install transmission</string>
+    <string name="assemblyrepository_assembleur2">Install front chassis</string>
+    <string name="assemblyrepository_assembleur3">Install steering wheel and seat</string>
+    <string name="assemblyrepository_assembleur4">Install lower chassis and track</string>
+    <string name="assemblyrepository_assembleur5">Install side chassis</string>
+    <string name="assemblyrepository_assembleur6">Install left slider</string>
+    <string name="assemblyrepository_assembleur7">Install right slider</string>
+    <string name="assemblyrepository_assembleur8">Assemble track structure</string>
+    <string name="assemblyrepository_assembleur9">Install track</string>
+    <string name="assemblyrepository_spyder_assembleur4">Install rear chassis (part 1)</string>
+    <string name="assemblyrepository_spyder_assembleur5">Install rear chassis (part 2)</string>
 
-    <!-- Fragment du profil cariste -->
-    <string name="cariste_tache">Apportez les pièces aux assembleurs</string>
-    <string name="cariste_titre_espace_demande_piece">Demandes de pièces</string>
-    <string name="cariste_poste_espace_demande_piece">Poste</string>
-    <string name="cariste_piece_espace_demande_piece">Pièce</string>
+    <!-- Handler profile -->
+    <string name="cariste_tache">Deliver parts to assemblers</string>
+    <string name="cariste_titre_espace_demande_piece">Parts requests</string>
+    <string name="cariste_poste_espace_demande_piece">Station</string>
+    <string name="cariste_piece_espace_demande_piece">Part</string>
 
-    <!-- Fragment du profil chef d'équipe -->
-    <string name="chef_equipe_tache">Coordonnez l’équipe et répondez aux demandes d\'aide</string>
-    <string name="chef_equipe_titre_espace_demande_aide">Demandes d\'aide</string>
-    <string name="chef_equipe_ligne_demande_aide">Aide demandée : </string>
+    <!-- Team leader  -->
+    <string name="chef_equipe_tache">Coordinate the team and respond to help requests</string>
+    <string name="chef_equipe_titre_espace_demande_aide">Help requests</string>
+    <string name="chef_equipe_ligne_demande_aide">Help requested: </string>
 
-    <!-- Fragment d'erreur de connexion -->
-    <string name="erreur_connexion_message">Connexion au serveur impossible</string>
-    <string name="erreur_connexion_bouton">Réessayer</string>
+    <!-- Connection error -->
+    <string name="erreur_connexion_message">Unable to connect to server</string>
+    <string name="erreur_connexion_bouton">Retry</string>
 
-    <!-- Fragment du contrôleur qualité -->
-    <string name="controle_qualite_tache">Assurez-vous que le véhicule soit conforme au standard attendu</string>
-    <string name="controle_qualite_liste_verification_titre">Liste de vérification</string>
-    <string name="controle_qualite_liste_verification_bouton_reinitialiser">Réinitialiser</string>
-    <string name="controle_qualite_liste_verification_bouton_general_un">Suspension fonctionnelle</string>
-    <string name="controle_qualite_liste_verification_bouton_general_deux">Transmission adéquate</string>
-    <string name="controle_qualite_liste_verification_bouton_skidoo">Chenille tourne</string>
-    <string name="controle_qualite_liste_verification_bouton_spyder">Roues tournent</string>
+    <!-- Quality control -->
+    <string name="controle_qualite_tache">Ensure the vehicle meets expected standards</string>
+    <string name="controle_qualite_liste_verification_titre">Checklist</string>
+    <string name="controle_qualite_liste_verification_bouton_reinitialiser">Reset</string>
+    <string name="controle_qualite_liste_verification_bouton_general_un">Suspension works</string>
+    <string name="controle_qualite_liste_verification_bouton_general_deux">Proper transmission</string>
+    <string name="controle_qualite_liste_verification_bouton_skidoo">Track rotates</string>
+    <string name="controle_qualite_liste_verification_bouton_spyder">Wheels rotate</string>
 
-    <!-- Fragment du profil expédition -->
-    <string name="expedition_tache">Vous devez assembler la boîte de livraison et déposer le véhicule à l\'intérieur</string>
-    <string name="expedition_tache_ameliore">La boîte est déjà assemblée, déposer le véhicule à l\'intérieur</string>
-    <string name="expedition_profile_name">Expédition</string>
+    <!-- Shipping -->
+    <string name="expedition_tache">Assemble the shipping box and place the vehicle inside</string>
+    <string name="expedition_tache_ameliore">Box already assembled, place the vehicle inside</string>
+    <string name="expedition_profile_name">Shipping</string>
 
-    <!-- Fragment améliorations -->
-    <string name="ameliorations_liste_titre">Liste des améliorations</string>
-    <string name="ameliorations_bouton_iteration">Passer à la prochaine itération</string>
-    <string name="ameliorations_titre">Améliorations</string>
-    <string name="ameliorations_notification_iteration">Itération suivante démarrée</string>
+    <!-- Improvements -->
+    <string name="ameliorations_liste_titre">Improvements list</string>
+    <string name="ameliorations_bouton_iteration">Next iteration</string>
+    <string name="ameliorations_titre">Improvements</string>
+    <string name="ameliorations_notification_iteration">Next iteration started</string>
 
-    <!-- Fragment améliorations - boutons -->
-    <string name="improvement_bouton_aide">Bouton aide chef d\'équipe</string>
-    <string name="improvement_demande_pieces">Demande de pièces</string>
-    <string name="improvement_controle_qualite">Amélioration contrôle qualité</string>
-    <string name="improvement_expedition">Amélioration expédition</string>
-    <string name="improvement_mecanicien">Amélioration mécanicien</string>
+    <!-- Improvements labels -->
+    <string name="improvement_bouton_aide">Team leader help button</string>
+    <string name="improvement_demande_pieces">Parts request</string>
+    <string name="improvement_controle_qualite">Quality control improvement</string>
+    <string name="improvement_expedition">Shipping improvement</string>
+    <string name="improvement_mecanicien">Mechanic improvement</string>
 
-    <!-- Fragment du profil mécanicien -->
-    <string name="mecanicien_tache">Réparer les véhicules selon l\'étape à laquelle ils se trouvent</string>
-    <string name="mecanicien_boutons_amelioration">Assembleur </string>
-    <string name="mecanicien_profile_name">Mécanicien %1$s</string> <!-- %1$s est un placeholder pour "A" ou "B" -->
+    <!-- Mechanic -->
+    <string name="mecanicien_tache">Repair vehicles based on their current stage</string>
+    <string name="mecanicien_boutons_amelioration">Assembler </string>
+    <string name="mecanicien_profile_name">Mechanic %1$s</string> <!-- %1$s is a placeholder for "A" or "B" -->
 
-    <!-- Fragment du choix du nombre de participants -->
-    <string name="choix_participants_bouton_soumettre">Soumettre</string>
-    <string name="choix_participants_sous_titre">Choix du nombre de participants</string>
+    <!-- Participant selection -->
+    <string name="choix_participants_bouton_soumettre">Submit</string>
+    <string name="choix_participants_sous_titre">Select number of participants</string>
+    <string name="choix_participants_bouton_francais">FR</string>
+    <string name="choix_participants_bouton_anglais">EN</string>
 
-    <!-- Fragment du choix du plan de la salle -->
+    <!-- Room layout -->
     <string name="plan_salle_texte_participants">Participants : %1$d</string>
-    <string name="plan_salle_texte_vehicule">Véhicule : %1$d</string>
-    <string name="plan_salle_texte_ligne">Lignes : %1$d</string>
-    <string name="plan_salle_bouton_retour">Retour</string>
-    <string name="plan_salle_sous_titre">Plan de la salle</string>
+    <string name="plan_salle_texte_vehicule">Vehicle: %1$d</string>
+    <string name="plan_salle_texte_ligne">Lines: %1$d</string>
+    <string name="plan_salle_bouton_retour">Back</string>
+    <string name="plan_salle_sous_titre">Room Layout</string>
 
     <!-- Notes sur le placement de la salle -->
     <!-- Les répétitions sont volontaires, si on veut éventuellement modifier une configuration de la salle -->
     <string name="plan_salle_notes_titre">Notes</string>
     <string-array name="plan_notes_case10">
-        <item>• Le chef d\'équipe occupe également le rôle de mécanicien</item>
-        <item>• Le contrôleur qualité occupe également le rôle de l\'expédition</item>
+        <item>• Team leader also acts as mechanic</item>
+        <item>• Quality controller also handles shipping</item>
     </string-array>
     <string-array name="plan_notes_case11">
-        <item>• Le contrôleur qualité occupe également le rôle de l\'expédition</item>
+        <item>• Quality controller also handles shipping</item>
     </string-array>
     <string-array name="plan_notes_case12">
-        <item>• Tous les postes sont occupés</item>
+        <item>• All workstations are fulfilled</item>
     </string-array>
     <string-array name="plan_notes_case13">
-        <item>• Tous les postes sont occupés</item>
+        <item>• All workstations are fulfilled</item>
     </string-array>
     <string-array name="plan_notes_case14">
-        <item>• Tous les postes sont occupés</item>
+        <item>• All workstations are fulfilled</item>
     </string-array>
     <string-array name="plan_notes_case15">
-        <item>• Tous les postes sont occupés</item>
+        <item>• All workstations are fulfilled</item>
     </string-array>
     <string-array name="plan_notes_case16">
-        <item>• Le chef d\'équipe occupe également le rôle de mécanicien pour les deux lignes</item>
-        <item>• Le contrôleur qualité occupe également le rôle de l\'expédition pour les deux lignes</item>
+        <item>• Team leader also acts as mechanic for both lines</item>
+        <item>• Quality controller also handles shipping for both lines</item>
     </string-array>
     <string-array name="plan_notes_case17">
-        <item>• Le chef d\'équipe occupe également le rôle de mécanicien pour les deux lignes</item>
-        <item>• Le contrôleur qualité occupe également le rôle de l\'expédition pour la ligne B</item>
+        <item>• Team leader also acts as mechanic for both lines</item>
+        <item>• Quality controller also handles shipping for line B</item>
     </string-array>
     <string-array name="plan_notes_case18">
-        <item>• Le chef d\'équipe occupe également le rôle de mécanicien pour les deux lignes</item>
+        <item>• Team leader also acts as mechanic for both lines</item>
     </string-array>
     <string-array name="plan_notes_case19">
-        <item>• Le chef d\'équipe occupe également le rôle de mécanicien pour la ligne B</item>
+        <item>• Team leader also acts as mechanic for line B</item>
     </string-array>
     <string-array name="plan_notes_case20">
-        <item>• Le chef d\'équipe occupe également le rôle de mécanicien pour les deux lignes</item>
-        <item>• Le contrôleur qualité occupe également le rôle de l\'expédition pour les deux lignes</item>
+        <item>• Team leader also acts as mechanic for both lines</item>
+        <item>• Quality controller also handles shipping for both lines</item>
     </string-array>
     <string-array name="plan_notes_case21">
-        <item>• Le chef d\'équipe occupe également le rôle de mécanicien pour les deux lignes</item>
-        <item>• Le contrôleur qualité occupe également le rôle de l\'expédition pour la ligne B</item>
+        <item>• Team leader also acts as mechanic for both lines</item>
+        <item>• Quality controller also handles shipping for line B</item>
     </string-array>
     <string-array name="plan_notes_case22">
-        <item>• Le chef d\'équipe occupe également le rôle de mécanicien pour les deux lignes</item>
+        <item>• Team leader also acts as mechanic for both lines</item>
     </string-array>
     <string-array name="plan_notes_case23">
-        <item>• Le chef d\'équipe occupe également le rôle de mécanicien pour la ligne B</item>
+        <item>• Team leader also acts as mechanic for line B</item>
     </string-array>
     <string-array name="plan_notes_case24">
-        <item>• Tous les postes sont occupés</item>
+        <item>• All workstations are fulfilled</item>
     </string-array>
     <string-array name="plan_notes_case25">
-        <item>• Cariste supplémentaire pour la ligne A</item>
+        <item>• Line A has one more part handler</item>
     </string-array>
     <string-array name="plan_notes_case26">
-        <item>• Tous les postes sont occupés</item>
+        <item>• All workstations are fulfilled</item>
     </string-array>
     <string-array name="plan_notes_case27">
-        <item>• Un sous-assembleur supplémentaire pour la ligne A</item>
+        <item>• Line A has one more assembly worker</item>
     </string-array>
     <string-array name="plan_notes_case28">
-        <item>• Tous les postes sont occupés</item>
+        <item>• All workstations are fulfilled</item>
     </string-array>
     <string-array name="plan_notes_case29">
-        <item>• Un sous-assembleur supplémentaire pour la ligne A</item>
+        <item>• Line A has one more assembly worker</item>
     </string-array>
     <string-array name="plan_notes_case30">
-        <item>• Tous les postes sont occupés</item>
+        <item>• All workstations are fulfilled</item>
     </string-array>
 
-    <!-- Fragment de sélection du profil -->
-    <string name="choix_profil_sous_titre">Choix du profil</string>
-    <string name="profil_assembleur">Assembleur %1$s</string>
-    <string name="profil_mecanicien">Mécanicien %1$s</string>
-    <string name="profil_cariste">Cariste %1$s</string>
-    <string name="profil_chef_equipe">Chef d\'équipe %1$s</string>
-    <string name="profil_controle_qualite">Contrôle qualité %1$s</string>
-    <string name="profil_expedition">Expédition %1$s</string>
-    <string name="profil_animateur">Animateur</string>
+    <!-- Profile selection -->
+    <string name="choix_profil_sous_titre">Select profile</string>
+    <string name="profil_assembleur">Assembler %1$s</string>
+    <string name="profil_mecanicien">Mechanic %1$s</string>
+    <string name="profil_cariste">Part handler %1$s</string>
+    <string name="profil_chef_equipe">Team leader %1$s</string>
+    <string name="profil_controle_qualite">Quality control %1$s</string>
+    <string name="profil_expedition">Shipping %1$s</string>
+    <string name="profil_animateur">Facilitator</string>
 
-    <!-- Fragment d'affichage des statistiques -->
-    <string name="statistiques_iteration">Itération </string>
-    <string name="statistiques_ligne">Ligne </string>
-    <string name="statistiques_vehicules">Véhicules : %1$d</string>
-    <string name="statistiques_aides">Aides : %1$d</string>
-    <string name="statistiques_pieces">Pièces : %1$d</string>
+    <!-- Statistics -->
+    <string name="statistiques_iteration">Iteration </string>
+    <string name="statistiques_ligne">Line </string>
+    <string name="statistiques_vehicules">Vehicles : </string>
+    <string name="statistiques_aides">Help requests : </string>
+    <string name="statistiques_pieces">Parts : </string>
 
 </resources>
