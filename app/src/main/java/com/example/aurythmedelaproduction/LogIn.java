@@ -151,7 +151,7 @@ public class LogIn extends AppCompatActivity {
         // Pour émulateur: ws://10.0.2.2:8887
         // Adresse statique du PC salle éducative ws://192.168.50.116:8887
         wsm.connect(
-                "ws://10.0.2.2:8887",
+                "ws://192.168.50.116:8887",
 
                 // succès
                 () -> runOnUiThread(() -> {

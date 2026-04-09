@@ -99,9 +99,9 @@
     <string name="choix_participants_bouton_anglais">EN</string>
 
     <!-- Fragment du choix du plan de la salle -->
-    <string name="plan_salle_texte_participants">Participants : %1$d</string>
-    <string name="plan_salle_texte_vehicule">Véhicule : %1$d</string>
-    <string name="plan_salle_texte_ligne">Lignes : %1$d</string>
+    <string name="plan_salle_texte_participants">Participants : </string>
+    <string name="plan_salle_texte_vehicule">Véhicule : </string>
+    <string name="plan_salle_texte_ligne">Lignes : </string>
     <string name="plan_salle_bouton_retour">Retour</string>
     <string name="plan_salle_sous_titre">Plan de la salle</string>
 
