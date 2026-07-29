@@ -76,6 +76,8 @@ public class ExpeditionFragment extends Fragment {
 
         requestImprovements();
 
+        updateUI();
+
     }
 
     @Override
@@ -219,17 +221,31 @@ public class ExpeditionFragment extends Fragment {
         if (txtRole == null || imgInstruction == null)
             return;
 
+        String line = getLine();
+
         if (expeditionUpgrade) {
 
             txtRole.setText(getString(R.string.expedition_tache_ameliore));
 
-            imgInstruction.setImageResource(R.drawable.assemblage_boite_expedition_complete);
+            if ("B".equals(line)) {
+                imgInstruction.setImageResource(
+                        R.drawable.assemblage_boite_expedition_complete_ameliore_rouge);
+            } else {
+                imgInstruction.setImageResource(
+                        R.drawable.assemblage_boite_expedition_complete_ameliore_jaune);
+            }
 
         } else {
 
             txtRole.setText(getString(R.string.expedition_tache));
 
-            imgInstruction.setImageResource(R.drawable.assemblage_boite_expedition);
+            if ("B".equals(line)) {
+                imgInstruction.setImageResource(
+                        R.drawable.assemblage_boite_expedition_complete_rouge);
+            } else {
+                imgInstruction.setImageResource(
+                        R.drawable.assemblage_boite_expedition_complete_jaune);
+            }
         }
     }
 }

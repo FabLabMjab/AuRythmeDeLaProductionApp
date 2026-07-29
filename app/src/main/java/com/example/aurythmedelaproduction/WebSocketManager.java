@@ -69,6 +69,7 @@ public class WebSocketManager {
                         Log.d(TAG, "ACTIVITY_CONFIG sauvegardé");
                     }
 
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
