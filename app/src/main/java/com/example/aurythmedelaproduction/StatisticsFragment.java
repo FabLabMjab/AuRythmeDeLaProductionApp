@@ -178,8 +178,8 @@ public class StatisticsFragment extends Fragment {
 
         } else {
 
-            row.addView(createLineStats("A", vehiclesA, helpA, partsA));
             row.addView(createLineStats("B", vehiclesB, helpB, partsB));
+            row.addView(createLineStats("A", vehiclesA, helpA, partsA));
 
         }
 
