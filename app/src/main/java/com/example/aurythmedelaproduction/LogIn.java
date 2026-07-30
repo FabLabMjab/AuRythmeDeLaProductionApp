@@ -211,6 +211,15 @@ public class LogIn extends AppCompatActivity {
         }
     }
 
+    public void updateLanguage(String lang) {
+        if (lang == null)
+            return;
+
+        if (!Locale.getDefault().getLanguage().equals(lang)) {
+            applyLanguage(lang);
+        }
+    }
+
     private void applyLanguage(String lang) {
 
         String current = Locale.getDefault().getLanguage();

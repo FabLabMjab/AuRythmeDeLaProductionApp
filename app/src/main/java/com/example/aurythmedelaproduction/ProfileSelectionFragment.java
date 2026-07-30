@@ -67,6 +67,7 @@ public class ProfileSelectionFragment extends Fragment {
         txtLines = v.findViewById(R.id.txtLines);
         txtParticipants = v.findViewById(R.id.txtParticipants);
 
+        requestLanguage();
         requestProfiles();
         requestActivityConfig();
 
@@ -402,6 +403,15 @@ public class ProfileSelectionFragment extends Fragment {
 
                         break;
                     }
+
+                    case "LANGUAGE": {
+
+                        String language = json.getString("language");
+
+                        ((LogIn) requireActivity()).updateLanguage(language);
+
+                        break;
+                    }
                 }
 
             } catch (Exception e) {
@@ -440,6 +450,20 @@ public class ProfileSelectionFragment extends Fragment {
             return;
 
         updateButtonsState(lastAvailableProfiles);
+    }
+
+    private void requestLanguage() {
+
+        try {
+
+            JSONObject msg = new JSONObject();
+            msg.put("type", "GET_LANGUAGE");
+
+            WebSocketManager.getInstance().send(msg.toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

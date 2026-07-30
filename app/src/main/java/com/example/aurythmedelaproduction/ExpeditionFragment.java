@@ -81,6 +81,7 @@ public class ExpeditionFragment extends Fragment {
         WebSocketManager.getInstance()
                 .setFragmentListener(this::handleMessage);
 
+        requestLanguage();
         requestImprovements();
 
         updateUI();
@@ -160,6 +161,13 @@ public class ExpeditionFragment extends Fragment {
                     }
                 }
 
+                if ("LANGUAGE".equals(type)) {
+
+                    String language = json.optString("language", "fr");
+
+                    ((LogIn) requireActivity()).updateLanguage(language);
+                }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -192,6 +200,20 @@ public class ExpeditionFragment extends Fragment {
         sendHelpRequest();
 
         flashHelper.startFlashing();
+    }
+
+    private void requestLanguage() {
+
+        try {
+
+            JSONObject msg = new JSONObject();
+            msg.put("type", "GET_LANGUAGE");
+
+            WebSocketManager.getInstance().send(msg.toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void playHelpSound() {
