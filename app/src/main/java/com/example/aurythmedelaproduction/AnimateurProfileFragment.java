@@ -86,13 +86,14 @@ public class AnimateurProfileFragment extends Fragment {
 
         // Boutons de production de véhicules selon les lignes
 
+        if (lines >= 2) {
+            vehicleRow.addView(createVehicleButton("B"));
+        }
+
         if (lines >= 1) {
             vehicleRow.addView(createVehicleButton("A"));
         }
 
-        if (lines >= 2) {
-            vehicleRow.addView(createVehicleButton("B"));
-        }
 
         actionsContainer.addView(vehicleRow);
 
