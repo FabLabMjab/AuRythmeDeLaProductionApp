@@ -27,6 +27,8 @@ public class ExpeditionFragment extends Fragment {
     private ImageView imgInstruction;
     private ImageButton btnHelp;
 
+    private FlashHelper flashHelper;
+
     public ExpeditionFragment() {
         // Required empty public constructor
     }
@@ -72,6 +74,8 @@ public class ExpeditionFragment extends Fragment {
         imgInstruction = view.findViewById(R.id.imgInstruction);
         btnHelp = view.findViewById(R.id.btnHelp);
 
+        flashHelper = new FlashHelper(requireContext());
+
         btnHelp.setOnClickListener(v -> requestHelp());
 
         requestImprovements();
@@ -85,6 +89,8 @@ public class ExpeditionFragment extends Fragment {
         super.onPause();
         WebSocketManager.getInstance()
                 .setFragmentListener(null);
+
+        flashHelper.stopFlashing();
     }
 
     @Override
@@ -101,6 +107,9 @@ public class ExpeditionFragment extends Fragment {
 
         WebSocketManager.getInstance()
                 .setFragmentListener(null);
+
+        flashHelper.stopFlashing();
+
     }
 
     private void requestImprovements() {
@@ -178,6 +187,8 @@ public class ExpeditionFragment extends Fragment {
         }
 
         sendHelpRequest();
+
+        flashHelper.startFlashing();
     }
 
     private void playHelpSound() {
@@ -248,4 +259,7 @@ public class ExpeditionFragment extends Fragment {
             }
         }
     }
+
+
+
 }

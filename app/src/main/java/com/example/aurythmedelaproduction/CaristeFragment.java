@@ -39,6 +39,8 @@ public class CaristeFragment extends Fragment {
     private boolean boutonAideEnvoi = false;
     private ImageButton btnHelp;
 
+    private FlashHelper flashHelper;
+
     public CaristeFragment() {
         // Required empty public constructor
     }
@@ -84,6 +86,8 @@ public class CaristeFragment extends Fragment {
             ((LogIn) requireActivity())
                     .updateSubtitle(ProfileFormatter.format(getContext(), caristeID));
         }
+        flashHelper = new FlashHelper(requireContext());
+
         requestImprovements();
     }
 
@@ -92,6 +96,8 @@ public class CaristeFragment extends Fragment {
         super.onPause();
         WebSocketManager.getInstance()
                 .setFragmentListener(null);
+
+        flashHelper.stopFlashing();
     }
 
     @Override
@@ -108,6 +114,8 @@ public class CaristeFragment extends Fragment {
 
         WebSocketManager.getInstance()
                 .setFragmentListener(null);
+
+        flashHelper.stopFlashing();
     }
 
     private void handleMessage(String message) {
@@ -297,6 +305,8 @@ public class CaristeFragment extends Fragment {
         }
 
         sendHelpRequest();
+
+        flashHelper.startFlashing();
     }
 
     private void sendHelpRequest() {

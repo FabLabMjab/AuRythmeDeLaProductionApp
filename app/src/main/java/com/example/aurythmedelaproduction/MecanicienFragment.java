@@ -31,6 +31,8 @@ public class MecanicienFragment extends Fragment {
     private ViewPager2 pager;
     private List<Button> stepButtonList = new ArrayList<>();
 
+    private FlashHelper flashHelper;
+
     public MecanicienFragment() {
         // Required empty public constructor
     }
@@ -110,6 +112,7 @@ public class MecanicienFragment extends Fragment {
         WebSocketManager.getInstance()
                 .setFragmentListener(this::handleMessage);
 
+        flashHelper = new FlashHelper(requireContext());
         updateSubtitle();
         requestImprovements();
 
@@ -120,6 +123,7 @@ public class MecanicienFragment extends Fragment {
         super.onPause();
         WebSocketManager.getInstance()
                 .setFragmentListener(null);
+        flashHelper.stopFlashing();
     }
 
     @Override
@@ -136,6 +140,7 @@ public class MecanicienFragment extends Fragment {
 
         WebSocketManager.getInstance()
                 .setFragmentListener(null);
+        flashHelper.stopFlashing();
     }
 
     private void requestImprovements() {
@@ -213,6 +218,8 @@ public class MecanicienFragment extends Fragment {
         }
 
         sendHelpRequest();
+
+        flashHelper.startFlashing();
     }
 
     private void playHelpSound() {

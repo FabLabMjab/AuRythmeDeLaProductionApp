@@ -33,6 +33,8 @@ public class AssembleurFragment extends Fragment {
     private boolean improvementsLoaded = false;
     private LinearLayout partsBox;
 
+    private FlashHelper flashHelper;
+
     public AssembleurFragment() {
 
     }
@@ -67,6 +69,7 @@ public class AssembleurFragment extends Fragment {
         WebSocketManager.getInstance()
                 .setFragmentListener(this::handleMessage);
 
+        flashHelper = new FlashHelper(requireContext());
         updateSubtitle();
         configureUI();
         requestImprovements();
@@ -125,6 +128,8 @@ public class AssembleurFragment extends Fragment {
         }
 
         sendHelpRequest();
+
+        flashHelper.startFlashing();
     }
 
     private void requestPart(String partId) {
@@ -160,6 +165,8 @@ public class AssembleurFragment extends Fragment {
         super.onPause();
         WebSocketManager.getInstance()
                 .setFragmentListener(null);
+
+        flashHelper.stopFlashing();
     }
 
     @Override
@@ -176,6 +183,8 @@ public class AssembleurFragment extends Fragment {
 
         WebSocketManager.getInstance()
                 .setFragmentListener(null);
+
+        flashHelper.stopFlashing();
     }
 
     private void handleMessage(String message) {

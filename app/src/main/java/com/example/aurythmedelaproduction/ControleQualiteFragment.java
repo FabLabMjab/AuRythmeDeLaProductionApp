@@ -31,6 +31,8 @@ public class ControleQualiteFragment extends Fragment {
     private boolean boutonAideEnvoi = false;
     private List<CheckBox> checklistItems = new ArrayList<>();
 
+    private FlashHelper flashHelper;
+
     public ControleQualiteFragment() {
         // Required empty public constructor
     }
@@ -86,6 +88,7 @@ public class ControleQualiteFragment extends Fragment {
             }
         }
 
+        flashHelper = new FlashHelper(requireContext());
         updateSubtitle();
         requestImprovements();
         view.findViewById(R.id.btnHelp).setOnClickListener(v -> requestHelp());
@@ -96,6 +99,8 @@ public class ControleQualiteFragment extends Fragment {
         super.onPause();
         WebSocketManager.getInstance()
                 .setFragmentListener(null);
+
+        flashHelper.stopFlashing();
     }
 
     @Override
@@ -112,6 +117,8 @@ public class ControleQualiteFragment extends Fragment {
 
         WebSocketManager.getInstance()
                 .setFragmentListener(null);
+
+        flashHelper.stopFlashing();
     }
 
     private void requestImprovements() {
@@ -189,6 +196,8 @@ public class ControleQualiteFragment extends Fragment {
         }
 
         sendHelpRequest();
+
+        flashHelper.startFlashing();
     }
 
     private void playHelpSound() {
