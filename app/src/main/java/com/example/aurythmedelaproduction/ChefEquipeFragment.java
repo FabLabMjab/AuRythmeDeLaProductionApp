@@ -78,6 +78,11 @@ public class ChefEquipeFragment extends Fragment {
             ((LogIn) requireActivity()).updateSubtitle(ProfileFormatter.format(getContext(), chefEquipeID));
         }
 
+        WebSocketManager.getInstance()
+                .setFragmentListener(this::handleMessage);
+
+        requestImprovements();
+
     }
 
     @Override

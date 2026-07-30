@@ -78,6 +78,9 @@ public class ExpeditionFragment extends Fragment {
 
         btnHelp.setOnClickListener(v -> requestHelp());
 
+        WebSocketManager.getInstance()
+                .setFragmentListener(this::handleMessage);
+
         requestImprovements();
 
         updateUI();

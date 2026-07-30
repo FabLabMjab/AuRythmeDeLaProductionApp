@@ -88,6 +88,9 @@ public class CaristeFragment extends Fragment {
         }
         flashHelper = new FlashHelper(requireContext());
 
+        WebSocketManager.getInstance()
+                .setFragmentListener(this::handleMessage);
+
         requestImprovements();
     }
 
