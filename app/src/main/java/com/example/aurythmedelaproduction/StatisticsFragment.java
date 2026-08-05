@@ -1,5 +1,7 @@
 package com.example.aurythmedelaproduction;
 
+import androidx.appcompat.app.AlertDialog;
+
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -16,11 +18,19 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 public class StatisticsFragment extends Fragment {
 
     private LinearLayout statsContainer;
     private int lines;
+
+    private final Map<Integer, Map<String, Integer>> helpDetailsA = new HashMap<>();
+    private final Map<Integer, Map<String, Integer>> helpDetailsB = new HashMap<>();
 
     public StatisticsFragment() {
         // Required empty public constructor
@@ -135,6 +145,51 @@ public class StatisticsFragment extends Fragment {
                     int helpA = it.optInt("helpA");
                     int helpB = it.optInt("helpB");
 
+                    JSONObject helpJsonA = it.optJSONObject("helpDetailsA");
+                    JSONObject helpJsonB = it.optJSONObject("helpDetailsB");
+
+                    Map<String, Integer> detailsA = new HashMap<>();
+                    Map<String, Integer> detailsB = new HashMap<>();
+
+                    if (helpJsonA != null) {
+
+                        JSONArray names = helpJsonA.names();
+
+                        if (names != null) {
+
+                            for (int j = 0; j < names.length(); j++) {
+
+                                String profile = names.getString(j);
+
+                                detailsA.put(
+                                        profile,
+                                        helpJsonA.getInt(profile)
+                                );
+                            }
+                        }
+                    }
+
+                    if (helpJsonB != null) {
+
+                        JSONArray names = helpJsonB.names();
+
+                        if (names != null) {
+
+                            for (int j = 0; j < names.length(); j++) {
+
+                                String profile = names.getString(j);
+
+                                detailsB.put(
+                                        profile,
+                                        helpJsonB.getInt(profile)
+                                );
+                            }
+                        }
+                    }
+
+                    helpDetailsA.put(iteration, detailsA);
+                    helpDetailsB.put(iteration, detailsB);
+
                     int partsA = it.optInt("partsA");
                     int partsB = it.optInt("partsB");
 
@@ -174,12 +229,12 @@ public class StatisticsFragment extends Fragment {
 
         if (lines == 1) {
 
-            row.addView(createLineStats("A", vehiclesA, helpA, partsA));
+            row.addView(createLineStats(iteration,"A", vehiclesA, helpA, partsA));
 
         } else {
 
-            row.addView(createLineStats("B", vehiclesB, helpB, partsB));
-            row.addView(createLineStats("A", vehiclesA, helpA, partsA));
+            row.addView(createLineStats(iteration, "B", vehiclesB, helpB, partsB));
+            row.addView(createLineStats(iteration, "A", vehiclesA, helpA, partsA));
 
         }
 
@@ -187,6 +242,7 @@ public class StatisticsFragment extends Fragment {
     }
 
     private LinearLayout createLineStats(
+            int iteration,
             String line,
             int vehicles,
             int help,
@@ -222,6 +278,11 @@ public class StatisticsFragment extends Fragment {
         TextView helpTxt =
                 createStatsText(getString(R.string.statistiques_aides) + help, 22);
 
+        helpTxt.setClickable(true);
+
+        helpTxt.setOnClickListener(v ->
+                showHelpDetails(iteration, line));
+
         TextView partsTxt =
                 createStatsText(getString(R.string.statistiques_pieces) + parts, 22);
 
@@ -248,5 +309,57 @@ public class StatisticsFragment extends Fragment {
         tv.setPadding(0,12,0,12);
 
         return tv;
+    }
+
+    private void showHelpDetails(int iteration, String line) {
+
+        Map<String, Integer> details =
+                "B".equals(line)
+                        ? helpDetailsB.get(iteration)
+                        : helpDetailsA.get(iteration);
+
+        if (details == null || details.isEmpty()) {
+
+            new AlertDialog.Builder(requireContext())
+                    .setTitle(getString(R.string.statistiques_aides))
+                    .setMessage(getString(R.string.statistiques_aucune_demande))
+                    .setPositiveButton("OK", null)
+                    .show();
+
+            return;
+        }
+
+        List<Map.Entry<String, Integer>> list =
+                new ArrayList<>(details.entrySet());
+
+        list.sort((a, b) ->
+                Integer.compare(b.getValue(), a.getValue()));
+
+        StringBuilder message = new StringBuilder();
+
+        for (Map.Entry<String, Integer> entry : list) {
+
+            message.append(
+                    ProfileFormatter.format(
+                            getContext(),
+                            entry.getKey()
+                    )
+            );
+
+            message.append(" : ");
+            message.append(entry.getValue());
+            message.append("\n");
+        }
+
+        new AlertDialog.Builder(requireContext())
+                .setTitle(
+                        getString(R.string.statistiques_aides)
+                                + " - "
+                                + getString(R.string.statistiques_ligne)
+                                + line
+                )
+                .setMessage(message.toString())
+                .setPositiveButton("OK", null)
+                .show();
     }
 }

@@ -187,10 +187,18 @@ public class ChefEquipeFragment extends Fragment {
 
                     if (improvements != null) {
 
-                        boutonAideEnvoi =
-                                improvements.optBoolean("boutonAideEnvoi", false);
+                        JSONObject lineImprovements =
+                                improvements.optJSONObject(getLine());
 
-                        updateHelpUI();
+                        if (lineImprovements != null) {
+
+                            boutonAideEnvoi =
+                                    lineImprovements.optBoolean(
+                                            "boutonAideEnvoi",
+                                            false);
+
+                            updateHelpUI();
+                        }
                     }
                 }
 
@@ -254,5 +262,19 @@ public class ChefEquipeFragment extends Fragment {
         });
 
         mp.start();
+    }
+
+    private String getLine() {
+
+        if (chefEquipeID == null)
+            return "";
+
+        if (chefEquipeID.endsWith("A"))
+            return "A";
+
+        if (chefEquipeID.endsWith("B"))
+            return "B";
+
+        return "";
     }
 }

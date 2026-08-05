@@ -154,13 +154,23 @@ public class CaristeFragment extends Fragment {
 
                     if (improvements != null) {
 
-                        boutonDemandePieces =
-                                improvements.optBoolean("boutonDemandePieces", false);
+                        JSONObject lineImprovements =
+                                improvements.optJSONObject(getLine());
 
-                        boutonAideEnvoi =
-                                improvements.optBoolean("boutonAideEnvoi", false);
+                        if (lineImprovements != null) {
 
-                        updatePartsUI();
+                            boutonDemandePieces =
+                                    lineImprovements.optBoolean(
+                                            "boutonDemandePieces",
+                                            false);
+
+                            boutonAideEnvoi =
+                                    lineImprovements.optBoolean(
+                                            "boutonAideEnvoi",
+                                            false);
+
+                            updatePartsUI();
+                        }
                     }
                 }
 

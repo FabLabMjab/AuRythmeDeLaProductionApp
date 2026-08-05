@@ -79,6 +79,8 @@
     <string name="ameliorations_bouton_iteration">Passer à la prochaine itération</string>
     <string name="ameliorations_titre">Améliorations</string>
     <string name="ameliorations_notification_iteration">Itération suivante démarrée</string>
+    <string name="ameliorations_ligne_a">Ligne A</string>
+    <string name="ameliorations_ligne_b">Ligne B</string>
 
     <!-- Fragment améliorations - boutons -->
     <string name="improvement_bouton_aide">Bouton aide chef d\'équipe</string>
@@ -193,5 +195,8 @@
     <string name="statistiques_vehicules">Véhicules : </string>
     <string name="statistiques_aides">Aides : </string>
     <string name="statistiques_pieces">Pièces : </string>
+
+    <!-- Affichage des statistiques avancées -->
+    <string name="statistiques_aucune_demande"> Aucune demande d\'aide.</string>
 
 </resources>

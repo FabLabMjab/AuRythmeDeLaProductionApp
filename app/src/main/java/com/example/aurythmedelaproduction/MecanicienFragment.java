@@ -179,12 +179,23 @@ public class MecanicienFragment extends Fragment {
 
                     if (improvements != null) {
 
-                        boutonAideEnvoi =
-                                improvements.optBoolean("boutonAideEnvoi", false);
-                        mecanicienUpgrade =
-                                improvements.optBoolean("mecanicienUpgrade", false);
+                        JSONObject lineImprovements =
+                                improvements.optJSONObject(getLine());
 
-                        updateUI();
+                        if (lineImprovements != null) {
+
+                            boutonAideEnvoi =
+                                    lineImprovements.optBoolean(
+                                            "boutonAideEnvoi",
+                                            false);
+
+                            mecanicienUpgrade =
+                                    lineImprovements.optBoolean(
+                                            "mecanicienUpgrade",
+                                            false);
+
+                            updateUI();
+                        }
                     }
                 }
 

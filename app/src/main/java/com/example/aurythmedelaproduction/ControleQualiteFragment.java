@@ -157,12 +157,23 @@ public class ControleQualiteFragment extends Fragment {
 
                     if (improvements != null) {
 
-                        boutonAideEnvoi =
-                                improvements.optBoolean("boutonAideEnvoi", false);
-                        controleQualiteUpgrade =
-                                improvements.optBoolean("controleQualiteUpgrade", false);
+                        JSONObject lineImprovements =
+                                improvements.optJSONObject(getLine());
 
-                        updateUI();
+                        if (lineImprovements != null) {
+
+                            boutonAideEnvoi =
+                                    lineImprovements.optBoolean(
+                                            "boutonAideEnvoi",
+                                            false);
+
+                            controleQualiteUpgrade =
+                                    lineImprovements.optBoolean(
+                                            "controleQualiteUpgrade",
+                                            false);
+
+                            updateUI();
+                        }
                     }
                 }
 

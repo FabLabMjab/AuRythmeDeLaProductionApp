@@ -152,12 +152,23 @@ public class ExpeditionFragment extends Fragment {
 
                     if (improvements != null) {
 
-                        boutonAideEnvoi =
-                                improvements.optBoolean("boutonAideEnvoi", false);
-                        expeditionUpgrade =
-                                improvements.optBoolean("expeditionUpgrade", false);
+                        JSONObject lineImprovements =
+                                improvements.optJSONObject(getLine());
 
-                        updateUI();
+                        if (lineImprovements != null) {
+
+                            boutonAideEnvoi =
+                                    lineImprovements.optBoolean(
+                                            "boutonAideEnvoi",
+                                            false);
+
+                            expeditionUpgrade =
+                                    lineImprovements.optBoolean(
+                                            "expeditionUpgrade",
+                                            false);
+
+                            updateUI();
+                        }
                     }
                 }
 

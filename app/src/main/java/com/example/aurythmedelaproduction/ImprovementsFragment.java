@@ -26,8 +26,7 @@ import java.util.Map;
 
 public class ImprovementsFragment extends Fragment {
 
-    private LinearLayout container;
-    private final Map<String, CheckBox> checkBoxMap = new HashMap<>();
+    private final Map<String, ImprovementsColumn> columns = new HashMap<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent,
@@ -35,8 +34,17 @@ public class ImprovementsFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_improvements, parent, false);
 
-        container = v.findViewById(R.id.improvementsContainer);
-        Log.d("IMPROVEMENTS_DEBUG", "Container = " + container);
+        LinearLayout containerB = v.findViewById(R.id.containerLineB);
+        LinearLayout containerA = v.findViewById(R.id.containerLineA);
+
+        columns.put(
+                "B",
+                new ImprovementsColumn("B", containerB));
+
+        columns.put(
+                "A",
+                new ImprovementsColumn("A", containerA));
+
         Button btnNext = v.findViewById(R.id.btnNextIteration);
         //btnNext.setTextAppearance(R.style.ParticipantButton);
         ImageButton btnReturn = v.findViewById(R.id.btnReturn);
@@ -98,6 +106,7 @@ public class ImprovementsFragment extends Fragment {
                                 "Improvements JSON = " + improvements);
 
                         if (improvements != null) {
+                            System.out.println(improvements.toString(2));
                             buildUI(improvements);
                         } else {
                             Log.e("IMPROVEMENTS_DEBUG",
@@ -117,12 +126,31 @@ public class ImprovementsFragment extends Fragment {
 
     private void buildUI(JSONObject improvements) {
 
-        if (container == null) {
-            Log.e("IMPROVEMENTS_DEBUG", "Container NULL");
-            return;
+        for (ImprovementsColumn column : columns.values()) {
+            column.clear();
         }
-        container.removeAllViews();
-        checkBoxMap.clear();
+
+        Iterator<String> lines = improvements.keys();
+
+        while (lines.hasNext()) {
+
+            String line = lines.next();
+
+            JSONObject lineImprovements =
+                    improvements.optJSONObject(line);
+
+            ImprovementsColumn column = columns.get(line);
+
+            if (column != null && lineImprovements != null) {
+                buildColumn(column, lineImprovements);
+            }
+        }
+
+        Log.d("IMPROVEMENTS_DEBUG", "UI reconstruite");
+    }
+
+    private void buildColumn(ImprovementsColumn column,
+                             JSONObject improvements) {
 
         Iterator<String> keys = improvements.keys();
 
@@ -176,10 +204,8 @@ public class ImprovementsFragment extends Fragment {
             cb.setLayoutParams(params);
             cb.setGravity(Gravity.CENTER);
 
-            container.addView(cb);
-            checkBoxMap.put(key, cb);
+            column.addCheckBox(key, cb);
         }
-        Log.d("IMPROVEMENTS_DEBUG", "UI construite");
     }
 
     private String formatLabel(String key) {
@@ -212,10 +238,11 @@ public class ImprovementsFragment extends Fragment {
 
         try {
 
-            for (Map.Entry<String, CheckBox> entry : checkBoxMap.entrySet()) {
-
-                updates.put(entry.getKey(),
-                        entry.getValue().isChecked());
+            for (ImprovementsColumn column : columns.values()) {
+                updates.put(
+                        column.getLine(),
+                        column.toJson()
+                );
             }
 
             JSONObject msg = new JSONObject();

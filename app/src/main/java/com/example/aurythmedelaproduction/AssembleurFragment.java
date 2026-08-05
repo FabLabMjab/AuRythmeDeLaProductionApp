@@ -206,17 +206,32 @@ public class AssembleurFragment extends Fragment {
                         improvements = json.optJSONObject("liste");
 
                     if (improvements != null) {
-                        boutonAideEnvoi =
-                                improvements.optBoolean("boutonAideEnvoi", false);
-                        boutonDemandePieces =
-                                improvements.optBoolean("boutonDemandePieces", false);
 
-                        System.out.println("DEBUG boutonDemandePieces = " + boutonDemandePieces);
-                        improvementsLoaded = true;
-                        if (getView() != null) {
-                            getActivity().runOnUiThread(() -> updatePartsUI());
+                        JSONObject lineImprovements =
+                                improvements.optJSONObject(getLine());
+
+                        if (lineImprovements != null) {
+
+                            boutonAideEnvoi =
+                                    lineImprovements.optBoolean(
+                                            "boutonAideEnvoi",
+                                            false);
+
+                            boutonDemandePieces =
+                                    lineImprovements.optBoolean(
+                                            "boutonDemandePieces",
+                                            false);
+
+                            System.out.println(
+                                    "DEBUG boutonDemandePieces = "
+                                            + boutonDemandePieces);
+
+                            improvementsLoaded = true;
+
+                            if (getView() != null) {
+                                getActivity().runOnUiThread(this::updatePartsUI);
+                            }
                         }
-
                     }
                 }
 
