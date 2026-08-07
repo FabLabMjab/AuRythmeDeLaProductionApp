@@ -102,6 +102,10 @@ public class MecanicienFragment extends Fragment {
                 requestHelp()
         );
 
+        view.findViewById(R.id.btnRepairCompleted).setOnClickListener(v ->
+                repairCompleted()
+        );
+
         return view;
     }
 
@@ -231,6 +235,37 @@ public class MecanicienFragment extends Fragment {
         sendHelpRequest();
 
         flashHelper.startFlashing();
+    }
+
+    private void repairCompleted() {
+
+        sendRepairCompleted();
+
+        // Pour éviter les doubles clics
+        View btn = getView().findViewById(R.id.btnRepairCompleted);
+
+        btn.setEnabled(false);
+
+        btn.postDelayed(() -> btn.setEnabled(true), 1000);
+    }
+
+    private void sendRepairCompleted() {
+
+        try {
+
+            JSONObject msg = new JSONObject();
+
+            msg.put("type", "REPAIR_COMPLETED");
+            msg.put("mecanicien", mecanicienID);
+            msg.put("line", getLine());
+
+            WebSocketManager
+                    .getInstance()
+                    .send(msg.toString());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void playHelpSound() {

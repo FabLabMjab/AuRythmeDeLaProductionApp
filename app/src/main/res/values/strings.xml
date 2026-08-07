@@ -55,6 +55,8 @@
     <string name="chef_equipe_tache">Coordonnez l’équipe et répondez aux demandes d\'aide</string>
     <string name="chef_equipe_titre_espace_demande_aide">Demandes d\'aide</string>
     <string name="chef_equipe_ligne_demande_aide">Aide demandée : </string>
+    <string name="chef_equipe_ligne_reparation">Réparation complétée !</string>
+    <string name="chef_equipe_reparations">Réparations</string>
 
     <!-- Fragment d'erreur de connexion -->
     <string name="erreur_connexion_message">Connexion au serveur impossible</string>
@@ -93,6 +95,7 @@
     <string name="mecanicien_tache">Réparer les véhicules selon l\'étape à laquelle ils se trouvent</string>
     <string name="mecanicien_boutons_amelioration">Assembleur </string>
     <string name="mecanicien_profile_name">Mécanicien %1$s</string> <!-- %1$s est un placeholder pour "A" ou "B" -->
+    <string name="reparation_completee">Bouton de réparation complétée </string>
 
     <!-- Fragment du choix du nombre de participants -->
     <string name="choix_participants_bouton_soumettre">Soumettre</string>
@@ -195,6 +198,7 @@
     <string name="statistiques_vehicules">Véhicules : </string>
     <string name="statistiques_aides">Aides : </string>
     <string name="statistiques_pieces">Pièces : </string>
+    <string name="statistiques_reparations">Réparations : </string>
 
     <!-- Affichage des statistiques avancées -->
     <string name="statistiques_aucune_demande"> Aucune demande d\'aide.</string>

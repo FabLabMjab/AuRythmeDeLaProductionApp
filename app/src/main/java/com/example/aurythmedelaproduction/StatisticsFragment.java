@@ -193,11 +193,15 @@ public class StatisticsFragment extends Fragment {
                     int partsA = it.optInt("partsA");
                     int partsB = it.optInt("partsB");
 
+                    int repairsA = it.optInt("repairsA");
+                    int repairsB = it.optInt("repairsB");
+
                     addIterationView(
                             iteration,
                             vehiclesA, vehiclesB,
                             helpA, helpB,
-                            partsA, partsB
+                            partsA, partsB,
+                            repairsA, repairsB
                     );
                 }
 
@@ -211,7 +215,8 @@ public class StatisticsFragment extends Fragment {
             int iteration,
             int vehiclesA, int vehiclesB,
             int helpA, int helpB,
-            int partsA, int partsB
+            int partsA, int partsB,
+            int repairsA, int repairsB
     ) {
 
         TextView header = new TextView(getContext());
@@ -229,12 +234,12 @@ public class StatisticsFragment extends Fragment {
 
         if (lines == 1) {
 
-            row.addView(createLineStats(iteration,"A", vehiclesA, helpA, partsA));
+            row.addView(createLineStats(iteration,"A", vehiclesA, helpA, partsA, repairsA));
 
         } else {
 
-            row.addView(createLineStats(iteration, "B", vehiclesB, helpB, partsB));
-            row.addView(createLineStats(iteration, "A", vehiclesA, helpA, partsA));
+            row.addView(createLineStats(iteration, "B", vehiclesB, helpB, partsB, repairsB));
+            row.addView(createLineStats(iteration, "A", vehiclesA, helpA, partsA, repairsA));
 
         }
 
@@ -246,7 +251,8 @@ public class StatisticsFragment extends Fragment {
             String line,
             int vehicles,
             int help,
-            int parts
+            int parts,
+            int repairs
     ) {
 
         LinearLayout column = new LinearLayout(getContext());
@@ -286,10 +292,16 @@ public class StatisticsFragment extends Fragment {
         TextView partsTxt =
                 createStatsText(getString(R.string.statistiques_pieces) + parts, 22);
 
+        TextView repairsTxt =
+                createStatsText(
+                        getString(R.string.statistiques_reparations) + repairs,
+                        22);
+
         column.addView(title);
         column.addView(vehiclesTxt);
         column.addView(helpTxt);
         column.addView(partsTxt);
+        column.addView(repairsTxt);
 
         return column;
     }

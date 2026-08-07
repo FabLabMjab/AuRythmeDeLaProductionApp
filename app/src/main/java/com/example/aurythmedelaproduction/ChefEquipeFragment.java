@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,11 @@ public class ChefEquipeFragment extends Fragment {
 
     private LinearLayout helpBox;
     private LinearLayout helpContainer;
+
+    private LinearLayout repairBox;
+    private LinearLayout repairContainer;
+
+    private List<RepairRequest> repairRequests = new ArrayList<>();
 
     private boolean boutonAideEnvoi = false;
 
@@ -65,6 +71,9 @@ public class ChefEquipeFragment extends Fragment {
 
         helpBox = view.findViewById(R.id.helpBox);
         helpContainer = view.findViewById(R.id.helpContainer);
+
+        repairBox = view.findViewById(R.id.repairBox);
+        repairContainer = view.findViewById(R.id.repairContainer);
 
         return view;
     }
@@ -116,7 +125,7 @@ public class ChefEquipeFragment extends Fragment {
 
         if (!boutonAideEnvoi) {
 
-            helpBox.setVisibility(View.GONE);
+            helpBox.setVisibility(View.INVISIBLE);
             return;
         }
 
@@ -137,6 +146,8 @@ public class ChefEquipeFragment extends Fragment {
             line.setTextSize(22);
             line.setTextColor(Color.BLACK);
             line.setPadding(20,20,20,20);
+            line.setGravity(Gravity.CENTER);
+            line.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
             line.setBackgroundResource(R.drawable.part_button_selector);
 
@@ -151,7 +162,66 @@ public class ChefEquipeFragment extends Fragment {
                 updateHelpUI();
             });
 
+            LinearLayout.LayoutParams params =
+                    new LinearLayout.LayoutParams(
+                            ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT);
+
+            params.setMargins(0, 0, 0, 25);
+
+            line.setLayoutParams(params);
+
             helpContainer.addView(line);
+        }
+    }
+
+    private void updateRepairUI() {
+
+        repairContainer.removeAllViews();
+
+        for (int i = 0; i < repairRequests.size(); i++) {
+
+            RepairRequest req = repairRequests.get(i);
+
+            TextView line = new TextView(getContext());
+
+            Typeface typeface =
+                    ResourcesCompat.getFont(getContext(), R.font.bebas_neue);
+
+            line.setTypeface(typeface);
+
+            line.setText(getString(
+                    R.string.chef_equipe_ligne_reparation));
+
+            line.setTextSize(22);
+            line.setTextColor(Color.BLACK);
+            line.setPadding(20,20,20,20);
+            line.setGravity(Gravity.CENTER);
+            line.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+            line.setBackgroundResource(R.drawable.part_button_selector);
+
+            if (i == repairRequests.size() - 1) {
+                startBlinkAnimation(line);
+            }
+
+            line.setOnClickListener(v -> {
+
+                v.clearAnimation();
+                repairRequests.remove(req);
+                updateRepairUI();
+            });
+
+            LinearLayout.LayoutParams params =
+                    new LinearLayout.LayoutParams(
+                            ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT);
+
+            params.setMargins(0, 0, 0, 25);
+
+            line.setLayoutParams(params);
+
+            repairContainer.addView(line);
         }
     }
 
@@ -176,6 +246,17 @@ public class ChefEquipeFragment extends Fragment {
                     vibrateAlert();
                     playHelpSound();
                     updateHelpUI();
+                }
+
+                if ("REPAIR_COMPLETED".equals(type)) {
+
+                    String mecanicien = json.optString("from");
+                    String line = json.optString("line");
+
+                    repairRequests.add(
+                            new RepairRequest(mecanicien, line));
+
+                    updateRepairUI();
                 }
 
                 if ("IMPROVEMENTS_UPDATE".equals(type) || "IMPROVEMENTS".equals(type)) {
