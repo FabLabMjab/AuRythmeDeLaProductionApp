@@ -45,6 +45,7 @@ android:padding="16dp"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
+                android:background="@drawable/stats_line_b"
                 android:fontFamily="@font/bebas_neue"/>
 
         </LinearLayout>
@@ -66,6 +67,7 @@ android:padding="16dp"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
+                android:background="@drawable/stats_line_a"
                 android:fontFamily="@font/bebas_neue"/>
 
         </LinearLayout>

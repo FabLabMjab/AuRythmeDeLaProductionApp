@@ -1,5 +1,6 @@
 package com.example.aurythmedelaproduction;
 
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -163,7 +164,13 @@ public class ImprovementsFragment extends Fragment {
             CheckBox cb = new CheckBox(getContext());
             cb.setText(formatLabel(key));
             cb.setChecked(value);
-            cb.setBackgroundResource(R.drawable.improvement_item_bg);
+
+            if ("A".equals(column.getLine())) {
+                cb.setBackgroundResource(R.drawable.improvement_item_bg_a);
+            } else {
+                cb.setBackgroundResource(R.drawable.improvement_item_bg_b);
+            }
+
             cb.setTextSize(32);
             cb.setTextColor(Color.BLACK);
             cb.setTypeface(null, Typeface.BOLD);
@@ -176,9 +183,20 @@ public class ImprovementsFragment extends Fragment {
 
             cb.setOnCheckedChangeListener((buttonView, isChecked) -> {
 
-                int targetDrawable = isChecked
-                        ? R.drawable.improvement_item_bg_checked
-                        : R.drawable.improvement_item_bg;
+                int targetDrawable;
+
+                if ("A".equals(column.getLine())) {
+
+                    targetDrawable = isChecked
+                            ? R.drawable.improvement_item_bg_checked_a
+                            : R.drawable.improvement_item_bg_a;
+
+                } else {
+
+                    targetDrawable = isChecked
+                            ? R.drawable.improvement_item_bg_checked_b
+                            : R.drawable.improvement_item_bg_b;
+                }
 
                 animateBackground(cb, targetDrawable);
 
@@ -188,10 +206,14 @@ public class ImprovementsFragment extends Fragment {
 
                 cb.setEnabled(false);
                 cb.setAlpha(0.65f);
-                cb.setBackgroundResource(
-                        R.drawable.improvement_item_bg_disabled
-                );
 
+                if ("A".equals(column.getLine())) {
+                    cb.setBackgroundResource(
+                            R.drawable.improvement_item_bg_disabled_a);
+                } else {
+                    cb.setBackgroundResource(
+                            R.drawable.improvement_item_bg_disabled_b);
+                }
             }
 
             LinearLayout.LayoutParams params =
@@ -300,7 +322,8 @@ public class ImprovementsFragment extends Fragment {
         requestImprovements();
     }
 
-    private void animateBackground(CheckBox cb, int drawableRes) {
+    private void animateBackground(CheckBox cb,
+                                   int drawableRes) {
 
         cb.animate()
                 .alpha(0.5f)
