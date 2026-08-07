@@ -264,6 +264,15 @@ public class CaristeFragment extends Fragment {
                 updatePartsUI();
             });
 
+            LinearLayout.LayoutParams params =
+                    new LinearLayout.LayoutParams(
+                            ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT);
+
+            params.setMargins(0, 0, 0, 25);
+
+            line.setLayoutParams(params);
+
             partsContainer.addView(line);
         }
     }
