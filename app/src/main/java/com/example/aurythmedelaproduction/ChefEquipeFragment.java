@@ -256,6 +256,8 @@ public class ChefEquipeFragment extends Fragment {
                     repairRequests.add(
                             new RepairRequest(mecanicien, line));
 
+                    playRepairSound();
+
                     updateRepairUI();
                 }
 
@@ -341,6 +343,21 @@ public class ChefEquipeFragment extends Fragment {
         mp.setOnCompletionListener(player -> {
             player.release();
         });
+
+        mp.start();
+    }
+
+    private void playRepairSound() {
+
+        if (getContext() == null) return;
+
+        MediaPlayer mp = MediaPlayer.create(
+                getContext(),
+                R.raw.bruit_outil);
+
+        if (mp == null) return;
+
+        mp.setOnCompletionListener(player -> player.release());
 
         mp.start();
     }
